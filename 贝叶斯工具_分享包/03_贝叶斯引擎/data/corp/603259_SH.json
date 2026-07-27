@@ -1,0 +1,91 @@
+{
+  "code": "603259.SH",
+  "name": "药明康德",
+  "date": "2026-07-22",
+  "business": "小分子化学药的发现、研发及生产全方位、一体化 CRDMO 平台服务，面向全球制药企业提供新药研发、生产及配套服务（全球 CXO 龙头）。",
+  "industry": "医药生物",
+  "sector": "医药生物",
+  "board": "主板",
+  "listed_date": "2018-05-08",
+  "scores": {
+    "comp": 78.47,
+    "funm": 90.67,
+    "risk": 77.36,
+    "cap": 53.57,
+    "tec": 61.14,
+    "note": "westock data_score：Comp综合/Funm基本面/Risk风险/Cap资金/Tec技术（0~100，越高越好；Risk越高=风险越低）"
+  },
+  "market_cap": 377296092249.75,
+  "float_market_cap": 377296092249.75,
+  "total_shares": 2983757155,
+  "float_shares": 2983757155,
+  "target_price": 161.0962,
+  "finance_fy2025": {
+    "revenue": 45456165774.18,
+    "np_parent": 19150582400.69,
+    "np_deduct": 13240556954.42,
+    "gross_margin": 0.4764,
+    "net_margin": 0.4213,
+    "roe": 0.2386,
+    "debt_ratio": 0.2218,
+    "goodwill": 864388850.17,
+    "ocf": 17203161622.0,
+    "ocf_np_ratio": 0.9,
+    "fcff": 9007584646.41,
+    "interest_bearing_debt": 8420113174.81,
+    "inventory": 8993244894.24,
+    "receivables": 7281326326.92,
+    "note": "FY2025 年报；margin/roe/ocf_np 由本引擎据三大报表计算"
+  },
+  "revenue_trend_ttm": [
+    {
+      "date": "2025-03-31",
+      "revenue_ttm": 40914092427.2,
+      "np_ttm": 11180058684.6
+    },
+    {
+      "date": "2025-06-30",
+      "revenue_ttm": 42799794979.32,
+      "np_ttm": 13771369042.23
+    },
+    {
+      "date": "2025-09-30",
+      "revenue_ttm": 44396145613.98,
+      "np_ttm": 14992886686.42
+    },
+    {
+      "date": "2025-12-31",
+      "revenue_ttm": 45456165774.18,
+      "np_ttm": 19150582400.69
+    },
+    {
+      "date": "2026-03-31",
+      "revenue_ttm": 48237347038.19,
+      "np_ttm": 20130139437.98
+    }
+  ],
+  "moat": {
+    "type": "全球 CRDMO 一体化平台 + 长尾客户高粘性 + 全球产能布局(中外多地) + 新分子(多肽/ADC/寡核苷酸)先发",
+    "strength": 5,
+    "note": "全球新药研发'卖铲人'龙头，客户转换成本高；FunmScore=90.67 支撑 5/5 护城河评级"
+  },
+  "risk_flags": [
+    "美国 BIOSECURE Act 等海外政策压制估值，地缘扰动为长期悬剑",
+    "估值不便宜（PE_TTM≈18.7、PB≈4.5、PS≈7.8），price-in 较多乐观预期",
+    "AH 溢价率 -9.02%（H 股更便宜），A 股相对溢价收敛压力",
+    "2026E 净利预计同比 -5.91%（2025 高基数含投资收益），短期业绩承压",
+    "前期涨幅大（近30日主力净流入约27.6亿），获利盘占比87.75%，拥挤度偏高",
+    "机构与北向持仓集中，边际减持易引发波动"
+  ],
+  "positive_flags": [
+    "全球 CRDMO 龙头，在手订单充裕、管线高效转化，业绩释放确定性强",
+    "北向资金季度大幅增持至10.58%（环比+50.4%），创近年新高",
+    "基本面评分 FunmScore 90.67（极高）、Comp 78.47、Risk 77.36 稳健",
+    "经营现金流强劲（2025年172亿，OCF/净利0.90x）、FCFF 转正90亿",
+    "ROE 23.9%、负债率仅22%、商誉8.6亿占比极低，财务安全垫厚",
+    "创新药全球景气度回升，多肽/ADC/寡核苷酸新分子 CRDMO 需求高增"
+  ],
+  "corp_quality": 1.0,
+  "corp_quality_note": "由 FunmScore(90.67) 映射：>=80→+1，本次 90.67≥80→+1",
+  "source": "westock data_finance(income/balance/cashflow) + data_profile + data_score + tdx 市值/股本"
+}

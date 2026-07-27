@@ -1,0 +1,10 @@
+{
+  "eps_now": 1.72,
+  "eps_90d_ago": null,
+  "eps_30d_ago": null,
+  "rating": "买入/增持(一致目标价29.89; 2026E营收+14.82%/净利+106.08%)",
+  "target_price": 29.8943,
+  "net_profit_yoy_2026E": 106.08,
+  "revenue_yoy_2026E": 14.82,
+  "source": "腾讯自选股 data_consensus + tdx一致目标价29.54"
+}

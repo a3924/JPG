@@ -1,0 +1,134 @@
+{
+  "_readme": {
+    "用途": "build_caches.py 的输入模板。agent 读完 MCP 后把原始数值填入本文件, 再跑 python build_caches.py raw_xxx.json 即生成全部 11 类缓存。示例数据=中远海特 600428(2026-07-22)。",
+    "字段来源(MCP 调用清单)": {
+      "std": "缓存文件名, 深市=XXXXXX_SZ 沪市/科创=XXXXXX_SH (run_report normalize_code: 6开头=SH, 0/3开头=SZ)",
+      "code": "带点代码 600428.SH", "code_ex": "带交易所前缀 sh600428 / sz000963",
+      "valuation": "tdx_security_deep_info(key_statistics: PE_TTM/PB/PS_TTM/BPS/总市值/总股本) + data_consensus(np_ttm 归母TTM); eps_ttm 可留空由脚本按 np_ttm/total_shares 算; f_score 为 AI 估算(0~9)",
+      "corp.scores": "westock data_score (comp/funm/risk/cap/tec, 0~100)",
+      "corp.fy2025": "westock data_finance(type=income/balance/cashflow, num=5): revenue/np_parent/np_deduct/gross_profit(营收-营业成本)/equity(归母权益)/total_assets/total_liab/ocf/fcff/goodwill/interest_bearing_debt/inventory/receivables. 比率(gross_margin/net_margin/roe/debt_ratio/ocf_np_ratio)与 corp_quality 由脚本自动派生, 无需填",
+      "corp.target_price / consensus": "data_consensus + tdx 一致目标价; moat/risk_flags/positive_flags 为 AI 综合判定",
+      "industry": "data_profile(行业) + data_industry_chain; cr4/bci_percentile 无接口填 null; industry_momentum_ytd/roe_vs_industry 为 AI 估算",
+      "north": "data_north_holding (季度持仓); 引擎读小写键 cur.holding_ratio_pct/holding_shares/cap_chg_q/cap_chg_y 与 prev.holding_shares. 若填 camelCase 脚本会兜底转换",
+      "margin": "data_fund_margin + tdx 总市值; finance_balance_ratio/total_balance/finance_net_buy_today 由脚本派生",
+      "psi": "AI 据近期政策/行业新闻判定, psi_score ∈ [-3,+3] (半导体自主可控等最高优先级=3, 一般结构性利好=2, 中性=0~1)",
+      "news": "data_news(symbol=sh600428, type=2, limit=30); AI 精选高/中影响力条目",
+      "chip": "data_chip (closePrice/chipProfitRate/chipAvgCost/chipConcentration90/70)",
+      "shareholder": "data_shareholder; 科创板或中报披露前常为空, 填空数组即可",
+      "fund_flow": "data_fund_flow(近30日); 直接粘贴返回的 data 数组(本模板仅留3行示例, 实际填全量)",
+      "sentiment": "★故意不提供★ 让 bayesian_engine 用 Tec+资金+动量合成 ACSI"
+    }
+  },
+
+  "std": "600428_SH",
+  "code": "600428.SH",
+  "code_ex": "sh600428",
+  "name": "中远海特",
+  "date": "2026-07-22",
+  "close_price": 11.12,
+
+  "valuation": {
+    "PE_TTM": 16.25, "PB": 1.75, "PS_TTM": 1.22, "BPS": 6.23,
+    "market_cap": 29908732305.5, "total_shares": 2743920395,
+    "np_ttm": 1840502998.14,
+    "f_score": 7,
+    "source": "tdx key_statistics(总市值299.09亿/总股本27.44亿/BPS6.23/PB1.75/PE_TTM16.25/PS_TTM1.22) + 现价11.12 重算 eps_ttm; f_score=7(估算)"
+  },
+
+  "corp": {
+    "business": "主营特种船(重吊船/半潜船/汽车船/多用途船)运输, 受益于中国先进制造出口。",
+    "industry": "交通运输", "sector": "交通运输", "board": "主板", "listed_date": "2002-04-18",
+    "scores": { "comp": 77.97, "funm": 81.32, "risk": 83.23, "cap": 56.86, "tec": 84.93,
+      "note": "data_score(0~100越高越好, Risk越高=风险越低); Cap月变动-29.65(资金转弱)、Tec+23.92(技术走强)" },
+    "target_price": 10.56,
+    "fy2025": {
+      "revenue": 23210557897.17, "np_parent": 1779972016.00, "np_deduct": 1747924249.81,
+      "gross_profit": 4930526659.66, "equity": 18532672602.28,
+      "total_assets": 43876507984.10, "total_liab": 25343835281.82,
+      "ocf": 6339217973.77, "fcff": 4477370501.54, "goodwill": 0.0,
+      "interest_bearing_debt": 18524578203.91, "inventory": 1033269439.33, "receivables": 990683023.53,
+      "note": "FY2025 年报"
+    },
+    "revenue_trend_ttm": [
+      {"date": "2025-12-31", "revenue_ttm": 23210557897.17, "np_ttm": 1779972016.00},
+      {"date": "2026-03-31", "revenue_ttm": 24561593414.64, "np_ttm": 1840502998.14}
+    ],
+    "moat": { "type": "特种船细分龙头 + 中国先进制造出口运输刚需 + 船队规模与资质壁垒", "strength": 3,
+      "note": "资质与船队壁垒中等; 周期性强, FunmScore=81.32 支撑 3/5" },
+    "risk_flags": [
+      "北向资金季度减持(1.84%→1.25%), 外资边际流出",
+      "获利盘95.23%、短线拥挤, 近2月涨约39%, 超买风险大",
+      "现价11.12高于一致目标价10.27/10.56, 隐含-4%~-8%空间"
+    ],
+    "positive_flags": [
+      "Q2净利同比+130%; 2026E净利预计+35.3%至24.1亿",
+      "受益中国先进制造出口(新能源车/工程机械/风电出海)",
+      "经营现金流强劲(OCF/净利3.56x)、FCFF 44.8亿; 高分红占净利50%"
+    ],
+    "source": "westock data_finance+profile+score + tdx 市值/股本/目标价"
+  },
+
+  "industry": {
+    "industry_name": "交通运输(航运/特种船)", "sw_l1": "交通运输", "sw_l2": "航运",
+    "life_stage": "成熟期", "cr4": null, "bci_percentile": null,
+    "industry_momentum_ytd": 0.15, "roe_vs_industry": -2.0,
+    "source": "data_profile + data_industry_chain; roe_vs_industry 为估算"
+  },
+
+  "north": {
+    "cur": { "end_date": 20260630, "holding_cap": 239647280.51, "holding_ratio_pct": 1.2549,
+      "holding_shares": 30684671, "shares_chg_q": -14216434, "cap_chg_q": -119913061.83,
+      "shares_chg_y": -10900392, "cap_chg_y": -72613706 },
+    "prev": { "end_date": 20260331, "holding_cap": 403660933.95, "holding_ratio_pct": 1.8362,
+      "holding_shares": 44901105 },
+    "note": "北向季度环比减持1421万股(-31.7%)至占比1.25%, 边际流出, 对流动性偏空。"
+  },
+
+  "margin": {
+    "finance_balance": 377466470.00, "security_balance": 7078460.00,
+    "finance_balance_dod": -2.36, "security_balance_dod": 2.28,
+    "finance_buy_today": 83522273.00, "finance_refund_today": 92651425.00,
+    "close_price": 11.12,
+    "note": "融资余额占流通市值比约1.26%(杠杆低)"
+  },
+
+  "psi": {
+    "psi_score": 2.0, "psi_policy_type": "structural", "psi_months_since": 6,
+    "basis": "国内先进制造出口(新能源车/工程机械/风电出海)为国家支持方向, 特种船运输受益; 全球贸易摩擦/运价周期为行业性风险。综合结构性利好但航运非最高优先级战略且周期强, 故 psi_score=2。"
+  },
+
+  "news": {
+    "source": "腾讯自选股 data_news(sh600428, type=2, limit=30, 截至2026-07-22)",
+    "updated": "2026-07-22",
+    "items": [
+      {"date": "2026-07-22", "impact": "高", "title": "中远海特突破60日新高, Q2业绩预增130%", "source": "腾讯财经", "summary": "突破60日新高, Q2业绩预增130%"},
+      {"date": "2026-07-21", "impact": "高", "title": "中远海特分红8.92亿, 占净利50%", "source": "腾讯财经", "summary": "高分红, 占净利50%"},
+      {"date": "2026-07-20", "impact": "中", "title": "航运港口: 集运运价进入调整阶段", "source": "腾讯财经", "summary": "集运运价调整, 结构性分化"}
+    ]
+  },
+
+  "chip": {
+    "closePrice": 11.12, "chipProfitRate": 95.23, "chipAvgCost": 8.94,
+    "chipConcentration90": 18.19, "chipConcentration70": 14.85,
+    "source": "腾讯自选股 data_chip"
+  },
+
+  "consensus": {
+    "eps_now": 0.88, "eps_90d_ago": null, "eps_30d_ago": null,
+    "rating": "买入/增持(一致目标价10.56; 2026E营收+22.16%/净利+35.32%)",
+    "target_price": 10.56, "net_profit_yoy_2026E": 35.32, "revenue_yoy_2026E": 22.16,
+    "source": "腾讯自选股 data_consensus + tdx一致目标价"
+  },
+
+  "shareholder": {
+    "date": "2026-06-30", "shareholderNum": [], "change_pct": null,
+    "top10FloatShareholders": [], "top10Shareholders": [],
+    "source": "data_shareholder(2026-06-30 未披露→空)"
+  },
+
+  "fund_flow": [
+    {"ClosePrice":"11.17","EndDate":"2026-07-20","MainNetFlow":"-74522817.43","MainInFlow":"415069364.44","MainOutFlow":"489592181.87","SecuCode":"sh600428","code":"sh600428","date":"2026-07-20"},
+    {"ClosePrice":"10.90","EndDate":"2026-07-21","MainNetFlow":"-97197177.27","MainInFlow":"348368330.57","MainOutFlow":"445565507.84","SecuCode":"sh600428","code":"sh600428","date":"2026-07-21"},
+    {"ClosePrice":"11.12","EndDate":"2026-07-22","MainNetFlow":"19308783","MainInFlow":"427469525","MainOutFlow":"408160742","SecuCode":"sh600428","code":"sh600428","date":"2026-07-22"}
+  ]
+}

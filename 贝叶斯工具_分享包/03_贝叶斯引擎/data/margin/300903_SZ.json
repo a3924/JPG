@@ -1,0 +1,18 @@
+{
+  "code": "sz300903",
+  "name": "科翔股份",
+  "date": "2026-07-21",
+  "finance_balance": 3170258976.00,
+  "security_balance": 0.00,
+  "total_balance": 3170258976.00,
+  "finance_balance_dod": -5.09,
+  "security_balance_dod": 0.0,
+  "finance_buy_today": 202842898.00,
+  "finance_refund_today": 372969046.00,
+  "finance_net_buy_today": -170126148.00,
+  "close_price": 61.73,
+  "float_market_cap": 28735513158.0,
+  "finance_balance_ratio": 0.1103,
+  "source": "westock data_fund_margin + tdx 流通市值",
+  "note": "融资余额占流通市值比 = finance_balance / float_market_cap = 31.70亿 / 287.36亿 ≈ 11.0%，超过 8% 强平风险线。"
+}

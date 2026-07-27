@@ -1,0 +1,12 @@
+{
+  "industry_name": "交通运输(航运/特种船)",
+  "sw_l1": "交通运输",
+  "sw_l2": "航运",
+  "life_stage": "成熟期",
+  "cr4": null,
+  "bci_percentile": null,
+  "industry_momentum_ytd": 0.15,
+  "roe_vs_industry": -2.0,
+  "source": "腾讯自选股 data_profile（行业=交通运输）+ data_industry_chain（特种船/船舶租赁/船舶货运/货船，民船主题）；ROE相对行业=公司ROE9.6%-航运板块约11.6%≈-2pct(估算)",
+  "date": "2026-07-22"
+}

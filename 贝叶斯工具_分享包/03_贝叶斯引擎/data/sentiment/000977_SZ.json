@@ -1,0 +1,9 @@
+{
+  "acsi_percentile": 68,
+  "issi_deviation": "正常",
+  "tec_score": 86.94,
+  "fund_score": 58.0,
+  "momentum_pct": 93,
+  "date": "2026-07-23",
+  "source": "合成：TecScore(86.94, data_score最新)+主力资金(近12日累计净流入+1.57亿、近3日净入+1.02亿→fund_score降至58)+价格动量(60日+20.3%→momentum 93)+舆情(算力主线强但今日冲高回落→acsi 68)。"
+}

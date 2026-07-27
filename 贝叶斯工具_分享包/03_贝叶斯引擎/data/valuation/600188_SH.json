@@ -1,0 +1,13 @@
+{
+  "PE_TTM": 21.83,
+  "PB": 1.77,
+  "PS_TTM": 1.41,
+  "BPS": 7.62,
+  "eps_ttm": 1.0142,
+  "market_cap": 224423751807.0,
+  "float_market_cap": 133283827207.0,
+  "total_shares": 10036852020,
+  "float_shares": 5961352020,
+  "f_score": 7,
+  "source": "tdx key_statistics(PE_TTM21.83/PB_MRQ2/PS_TTM1.41/BPS7.62/一致目标价29.54) + 现价22.36×总股本100.37亿自算市值2244亿保证PE自洽; PB取westock一致预期2026E=1.77(更贴近归母净资产口径); f_score=7估算"
+}

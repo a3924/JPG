@@ -1,0 +1,13 @@
+{
+  "PE_TTM": 19.68,
+  "PB": 4.36,
+  "PS_TTM": 1.36,
+  "BPS": 8.37,
+  "eps_ttm": 1.8552,
+  "market_cap": 86979500000,
+  "float_market_cap": 86979500000,
+  "total_shares": 2383000000,
+  "float_shares": 2383000000,
+  "f_score": 8,
+  "source": "tdx key_statistics(现价36.5自算PE/PB/PS) + westock"
+}

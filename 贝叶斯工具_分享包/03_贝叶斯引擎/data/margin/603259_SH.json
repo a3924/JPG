@@ -1,0 +1,18 @@
+{
+  "code": "603259.SH",
+  "name": "药明康德",
+  "date": "2026-07-22",
+  "finance_balance": 5447382652.0,
+  "security_balance": 44112967.65,
+  "total_balance": 5491495619.65,
+  "finance_balance_dod": -0.44,
+  "security_balance_dod": -4.01,
+  "finance_buy_today": 715949134.0,
+  "finance_refund_today": 739833987.0,
+  "finance_net_buy_today": -23884853.0,
+  "close_price": 125.9,
+  "float_market_cap": 377296092249.75,
+  "finance_balance_ratio": 0.014438,
+  "source": "westock data_fund_margin + tdx 总市值",
+  "note": "融资余额占流通市值比≈1.44%（杠杆水位低）；日环比-0.44%小幅回落"
+}

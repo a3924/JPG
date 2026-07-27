@@ -1,0 +1,18 @@
+{
+  "code": "sh601168",
+  "name": "西部矿业",
+  "date": "2026-07-22",
+  "finance_balance": 1956739601,
+  "security_balance": 15001023,
+  "total_balance": 1971740624,
+  "finance_balance_dod": -1.22,
+  "security_balance_dod": 11.36,
+  "finance_buy_today": 168355935,
+  "finance_refund_today": 192523822,
+  "finance_net_buy_today": -24167887,
+  "close_price": 36.5,
+  "float_market_cap": 86979500000,
+  "finance_balance_ratio": 0.022497,
+  "source": "westock data_fund_margin + tdx 总市值",
+  "note": ""
+}

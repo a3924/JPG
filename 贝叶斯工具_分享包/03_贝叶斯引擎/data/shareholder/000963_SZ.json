@@ -1,0 +1,152 @@
+{
+  "code": "sz000963",
+  "name": "华东医药",
+  "date": "2026-03-31",
+  "shareholderNum": [],
+  "change_pct": null,
+  "top10FloatShareholders": [
+    {
+      "no": 1,
+      "name": "中国远大集团有限责任公司",
+      "holdPct": 41.68,
+      "holdShares": 730938157,
+      "holdChange": 0
+    },
+    {
+      "no": 2,
+      "name": "杭州华东医药集团有限公司",
+      "holdPct": 16.42,
+      "holdShares": 288000000,
+      "holdChange": 0
+    },
+    {
+      "no": 3,
+      "name": "香港中央结算有限公司",
+      "holdPct": 2.22,
+      "holdShares": 38923330,
+      "holdChange": -7444661
+    },
+    {
+      "no": 4,
+      "name": "新华人寿保险股份有限公司-分红-个人分红-018L-FH002深",
+      "holdPct": 2.05,
+      "holdShares": 35903842,
+      "holdChange": 938600
+    },
+    {
+      "no": 5,
+      "name": "新华人寿保险股份有限公司-传统-普通保险产品-018L-CT001深",
+      "holdPct": 1.32,
+      "holdShares": 23204014,
+      "holdChange": 1413200
+    },
+    {
+      "no": 6,
+      "name": "中国工商银行股份有限公司-中欧医疗健康混合型证券投资基金",
+      "holdPct": 1.21,
+      "holdShares": 21182329,
+      "holdChange": -1090600
+    },
+    {
+      "no": 7,
+      "name": "中国证券金融股份有限公司",
+      "holdPct": 1.09,
+      "holdShares": 19095344,
+      "holdChange": -3091474
+    },
+    {
+      "no": 8,
+      "name": "全国社保基金一一二组合",
+      "holdPct": 1.0,
+      "holdShares": 17589744,
+      "holdChange": 600000
+    },
+    {
+      "no": 9,
+      "name": "上海银行股份有限公司-银华中证创新药产业交易型开放式指数证券投资基金",
+      "holdPct": 0.74,
+      "holdShares": 13013898,
+      "holdChange": 0
+    },
+    {
+      "no": 10,
+      "name": "中国建设银行股份有限公司-易方达沪深300医药卫生交易型开放式指数证券投资基金",
+      "holdPct": 0.7,
+      "holdShares": 12343870,
+      "holdChange": 631360
+    }
+  ],
+  "top10Shareholders": [
+    {
+      "no": 1,
+      "name": "中国远大集团有限责任公司",
+      "holdPct": 41.68,
+      "holdShares": 730938157,
+      "holdChange": 0
+    },
+    {
+      "no": 2,
+      "name": "杭州华东医药集团有限公司",
+      "holdPct": 16.42,
+      "holdShares": 288000000,
+      "holdChange": 0
+    },
+    {
+      "no": 3,
+      "name": "香港中央结算有限公司",
+      "holdPct": 2.22,
+      "holdShares": 38923330,
+      "holdChange": -7444661
+    },
+    {
+      "no": 4,
+      "name": "新华人寿保险股份有限公司-分红-个人分红-018L-FH002深",
+      "holdPct": 2.05,
+      "holdShares": 35903842,
+      "holdChange": 938600
+    },
+    {
+      "no": 5,
+      "name": "新华人寿保险股份有限公司-传统-普通保险产品-018L-CT001深",
+      "holdPct": 1.32,
+      "holdShares": 23204014,
+      "holdChange": 1413200
+    },
+    {
+      "no": 6,
+      "name": "中国工商银行股份有限公司-中欧医疗健康混合型证券投资基金",
+      "holdPct": 1.21,
+      "holdShares": 21182329,
+      "holdChange": -1090600
+    },
+    {
+      "no": 7,
+      "name": "中国证券金融股份有限公司",
+      "holdPct": 1.09,
+      "holdShares": 19095344,
+      "holdChange": -3091474
+    },
+    {
+      "no": 8,
+      "name": "全国社保基金一一二组合",
+      "holdPct": 1.0,
+      "holdShares": 17589744,
+      "holdChange": 600000
+    },
+    {
+      "no": 9,
+      "name": "上海银行股份有限公司-银华中证创新药产业交易型开放式指数证券投资基金",
+      "holdPct": 0.74,
+      "holdShares": 13013898,
+      "holdChange": 0
+    },
+    {
+      "no": 10,
+      "name": "中国建设银行股份有限公司-易方达沪深300医药卫生交易型开放式指数证券投资基金",
+      "holdPct": 0.7,
+      "holdShares": 12343870,
+      "holdChange": 631360
+    }
+  ],
+  "source": "腾讯自选股 data_shareholder"
+}

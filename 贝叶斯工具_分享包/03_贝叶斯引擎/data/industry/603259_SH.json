@@ -1,0 +1,12 @@
+{
+  "industry_name": "医药生物(CXO/医疗服务)",
+  "sw_l1": "医药生物",
+  "sw_l2": "医疗服务",
+  "life_stage": "成熟期",
+  "cr4": null,
+  "bci_percentile": null,
+  "industry_momentum_ytd": 0.1,
+  "roe_vs_industry": 13.9,
+  "source": "腾讯自选股 data_profile（行业=医药生物）+ data_industry_chain（SMO服务/西药/原料药，银发经济/创新药/生物科技主题）；ROE相对行业=公司ROE23.9%-医药行业~10%≈+13.9pct(估算)",
+  "date": "2026-07-22"
+}

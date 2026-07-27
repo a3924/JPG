@@ -1,0 +1,18 @@
+{
+  "code": "000977.SZ",
+  "name": "浪潮信息",
+  "date": "2026-07-23",
+  "finance_balance": 4955246516.0,
+  "security_balance": 13290043.0,
+  "total_balance": 4968536559.0,
+  "finance_balance_dod": 2.51,
+  "security_balance_dod": 6.54,
+  "finance_buy_today": 1775110758.0,
+  "finance_refund_today": 1653662786.0,
+  "finance_net_buy_today": 121447972.0,
+  "close_price": 87.96,
+  "float_market_cap": 129167000000.0,
+  "finance_balance_ratio": 0.0384,
+  "source": "westock data_fund_margin + tdx 流通市值",
+  "note": "融资余额占流通市值比 = finance_balance / float_market_cap；data_fund_margin 原始返回 07-23 最新；净买入转正(+1.21亿)"
+}

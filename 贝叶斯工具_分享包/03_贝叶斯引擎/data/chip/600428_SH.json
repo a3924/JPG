@@ -1,0 +1,11 @@
+{
+  "code": "sh600428",
+  "name": "中远海特",
+  "date": "2026-07-22",
+  "closePrice": 11.12,
+  "chipProfitRate": 95.23,
+  "chipAvgCost": 8.94,
+  "chipConcentration90": 18.19,
+  "chipConcentration70": 14.85,
+  "source": "腾讯自选股 data_chip"
+}

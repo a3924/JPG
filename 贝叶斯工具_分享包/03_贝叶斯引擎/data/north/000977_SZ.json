@@ -1,0 +1,26 @@
+{
+  "source": "腾讯自选股 data_north_holding（北向资金最新/次新季度持仓明细）",
+  "date": "2026-07-23",
+  "cur": {
+    "end_date": 20260630,
+    "holding_cap": 2552212040,
+    "holding_ratio_pct": 2.4856,
+    "holding_shares": 36460172,
+    "shares_chg_q": 2627193,
+    "shares_chg_y": -10358232,
+    "cap_chg_q": 178645088.63,
+    "cap_chg_y": -619074020.21
+  },
+  "prev": {
+    "end_date": 20260331,
+    "holding_cap": 1897353462.32,
+    "holding_ratio_pct": 2.3065,
+    "holding_shares": 33832979,
+    "shares_chg_q": -1434727,
+    "shares_chg_y": -1534833,
+    "cap_chg_q": -91334707.91,
+    "cap_chg_y": -232704246.1
+  },
+  "q_add_pct": 7.77,
+  "note": "北向资金本季净增持：持股比例由2.3065%升至2.4856%（+2627193股、+1.79亿市值），年内(YTD)净增持-1534833→-10358232股。季环比+7.77%（外资回流，偏多）；但年内YTD净减持-10358232股。"
+}

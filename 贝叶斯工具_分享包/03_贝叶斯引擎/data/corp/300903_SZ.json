@@ -1,0 +1,73 @@
+{
+  "code": "sz300903",
+  "name": "科翔股份",
+  "date": "2026-07-21",
+  "business": "高密度印制电路板（PCB）的研发、生产和销售。",
+  "industry": "电子",
+  "sector": "印制电路板",
+  "board": "创业板",
+  "listed_date": "2020-11-05",
+  "scores": {
+    "comp": 61.36,
+    "funm": 63.8,
+    "risk": 71.67,
+    "cap": 62.11,
+    "tec": 42.59,
+    "note": "来源 westock data_score：Comp综合/Funm基本面/Risk风险/Cap资金/Tec技术（0~100，越高越好；Risk越高=风险越低）"
+  },
+  "market_cap": 28735513158.0,
+  "float_market_cap": 28735513158.0,
+  "total_shares": 435386563,
+  "float_shares": 435386563,
+  "beta_100w": 2.04,
+  "target_price": null,
+  "finance_fy2025": {
+    "revenue": 3720438929.45,
+    "np_parent": -246329474.08,
+    "np_deduct": -243442638.48,
+    "gross_margin": 0.07035,
+    "net_margin": -0.06622,
+    "roe": -0.1527,
+    "debt_ratio": 0.7576,
+    "goodwill": 0.0,
+    "ocf": 160875046.67,
+    "ocf_np_ratio": -0.65,
+    "fcff": -481467830.39,
+    "interest_bearing_debt": 1715227023.39,
+    "inventory": 562006389.82,
+    "receivables": 1612382048.59,
+    "note": "FY2025 年报；margin/roe 由本引擎据三大报表计算。商誉已计提至0（最新无商誉科目）。"
+  },
+  "revenue_trend_ttm": [
+    {"date": "2025-03-31", "revenue_ttm": 3630640264.56, "np_ttm": -307920225.30},
+    {"date": "2025-06-30", "revenue_ttm": 3645438700.26, "np_ttm": -307284586.72},
+    {"date": "2025-09-30", "revenue_ttm": 3645958548.59, "np_ttm": -288407562.80},
+    {"date": "2025-12-31", "revenue_ttm": 3720438929.45, "np_ttm": -246329474.08},
+    {"date": "2026-03-31", "revenue_ttm": 3802323994.68, "np_ttm": -265065836.89}
+  ],
+  "moat": {
+    "type": "中等规模制造 + 客户认证壁垒（但 PCB 同质化竞争、无独占核心技术）",
+    "strength": 2,
+    "note": "国内 PCB 产能充足、价格竞争激烈；科翔无显著技术独占性，护城河偏弱（2/5）。"
+  },
+  "risk_flags": [
+    "连续亏损（FY2025 归母净利 -2.46亿，TTM -2.65亿，已连亏多季）",
+    "毛利率薄（7.04%，PCB 代工特征）",
+    "资产负债率 75.8% 偏高，有息负债 17.2 亿",
+    "高 Beta（2.04）波动极大",
+    "筹码深度套牢（获利比例仅 4.84%，成本 80.79 vs 现价 61.73）",
+    "融资余额占流通市值 ~11%（超 8% 强平风险线）",
+    "PS_TTM 7.56 偏高（营收 37亿对应 287亿市值）"
+  ],
+  "positive_flags": [
+    "营收稳健（FY2025 37.2亿，TTM 38亿）",
+    "经营现金流为正（+1.61亿），优于净利（折旧等非现支出为主）",
+    "北向年内净增持（Y +514万股）",
+    "PCB 受益 AI 算力服务器需求景气（行业 beta）",
+    "杠杆资金近期活跃（7/20 融资净买 2.87亿，两市第2）"
+  ],
+  "corp_quality": 0.5,
+  "corp_quality_note": "由 FunmScore(63.8) 映射：>=80→+1, 60~80→+0.5, 40~60→0, 20~40→-0.5, <20→-1（注：公司亏损，FunmScore 高估了基本面，详见风险信号）",
+  "source": "westock data_finance(income/balance/cashflow) + data_profile + data_score + tdx 股本/市值",
+  "note": "企业深度体检（巴菲特式）：主营业务/护城河/5年财务质量/资本配置/风险信号。完整5年年度序列需更多历史期，本期以 FY2025 + TTM 趋势替代。"
+}

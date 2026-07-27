@@ -1,0 +1,20 @@
+{
+  "code": "sh688146",
+  "name": "中船特气",
+  "date": "2026-07-27",
+  "cur": {
+    "holding_ratio_pct": 1.8914,
+    "holding_shares": 2742025,
+    "holding_cap": 959681329.75,
+    "cap_chg_q": 925528674.71,
+    "cap_chg_y": 925528674.71,
+    "shares_chg_q": 1939566,
+    "end_date": 20260630
+  },
+  "prev": {
+    "holding_ratio_pct": 0.5535,
+    "holding_shares": 802459,
+    "holding_cap": 34152655.04,
+    "end_date": 20260331
+  }
+}

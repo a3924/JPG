@@ -1,0 +1,204 @@
+{
+  "_readme": "西部矿业 601168.SH —— 全部数值来自 2026-07-22 实时 MCP/tdx 拉取；市值=现价36.5×总股本23.83亿≈869.8亿（tdx返回807亿为7-21旧价口径，已自算修正）。市盈率/市净率/市销率均按现价自算，保证与市值自洽。",
+  "std": "601168_SH",
+  "code": "sh601168",
+  "code_ex": "sh601168",
+  "name": "西部矿业",
+  "date": "2026-07-22",
+  "close_price": 36.5,
+  "valuation": {
+    "PE_TTM": 19.68,
+    "PB": 4.36,
+    "PS_TTM": 1.36,
+    "BPS": 8.37,
+    "np_ttm": 4420930830,
+    "market_cap": 86979500000,
+    "float_market_cap": 86979500000,
+    "total_shares": 2383000000,
+    "float_shares": 2383000000,
+    "f_score": 8,
+    "source": "tdx key_statistics(现价36.5自算PE/PB/PS) + westock"
+  },
+  "corp": {
+    "business": "主要从事铜、铅、锌、铁等基本有色金属、黑色金属的采选、冶炼、贸易等业务。",
+    "industry": "有色金属",
+    "sector": "有色金属",
+    "board": "主板",
+    "listed_date": "2007-07-12",
+    "scores": {
+      "comp": 75.65,
+      "funm": 81.46,
+      "risk": 80.2,
+      "tec": 88.82,
+      "cap": 34.92
+    },
+    "market_cap": 86979500000,
+    "total_shares": 2383000000,
+    "target_price": 33.83,
+    "fy2025": {
+      "revenue": 61686769908,
+      "np_parent": 3642686772,
+      "np_deduct": 3618225029,
+      "gross_profit": 12069384103,
+      "equity": 25251426741,
+      "total_assets": 59416562566,
+      "total_liab": 34165135825,
+      "ocf": 10211012503,
+      "fcff": 4448190043,
+      "goodwill": 15706944,
+      "interest_bearing_debt": 25417167087,
+      "inventory": 5148432620,
+      "receivables": 657799687,
+      "note": "2025年报；比率由脚本据三大报表派生"
+    },
+    "moat": {
+      "玉龙铜矿": "中国最大铜矿之一，资源禀赋优（三期年底投产铜产能增逾50%）",
+      "国企背景": "西部矿业集团控股，资源获取与整合能力强",
+      "多金属": "铜铅锌铁黄金多元布局，抗单一品种周期波动"
+    },
+    "risk_flags": [
+      "铜价周期波动大，盈利高度敏感",
+      "2026Q1 FCFF 转负(-63亿)，玉龙铜矿三期建设期资本开支高",
+      "北向资金季度减持约19.6%（持股1.62亿→1.30亿股）",
+      "今日涨停后现价36.5已高于一致目标价33.83"
+    ],
+    "positive_flags": [
+      "玉龙铜矿三期年底投产，铜产能增逾50%",
+      "主营产品涨价，2026H1预盈超40亿",
+      "铜库存降71%，供需趋紧",
+      "股东户数环比降9.58%，筹码集中"
+    ]
+  },
+  "industry": {
+    "industry_name": "有色金属",
+    "sw_l1": "有色金属",
+    "sw_l2": "工业金属",
+    "industry_momentum_ytd": 12.0,
+    "cr4": 50,
+    "bci_percentile": 50,
+    "roe_vs_industry": 8.0,
+    "life_stage": "成熟期",
+    "note": "铜/铅锌/黄金多金属矿采选冶炼；CR4/BCI无接口→默认50"
+  },
+  "north": {
+    "cur": {
+      "date": "2026-07-22",
+      "holding_ratio_pct": 5.4738,
+      "holding_shares": 130439953,
+      "cap_chg_q": -961112986.34,
+      "cap_chg_y": 102991131.29,
+      "end_date": 20260630
+    },
+    "prev": {
+      "date": "2026-07-22",
+      "holding_ratio_pct": 6.8103,
+      "holding_shares": 162290164,
+      "cap_chg_q": -302039289.47,
+      "cap_chg_y": 883041281.95,
+      "end_date": 20260331
+    }
+  },
+  "margin": {
+    "finance_balance": 1956739601,
+    "security_balance": 15001023,
+    "finance_balance_dod": -1.22,
+    "security_balance_dod": 11.36,
+    "finance_buy_today": 168355935,
+    "finance_refund_today": 192523822,
+    "close_price": 36.5,
+    "float_market_cap": 86979500000
+  },
+  "psi": {
+    "psi_score": 2,
+    "psi_policy_type": "structural",
+    "psi_months_since": 3,
+    "source": "AI据铜价/资源安全/降息预期判定",
+    "note": "多：铜战略资源+供给收缩+美联储降息预期+小金属价值重估；空：周期波动+北向减持。综合2分"
+  },
+  "news": {
+    "code": "sh601168",
+    "items": [
+      {"date": "2026-07-22", "title": "西部矿业涨停，铜库存降71%", "summary": "有色金属板块共振，铜库存大幅去化催化涨停", "url": "http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN2026072210373697b0fb74&s=b"},
+      {"date": "2026-07-22", "title": "西部矿业最新股东户数环比下降9.58%", "summary": "截止7月20日股东总户数12.18万户，筹码趋于集中", "url": "http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN20260722174838a489b824&s=b"},
+      {"date": "2026-07-17", "title": "西部矿业产品涨价半年预盈超40亿 玉龙铜矿三期年底投产将增产逾50%", "summary": "主营产品量价齐升，产能扩张打开成长空间", "url": "http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN2026071707424197a95839&s=b"},
+      {"date": "2026-07-22", "title": "西部矿业主力资金净流出5636.1万 短期承压但长期价值逻辑清晰", "summary": "涨停日资金分歧，机构看好长期资源价值重估", "url": "http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN20260722151902989d5690&s=b"},
+      {"date": "2026-07-22", "title": "机构：贵金属进入击球区 小金属迎来价值重估", "summary": "美联储加息预期降温，有色/小金属估值修复", "url": "http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN20260722085540a6df84ba&s=b"},
+      {"date": "2026-07-22", "title": "有色金属行业基金重仓股数据点评：2026Q2有色板块重仓股持仓环比下降", "summary": "新材料、锂增持明显，传统工业金属配置边际走弱", "url": "http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN20260722182155a6e05af8&s=b"}
+    ]
+  },
+  "chip": {
+    "closePrice": 36.5,
+    "chipProfitRate": 98.42,
+    "chipAvgCost": 31.26,
+    "chipConcentration90": 14.45,
+    "chipConcentration70": 8.62
+  },
+  "consensus": {
+    "code": "sh601168",
+    "name": "西部矿业",
+    "targetPrice": 33.8273,
+    "forecasts": [
+      {"year": 2026, "eps": 2.34, "revenue": 7340912.5, "netProfit": 558114.29, "pe": 14.45, "pb": 3.37, "ps": 1.1, "revenueYoy": 19, "netProfitYoy": 53.22, "institutionCnt": 0},
+      {"year": 2027, "eps": 2.85, "revenue": 7671387.5, "netProfit": 678187.58, "pe": 11.9, "pb": 2.63, "ps": 1.05, "revenueYoy": 4.5, "netProfitYoy": 21.51, "institutionCnt": 0},
+      {"year": 2028, "eps": 3.25, "revenue": 7904012.5, "netProfit": 773850.8, "pe": 10.43, "pb": 2.1, "ps": 1.02, "revenueYoy": 3.03, "netProfitYoy": 14.11, "institutionCnt": 0}
+    ]
+  },
+  "shareholder": {
+    "code": "sh601168",
+    "name": "西部矿业",
+    "shareholder_num": 121800,
+    "change_pct": -9.58,
+    "top10FloatShareholders": [
+      {"holdChange": 0, "holdPct": 23.48, "holdShares": 559459971, "name": "西部矿业集团有限公司", "no": 1},
+      {"holdChange": 0, "holdPct": 7.46, "holdShares": 177660077, "name": "青海西矿资产管理有限公司", "no": 2},
+      {"holdChange": -9695675, "holdPct": 6.81, "holdShares": 162290164, "name": "香港中央结算有限公司", "no": 3},
+      {"holdChange": 3135300, "holdPct": 1.95, "holdShares": 46586746, "name": "林泗华", "no": 4},
+      {"holdChange": -12067000, "holdPct": 1.06, "holdShares": 25267584, "name": "瑞众人寿保险有限责任公司-自有资金", "no": 5},
+      {"holdChange": -450000, "holdPct": 1.01, "holdShares": 23970000, "name": "新疆同裕股权投资有限公司", "no": 6},
+      {"holdChange": 0, "holdPct": 0.88, "holdShares": 20895645, "name": "中国工商银行-南方中证申万有色金属ETF", "no": 7},
+      {"holdChange": -3000000, "holdPct": 0.8, "holdShares": 19000000, "name": "新疆塔城国际资源有限公司", "no": 8},
+      {"holdChange": 0, "holdPct": 0.58, "holdShares": 13740134, "name": "太保致远1号私募", "no": 9},
+      {"holdChange": 0, "holdPct": 0.56, "holdShares": 13370026, "name": "招商银行-上证红利ETF", "no": 10}
+    ],
+    "top10Shareholders": [
+      {"holdChange": 0, "holdPct": 23.48, "holdShares": 559459971, "name": "西部矿业集团有限公司", "no": 1},
+      {"holdChange": 0, "holdPct": 7.46, "holdShares": 177660077, "name": "青海西矿资产管理有限公司", "no": 2},
+      {"holdChange": -9695675, "holdPct": 6.81, "holdShares": 162290164, "name": "香港中央结算有限公司", "no": 3},
+      {"holdChange": 3135300, "holdPct": 1.95, "holdShares": 46586746, "name": "林泗华", "no": 4},
+      {"holdChange": -12067000, "holdPct": 1.06, "holdShares": 25267584, "name": "瑞众人寿保险有限责任公司-自有资金", "no": 5},
+      {"holdChange": -450000, "holdPct": 1.01, "holdShares": 23970000, "name": "新疆同裕股权投资有限公司", "no": 6},
+      {"holdChange": 0, "holdPct": 0.88, "holdShares": 20895645, "name": "中国工商银行-南方中证申万有色金属ETF", "no": 7},
+      {"holdChange": -3000000, "holdPct": 0.8, "holdShares": 19000000, "name": "新疆塔城国际资源有限公司", "no": 8},
+      {"holdChange": 0, "holdPct": 0.58, "holdShares": 13740134, "name": "太保致远1号私募", "no": 9},
+      {"holdChange": 0, "holdPct": 0.56, "holdShares": 13370026, "name": "招商银行-上证红利ETF", "no": 10}
+    ]
+  },
+  "fund_flow": {
+    "code": "sh601168",
+    "data": [
+      {"BlockNetFlow": "72033420.29", "ClosePrice": "33.37", "EndDate": "2026-06-22", "JumboNetFlow": "87903801.38", "MainInFlow": "1346586408.43", "MainNetFlow": "159937221.67", "MainOutFlow": "1186649186.76", "MidNetFlow": "-7850595.17", "RetailInFlow": "1604042450.06", "RetailOutFlow": "1763979671.73", "SecuCode": "sh601168", "SmallNetFlow": "-152086626.50", "code": "sh601168", "date": "2026-06-22"},
+      {"BlockNetFlow": "-81403704.41", "ClosePrice": "30.03", "EndDate": "2026-06-23", "JumboNetFlow": "-54950540.86", "MainInFlow": "1261880944.00", "MainNetFlow": "-136354245.27", "MainOutFlow": "1398235189.27", "MidNetFlow": "-18838517.77", "RetailInFlow": "1686770702.59", "RetailOutFlow": "1550416457.32", "SecuCode": "sh601168", "SmallNetFlow": "155192763.04", "code": "sh601168", "date": "2026-06-23"},
+      {"BlockNetFlow": "-20697406.53", "ClosePrice": "29.20", "EndDate": "2026-06-24", "JumboNetFlow": "14681923.22", "MainInFlow": "791615070.52", "MainNetFlow": "-6015483.31", "MainOutFlow": "797630553.83", "MidNetFlow": "-61535775.74", "RetailInFlow": "1120966614.83", "RetailOutFlow": "1114951131.52", "SecuCode": "sh601168", "SmallNetFlow": "67551259.05", "code": "sh601168", "date": "2026-06-24"},
+      {"BlockNetFlow": "-81652756.84", "ClosePrice": "27.43", "EndDate": "2026-06-25", "JumboNetFlow": "-131231482.44", "MainInFlow": "786703143.02", "MainNetFlow": "-212884239.28", "MainOutFlow": "999587382.30", "MidNetFlow": "40542399.50", "RetailInFlow": "1270034667.05", "RetailOutFlow": "1057150427.77", "SecuCode": "sh601168", "SmallNetFlow": "172341839.78", "code": "sh601168", "date": "2026-06-25"},
+      {"BlockNetFlow": "-50702469.14", "ClosePrice": "26.37", "EndDate": "2026-06-26", "JumboNetFlow": "70751627.38", "MainInFlow": "687533680.53", "MainNetFlow": "20049158.24", "MainOutFlow": "667484522.29", "MidNetFlow": "-22950249.67", "RetailInFlow": "854441995.84", "RetailOutFlow": "874491154.08", "SecuCode": "sh601168", "SmallNetFlow": "2901091.43", "code": "sh601168", "date": "2026-06-26"},
+      {"BlockNetFlow": "44262037.93", "ClosePrice": "27.31", "EndDate": "2026-06-29", "JumboNetFlow": "18920538.31", "MainInFlow": "527612138.42", "MainNetFlow": "63182576.24", "MainOutFlow": "464429562.18", "MidNetFlow": "40360717.32", "RetailInFlow": "788936373.17", "RetailOutFlow": "852118949.41", "SecuCode": "sh601168", "SmallNetFlow": "-103543293.56", "code": "sh601168", "date": "2026-06-29"},
+      {"BlockNetFlow": "10863501.85", "ClosePrice": "27.14", "EndDate": "2026-06-30", "JumboNetFlow": "10130242.43", "MainInFlow": "427898361.10", "MainNetFlow": "20993744.28", "MainOutFlow": "406904616.82", "MidNetFlow": "33002901.13", "RetailInFlow": "627529177.84", "RetailOutFlow": "648522922.12", "SecuCode": "sh601168", "SmallNetFlow": "-53996645.41", "code": "sh601168", "date": "2026-06-30"},
+      {"BlockNetFlow": "-49436899.68", "ClosePrice": "26.51", "EndDate": "2026-07-01", "JumboNetFlow": "-17314720.04", "MainInFlow": "453603320.09", "MainNetFlow": "-66751619.72", "MainOutFlow": "520354939.81", "MidNetFlow": "51073039.70", "RetailInFlow": "779123728.54", "RetailOutFlow": "712372108.82", "SecuCode": "sh601168", "SmallNetFlow": "15678580.02", "code": "sh601168", "date": "2026-07-01"},
+      {"BlockNetFlow": "31234342.74", "ClosePrice": "27.33", "EndDate": "2026-07-02", "JumboNetFlow": "94173073.90", "MainInFlow": "751778356.24", "MainNetFlow": "125407416.64", "MainOutFlow": "626370939.60", "MidNetFlow": "-12853102.80", "RetailInFlow": "879757403.60", "RetailOutFlow": "1005164820.24", "SecuCode": "sh601168", "SmallNetFlow": "-112554313.84", "code": "sh601168", "date": "2026-07-02"},
+      {"BlockNetFlow": "-19615425.05", "ClosePrice": "29.22", "EndDate": "2026-07-03", "JumboNetFlow": "395903634.99", "MainInFlow": "1606071657.58", "MainNetFlow": "376288209.94", "MainOutFlow": "1229783447.64", "MidNetFlow": "-206914412.83", "RetailInFlow": "1117072518.55", "RetailOutFlow": "1493360728.49", "SecuCode": "sh601168", "SmallNetFlow": "-169373797.11", "code": "sh601168", "date": "2026-07-03"},
+      {"BlockNetFlow": "8541551.11", "ClosePrice": "28.65", "EndDate": "2026-07-06", "JumboNetFlow": "29053620.74", "MainInFlow": "633608993.19", "MainNetFlow": "37595171.85", "MainOutFlow": "596013821.34", "MidNetFlow": "-84797336.28", "RetailInFlow": "959694511.84", "RetailOutFlow": "997289683.69", "SecuCode": "sh601168", "SmallNetFlow": "47202164.43", "code": "sh601168", "date": "2026-07-06"},
+      {"BlockNetFlow": "-25488175.69", "ClosePrice": "28.68", "EndDate": "2026-07-07", "JumboNetFlow": "-22138952.69", "MainInFlow": "326823172.48", "MainNetFlow": "-47627128.38", "MainOutFlow": "374450300.86", "MidNetFlow": "62045379.89", "RetailInFlow": "713342188.89", "RetailOutFlow": "665715060.51", "SecuCode": "sh601168", "SmallNetFlow": "-14418251.51", "code": "sh601168", "date": "2026-07-07"},
+      {"BlockNetFlow": "-57356040.09", "ClosePrice": "28.18", "EndDate": "2026-07-08", "JumboNetFlow": "-23133988.95", "MainInFlow": "282366740.40", "MainNetFlow": "-80490029.04", "MainOutFlow": "362856769.44", "MidNetFlow": "7290151.62", "RetailInFlow": "641368340.65", "RetailOutFlow": "560878311.61", "SecuCode": "sh601168", "SmallNetFlow": "73199877.42", "code": "sh601168", "date": "2026-07-08"},
+      {"BlockNetFlow": "35088249.62", "ClosePrice": "28.99", "EndDate": "2026-07-09", "JumboNetFlow": "-48951143.35", "MainInFlow": "496206911.00", "MainNetFlow": "-13862893.73", "MainOutFlow": "510069804.73", "MidNetFlow": "-13689867.19", "RetailInFlow": "707369102.77", "RetailOutFlow": "693506209.04", "SecuCode": "sh601168", "SmallNetFlow": "27552760.92", "code": "sh601168", "date": "2026-07-09"},
+      {"BlockNetFlow": "-11522330.81", "ClosePrice": "30.44", "EndDate": "2026-07-10", "JumboNetFlow": "20993632.16", "MainInFlow": "856565198.67", "MainNetFlow": "9471301.35", "MainOutFlow": "847093897.32", "MidNetFlow": "-30292361.39", "RetailInFlow": "1153651691.84", "RetailOutFlow": "1163122993.19", "SecuCode": "sh601168", "SmallNetFlow": "20821060.04", "code": "sh601168", "date": "2026-07-10"},
+      {"BlockNetFlow": "104415523.47", "ClosePrice": "30.69", "EndDate": "2026-07-13", "JumboNetFlow": "117793588.88", "MainInFlow": "1027019906.95", "MainNetFlow": "222209112.35", "MainOutFlow": "804810794.60", "MidNetFlow": "7573283.06", "RetailInFlow": "1042736492.95", "RetailOutFlow": "1264945605.30", "SecuCode": "sh601168", "SmallNetFlow": "-229782395.41", "code": "sh601168", "date": "2026-07-13"},
+      {"BlockNetFlow": "45747931.73", "ClosePrice": "33.17", "EndDate": "2026-07-14", "JumboNetFlow": "266655726.03", "MainInFlow": "1363264530.27", "MainNetFlow": "312403657.76", "MainOutFlow": "1050860872.51", "MidNetFlow": "-248234524.30", "RetailInFlow": "1254296254.71", "RetailOutFlow": "1566699912.47", "SecuCode": "sh601168", "SmallNetFlow": "-64169133.46", "code": "sh601168", "date": "2026-07-14"},
+      {"BlockNetFlow": "-78508610.44", "ClosePrice": "33.18", "EndDate": "2026-07-15", "JumboNetFlow": "-4976035.91", "MainInFlow": "1368174212.69", "MainNetFlow": "-83484646.35", "MainOutFlow": "1451658859.04", "MidNetFlow": "8241928.95", "RetailInFlow": "1551587037.37", "RetailOutFlow": "1468102391.02", "SecuCode": "sh601168", "SmallNetFlow": "75242717.40", "code": "sh601168", "date": "2026-07-15"},
+      {"BlockNetFlow": "-35079536.60", "ClosePrice": "33.84", "EndDate": "2026-07-16", "JumboNetFlow": "132564093.15", "MainInFlow": "1062310050.49", "MainNetFlow": "97484556.55", "MainOutFlow": "964825493.94", "MidNetFlow": "-92496700.67", "RetailInFlow": "1226984156.94", "RetailOutFlow": "1324468713.49", "SecuCode": "sh601168", "SmallNetFlow": "-4987855.88", "code": "sh601168", "date": "2026-07-16"},
+      {"BlockNetFlow": "803514.21", "ClosePrice": "31.65", "EndDate": "2026-07-17", "JumboNetFlow": "-120844139.60", "MainInFlow": "1124144452.40", "MainNetFlow": "-120040625.39", "MainOutFlow": "1244185077.79", "MidNetFlow": "-30107431.05", "RetailInFlow": "1242225001.51", "RetailOutFlow": "1122184376.12", "SecuCode": "sh601168", "SmallNetFlow": "150148056.44", "code": "sh601168", "date": "2026-07-17"},
+      {"BlockNetFlow": "-38180668.99", "ClosePrice": "31.96", "EndDate": "2026-07-20", "JumboNetFlow": "-25348685.29", "MainInFlow": "748690999.98", "MainNetFlow": "-63529354.28", "MainOutFlow": "812220354.26", "MidNetFlow": "-86367992.42", "RetailInFlow": "1199117788.86", "RetailOutFlow": "1135588434.58", "SecuCode": "sh601168", "SmallNetFlow": "149897346.70", "code": "sh601168", "date": "2026-07-20"},
+      {"BlockNetFlow": "7503976.48", "ClosePrice": "33.87", "EndDate": "2026-07-21", "JumboNetFlow": "51746142.90", "MainInFlow": "802960301.26", "MainNetFlow": "59250119.38", "MainOutFlow": "743710181.88", "MidNetFlow": "51480295.13", "RetailInFlow": "1199761709.18", "RetailOutFlow": "1259011828.56", "SecuCode": "sh601168", "SmallNetFlow": "-110730414.51", "code": "sh601168", "date": "2026-07-21"},
+      {"BlockNetFlow": "72400207", "ClosePrice": "36.50", "EndDate": "2026-07-22", "JumboNetFlow": "-128761367", "MainInFlow": "2960196404", "MainNetFlow": "-56361160", "MainOutFlow": "3016557564", "MidNetFlow": "91712935", "RetailInFlow": "1987812155", "RetailOutFlow": "1931450995", "SecuCode": "sh601168", "SmallNetFlow": "-35351775", "code": "sh601168", "date": "2026-07-22"}
+    ]
+  }
+}

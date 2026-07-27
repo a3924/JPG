@@ -1,0 +1,11 @@
+{
+  "industry_name": "计算机",
+  "sw_l1": "计算机",
+  "sw_l2": "计算机设备",
+  "life_stage": "成长期",
+  "cr4": null,
+  "bci_percentile": null,
+  "roe_vs_industry": null,
+  "source": "腾讯自选股 data_profile（行业）+ AI 据算力景气判定生命周期；CR4/BCI分位需补行业数据",
+  "date": "2026-07-20"
+}

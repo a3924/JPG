@@ -1,0 +1,11 @@
+{
+  "code": "sh603259",
+  "name": "药明康德",
+  "date": "2026-07-22",
+  "closePrice": 125.9,
+  "chipProfitRate": 87.75,
+  "chipAvgCost": 113.21,
+  "chipConcentration90": 17.21,
+  "chipConcentration70": 12.82,
+  "source": "腾讯自选股 data_chip"
+}

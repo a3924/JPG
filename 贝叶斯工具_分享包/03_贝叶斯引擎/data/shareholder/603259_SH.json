@@ -1,0 +1,152 @@
+{
+  "code": "sh603259",
+  "name": "药明康德",
+  "date": "2026-03-31",
+  "shareholderNum": [],
+  "change_pct": null,
+  "top10FloatShareholders": [
+    {
+      "no": 1,
+      "name": "HKSCC NOMINEES LIMITED",
+      "holdPct": 17.11,
+      "holdShares": 510434558,
+      "holdChange": 49400
+    },
+    {
+      "no": 2,
+      "name": "香港中央结算有限公司",
+      "holdPct": 5.83,
+      "holdShares": 173881937,
+      "holdChange": -22528440
+    },
+    {
+      "no": 3,
+      "name": "G&C VI Limited",
+      "holdPct": 4.27,
+      "holdShares": 127309054,
+      "holdChange": -2720950
+    },
+    {
+      "no": 4,
+      "name": "G&C IV Hong Kong Limited",
+      "holdPct": 3.12,
+      "holdShares": 93135472,
+      "holdChange": -1990572
+    },
+    {
+      "no": 5,
+      "name": "北京中民银孚投资管理有限公司-嘉兴宇祥投资合伙企业(有限合伙)",
+      "holdPct": 2.6,
+      "holdShares": 77511585,
+      "holdChange": -1619676
+    },
+    {
+      "no": 6,
+      "name": "G&C V Limited",
+      "holdPct": 2.18,
+      "holdShares": 65076978,
+      "holdChange": -1390913
+    },
+    {
+      "no": 7,
+      "name": "中国建设银行股份有限公司-易方达沪深300医药卫生交易型开放式指数证券投资基金",
+      "holdPct": 1.17,
+      "holdShares": 34838905,
+      "holdChange": 1875225
+    },
+    {
+      "no": 8,
+      "name": "G&C VII Limited",
+      "holdPct": 1.13,
+      "holdShares": 33696017,
+      "holdChange": -720183
+    },
+    {
+      "no": 9,
+      "name": "中国银行股份有限公司-华宝中证医疗交易型开放式指数证券投资基金",
+      "holdPct": 1.07,
+      "holdShares": 31813631,
+      "holdChange": 0
+    },
+    {
+      "no": 10,
+      "name": "SUMMER BLOOM INVESTMENTS(I) PTE. LTD.",
+      "holdPct": 1.06,
+      "holdShares": 31721901,
+      "holdChange": 0
+    }
+  ],
+  "top10Shareholders": [
+    {
+      "no": 1,
+      "name": "HKSCC NOMINEES LIMITED",
+      "holdPct": 17.11,
+      "holdShares": 510434558,
+      "holdChange": 49400
+    },
+    {
+      "no": 2,
+      "name": "香港中央结算有限公司",
+      "holdPct": 5.83,
+      "holdShares": 173881937,
+      "holdChange": -22528440
+    },
+    {
+      "no": 3,
+      "name": "G&C VI Limited",
+      "holdPct": 4.27,
+      "holdShares": 127309054,
+      "holdChange": -2720950
+    },
+    {
+      "no": 4,
+      "name": "G&C IV Hong Kong Limited",
+      "holdPct": 3.12,
+      "holdShares": 93135472,
+      "holdChange": -1990572
+    },
+    {
+      "no": 5,
+      "name": "北京中民银孚投资管理有限公司-嘉兴宇祥投资合伙企业(有限合伙)",
+      "holdPct": 2.6,
+      "holdShares": 77511585,
+      "holdChange": -1619676
+    },
+    {
+      "no": 6,
+      "name": "G&C V Limited",
+      "holdPct": 2.18,
+      "holdShares": 65076978,
+      "holdChange": -1390913
+    },
+    {
+      "no": 7,
+      "name": "中国建设银行股份有限公司-易方达沪深300医药卫生交易型开放式指数证券投资基金",
+      "holdPct": 1.17,
+      "holdShares": 34838905,
+      "holdChange": 1875225
+    },
+    {
+      "no": 8,
+      "name": "G&C VII Limited",
+      "holdPct": 1.13,
+      "holdShares": 33696017,
+      "holdChange": -720183
+    },
+    {
+      "no": 9,
+      "name": "中国银行股份有限公司-华宝中证医疗交易型开放式指数证券投资基金",
+      "holdPct": 1.07,
+      "holdShares": 31813631,
+      "holdChange": 0
+    },
+    {
+      "no": 10,
+      "name": "SUMMER BLOOM INVESTMENTS(I) PTE. LTD.",
+      "holdPct": 1.06,
+      "holdShares": 31721901,
+      "holdChange": 0
+    }
+  ],
+  "source": "腾讯自选股 data_shareholder（2026-03-31；股东户数未披露→change_pct=None）"
+}

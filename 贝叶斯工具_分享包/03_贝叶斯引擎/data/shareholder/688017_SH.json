@@ -1,0 +1,132 @@
+{
+  "code": "sh688017",
+  "name": "绿的谐波",
+  "date": "2026-03-31",
+  "shareholderNum": [],
+  "change_pct": null,
+  "top10FloatShareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 17.3,
+      "holdShares": 31711794,
+      "name": "左昱昱"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 17.3,
+      "holdShares": 31707522,
+      "name": "左晶"
+    },
+    {
+      "holdChange": 572446,
+      "holdPct": 5.01,
+      "holdShares": 9193694,
+      "name": "香港中央结算有限公司"
+    },
+    {
+      "holdChange": 209070,
+      "holdPct": 2.54,
+      "holdShares": 4651328,
+      "name": "中国建设银行股份有限公司-易方达国证机器人产业交易型开放式指数证券投资基金"
+    },
+    {
+      "holdChange": -492371,
+      "holdPct": 1.92,
+      "holdShares": 3524235,
+      "name": "兴业银行股份有限公司-华夏中证机器人交易型开放式指数证券投资基金"
+    },
+    {
+      "holdChange": -611314,
+      "holdPct": 1.86,
+      "holdShares": 3402786,
+      "name": "孙雪珍"
+    },
+    {
+      "holdChange": -1599272,
+      "holdPct": 1.41,
+      "holdShares": 2575940,
+      "name": "先进制造产业投资基金(有限合伙)"
+    },
+    {
+      "holdChange": -500000,
+      "holdPct": 1.36,
+      "holdShares": 2500000,
+      "name": "交通银行股份有限公司-万家行业优选混合型证券投资基金(LOF)"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.85,
+      "holdShares": 1550044,
+      "name": "李谦"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.78,
+      "holdShares": 1431492,
+      "name": "国器元禾私募基金管理有限公司-工业母机产业投资基金(有限合伙)"
+    }
+  ],
+  "top10Shareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 17.3,
+      "holdShares": 31711794,
+      "name": "左昱昱"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 17.3,
+      "holdShares": 31707522,
+      "name": "左晶"
+    },
+    {
+      "holdChange": 572446,
+      "holdPct": 5.01,
+      "holdShares": 9193694,
+      "name": "香港中央结算有限公司"
+    },
+    {
+      "holdChange": 209070,
+      "holdPct": 2.54,
+      "holdShares": 4651328,
+      "name": "中国建设银行股份有限公司-易方达国证机器人产业交易型开放式指数证券投资基金"
+    },
+    {
+      "holdChange": -492371,
+      "holdPct": 1.92,
+      "holdShares": 3524235,
+      "name": "兴业银行股份有限公司-华夏中证机器人交易型开放式指数证券投资基金"
+    },
+    {
+      "holdChange": -611314,
+      "holdPct": 1.86,
+      "holdShares": 3402786,
+      "name": "孙雪珍"
+    },
+    {
+      "holdChange": -1599272,
+      "holdPct": 1.41,
+      "holdShares": 2575940,
+      "name": "先进制造产业投资基金(有限合伙)"
+    },
+    {
+      "holdChange": -500000,
+      "holdPct": 1.36,
+      "holdShares": 2500000,
+      "name": "交通银行股份有限公司-万家行业优选混合型证券投资基金(LOF)"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.85,
+      "holdShares": 1550044,
+      "name": "李谦"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.78,
+      "holdShares": 1431492,
+      "name": "国器元禾私募基金管理有限公司-工业母机产业投资基金(有限合伙)"
+    }
+  ],
+  "source": "腾讯自选股 data_shareholder"
+}

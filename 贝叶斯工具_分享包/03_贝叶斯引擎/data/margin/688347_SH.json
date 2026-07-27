@@ -1,0 +1,18 @@
+{
+  "code": "688347.SH",
+  "name": "华虹宏力",
+  "date": "2026-07-22",
+  "finance_balance": 4104085707.0,
+  "security_balance": 55699940.06,
+  "total_balance": 4159785647.06,
+  "finance_balance_dod": 35.77,
+  "security_balance_dod": 21.44,
+  "finance_buy_today": 2154704448.0,
+  "finance_refund_today": 1073491185.0,
+  "finance_net_buy_today": 1081213263.0,
+  "close_price": 390.06,
+  "float_market_cap": 691232808187.56,
+  "finance_balance_ratio": 0.005937,
+  "source": "westock data_fund_margin + tdx 总市值",
+  "note": "融资余额占流通市值比≈0.59%（杠杆水位低）；但日环比+35.77%显示杠杆资金当日大幅加仓"
+}

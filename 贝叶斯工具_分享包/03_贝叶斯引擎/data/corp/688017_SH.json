@@ -1,0 +1,73 @@
+{
+  "code": "sh688017",
+  "name": "绿的谐波",
+  "date": "2026-07-21",
+  "business": "精密传动装置研发、设计、生产和销售的高新技术企业。",
+  "industry": "机械设备",
+  "sector": "通用设备",
+  "board": "科创板",
+  "listed_date": "2020-08-28",
+  "scores": {
+    "comp": 69.73,
+    "funm": 83.04,
+    "risk": 71.22,
+    "cap": 55.65,
+    "tec": 37.64,
+    "note": "来源 westock data_score：Comp综合/Funm基本面/Risk风险/Cap资金/Tec技术（0~100，越高越好；Risk越高=风险越低）"
+  },
+  "market_cap": 58207000000.0,
+  "float_market_cap": 58207000000.0,
+  "total_shares": 183330125,
+  "float_shares": 183330125,
+  "beta_100w": null,
+  "target_price": 275.9543,
+  "finance_fy2025": {
+    "revenue": 612821939.99,
+    "np_parent": 136752628.86,
+    "np_deduct": 136752628.86,
+    "gross_margin": 0.3661,
+    "net_margin": 0.2231,
+    "roe": 0.0383,
+    "debt_ratio": 0.0944,
+    "goodwill": 0.0,
+    "ocf": 140247532.27,
+    "ocf_np_ratio": 1.0255,
+    "fcff": -88508658.3,
+    "interest_bearing_debt": 289467.41,
+    "inventory": 297412321.77,
+    "receivables": 245303947.22,
+    "note": "数据截至2026Q1（TTM，data_finance仅返回最新一期）；roe=TTM净利/股东权益，ocf_np_ratio=ocf/np_parent(TTM)；fcff取NetCashFlowTTM"
+  },
+  "revenue_trend_ttm": [
+    {
+      "date": "2026-03-31",
+      "revenue_ttm": 612821939.99,
+      "np_ttm": 136752628.86
+    }
+  ],
+  "moat": {
+    "type": "谐波减速器核心技术（高精度柔轮/齿轮+精密装配）+ 人形机器人核心零部件卡位 + 客户认证壁垒",
+    "strength": 4,
+    "note": "国内谐波减速器绝对龙头，技术壁垒高、进口替代主线；但国际巨头（HD谐波/日本新宝）仍占高端，且行业扩产导致价格战隐忧，护城河强（4/5）。"
+  },
+  "risk_flags": [
+    "估值极高（PE_TTM 425.6倍、PB 16.5倍，人形机器人主题超高溢价）",
+    "股价高位巨震（52周区间125.96~495.45，近期从495高位回落至318，-36%）",
+    "筹码大面积套牢（获利比例仅13.18%，平均成本389.47高于现价）",
+    "主力资金持续净流出（近12日仅1日主力净流入，累计大幅净流出）",
+    "融资余额高（25.95亿）且近期净偿还，杠杆资金撤退",
+    "一致目标价275.95低于现价，隐含约13%下行空间"
+  ],
+  "positive_flags": [
+    "人形机器人谐波减速器国内绝对龙头，受益量产（马斯克Optimus年产10万台、减速器2025出货43万台）",
+    "业绩高增（2026E净利+57.57%，营收+50.24%）",
+    "基本面评分高（FunmScore 83.04），盈利能力强（TTM毛利率36.6%、净利率22.3%）",
+    "资产负债表极干净（负债率9.4%，几乎无有息负债）",
+    "北向资金稳定持有（比例~5%）",
+    "WAIC2026/十五五智能制造政策催化"
+  ],
+  "corp_quality": 1.0,
+  "corp_quality_note": "由 FunmScore(83.04) 映射：>=80→+1（基本面评分高，盈利稳健，机器人赛道成长）",
+  "source": "westock data_finance(income/balance/cashflow) + data_profile + data_score + tdx 股本/市值",
+  "note": "企业深度体检（巴菲特式）。财务数据截至2026Q1 TTM（data_finance仅返回最新一期）。"
+}

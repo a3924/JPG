@@ -1,0 +1,12 @@
+{
+  "industry_name": "有色金属",
+  "sw_l1": "有色金属",
+  "sw_l2": "工业金属",
+  "industry_momentum_ytd": 12.0,
+  "cr4": 50,
+  "bci_percentile": 50,
+  "roe_vs_industry": 8.0,
+  "life_stage": "成熟期",
+  "note": "铜/铅锌/黄金多金属矿采选冶炼；CR4/BCI无接口→默认50",
+  "date": "2026-07-22"
+}

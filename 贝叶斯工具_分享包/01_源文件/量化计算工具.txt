@@ -1,0 +1,782 @@
+# ============================================================
+# 🔧 同花顺 SuperMind 终极机构增强版 + 拥挤度指标修复版
+# 修复: 增加详细报错输出，增加换手率缺失时的兜底计算逻辑
+# ============================================================
+from mindgo_api import *
+import pandas as pd
+import numpy as np
+import warnings
+warnings.filterwarnings('ignore')
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.float_format', '{:.4f}'.format)
+
+from datetime import date, datetime, timedelta
+from scipy.stats import linregress
+
+# ── 智能补全函数 ──
+def normalize_stock_code(code):
+    if '.' in code: return code
+    code = code.strip()
+    if code.startswith(('60', '68')): return code + '.SH'
+    elif code.startswith(('00', '30', '002', '003')): return code + '.SZ'
+    elif code.startswith(('8', '4')): return code + '.BJ'
+    return code
+
+def normalize_index_code(code):
+    if '.' in code: return code
+    code = code.strip()
+    if code.startswith('399'): return code + '.SZ'
+    elif code.startswith('899'): return code + '.BJ'
+    return code + '.SH'
+
+def cs_rank(df):
+    return df.rank(axis=1, pct=True)
+
+def calc_rsi(df, n=14):
+    delta = df.diff()
+    gain  = delta.clip(lower=0).ewm(com=n-1, min_periods=n).mean()
+    loss  = (-delta.clip(upper=0)).ewm(com=n-1, min_periods=n).mean()
+    return 100 - 100 / (1 + (gain / loss.replace(0, np.nan)))
+
+def ts_rank_pct(series, window=252):
+    def _rank_func(x):
+        arr = np.array(x)
+        return (arr[:-1] < arr[-1]).mean()
+    return series.rolling(window).apply(_rank_func)
+
+# ── 主分析函数 ──
+def run_full_analysis(STOCK, POOL_IDX, END_DATE):
+    today = END_DATE if END_DATE else str(date.today()).replace('-', '')
+    print(f"[参数检查] 实际使用的today: {today}")
+
+    days_252 = get_trade_days(start_date=None, end_date=today, count=275)
+    days_60  = get_trade_days(start_date=None, end_date=today, count=65)
+    start_252 = str(days_252[0]).replace('-', '')
+    start_60  = str(days_60[0]).replace('-', '')
+
+    pool = get_index_stocks(POOL_IDX, today)
+    if STOCK not in pool:
+        pool = list(pool)
+        pool.append(STOCK)
+
+    print("目标股票 : {}".format(STOCK))
+    print("截面股票池: {} + 目标股 共 {} 只".format(POOL_IDX, len(pool)))
+
+    # 1. 截面轻量化拉取
+    print("正在拉取60日截面价量数据...")
+    price_dict = get_price(pool, start_date=start_60, end_date=today, fre_step='1d',
+                          fields=['open', 'high', 'low', 'close', 'volume', 'turnover'],
+                          skip_paused=True, fq='post', is_panel=0)
+
+    CLOSE, OPEN, HIGH, LOW, VOLUME, MONEY = {}, {}, {}, {}, {}, {}
+    for sym, df in price_dict.items():
+        if df is not None and not df.empty:
+            CLOSE[sym] = df['close']
+            OPEN[sym]  = df['open']
+            HIGH[sym]  = df['high']
+            LOW[sym]   = df['low']
+            VOLUME[sym] = df['volume']
+            MONEY[sym]  = df['turnover']
+
+    CLOSE  = pd.DataFrame(CLOSE)
+    OPEN   = pd.DataFrame(OPEN)
+    HIGH   = pd.DataFrame(HIGH)
+    LOW    = pd.DataFrame(LOW)
+    VOLUME = pd.DataFrame(VOLUME)
+    MONEY  = pd.DataFrame(MONEY)
+
+    valid_mask = CLOSE.iloc[-1].notnull()
+    valid_stocks = CLOSE.loc[:, valid_mask].columns
+    CLOSE, OPEN, HIGH, LOW, VOLUME, MONEY = (df.loc[:, valid_mask] for df in [CLOSE, OPEN, HIGH, LOW, VOLUME, MONEY])
+
+    latest_trade_date = CLOSE.index[-1]
+    latest_trade_date_str = str(latest_trade_date).split(' ')[0].replace('-', '')
+    print("截面轻量数据转化完成 | 最新有效交易日: {}".format(latest_trade_date_str))
+
+    # 2. 长周期数据
+    print("正在补充目标股 252 天长周期数据...")
+    # 尝试获取换手率，如果失败则后续兜底
+    try:
+        s_df = get_price(STOCK, start_date=start_252, end_date=today, fre_step='1d',
+                         fields=['open', 'high', 'low', 'close', 'volume', 'turnover', 'turnover_rate'], fq='post')
+    except:
+        # 某些旧接口不支持 turnover_rate，去掉重试
+        s_df = get_price(STOCK, start_date=start_252, end_date=today, fre_step='1d',
+                         fields=['open', 'high', 'low', 'close', 'volume', 'turnover'], fq='post')
+                         
+    s_df['money'] = s_df['turnover']
+    
+    # ============================================================
+    # 新增模块：通用拥挤度指标计算 (详细调试版)
+    # ============================================================
+    print("正在计算 通用拥挤度指标 ...")
+    crowding_res = {}
+    
+    try:
+        # 参数定义
+        N_cd = 60
+        M_cd = 120
+        
+        # 1. 获取指数数据
+        idx_code_cd = '000300.SH' # 使用沪深300作为指数基准
+        
+        # 尝试获取指数数据
+        try:
+            idx_df_cd = get_price(idx_code_cd, start_date=start_252, end_date=today, fre_step='1d', 
+                                  fields=['close', 'money'], fq='pre')
+        except:
+            # 某些平台指数字段可能叫 turnover 或 amount
+            try:
+                idx_df_cd_temp = get_price(idx_code_cd, start_date=start_252, end_date=today, fre_step='1d', 
+                                          fields=['close', 'turnover'], fq='pre')
+                idx_df_cd_temp['money'] = idx_df_cd_temp['turnover']
+                idx_df_cd = idx_df_cd_temp
+            except Exception as e_idx:
+                raise Exception(f"指数数据获取失败: {e_idx}")
+
+        # 2. 数据对齐
+        aligned_idx = idx_df_cd.reindex(s_df.index)
+        
+        # 提取序列
+        s_close_cd = s_df['close']
+        s_vol_cd = s_df['volume']
+        s_amt_cd = s_df['money']
+        
+        # 换手率处理 (核心修复点)
+        if 'turnover_rate' in s_df.columns:
+            s_hs_cd = s_df['turnover_rate'] * 100 # 转换为百分比
+        else:
+            # 兜底逻辑：如果API没有直接提供换手率，使用成交量均值比例估算
+            # 这里的逻辑是：假设过去120日平均换手率为5%，根据成交量放大比例估算当日换手率
+            # 注意：这是近似计算，不如直接获取准确
+            print("  [提示] API未返回换手率字段，使用成交量比例估算换手率偏离度...")
+            vol_ma_120 = s_vol_cd.rolling(M_cd).mean()
+            s_hs_cd = (s_vol_cd / (vol_ma_ago + 1e-9)) * 5.0 # 估算值
+
+        i_close_cd = aligned_idx['close']
+        i_amt_cd = aligned_idx['money']
+
+        # 检查数据是否有效
+        if i_amt_cd.isnull().all():
+            raise ValueError("指数成交额数据全为空，无法计算F4因子")
+
+        # --- 核心公式计算 ---
+        
+        # 1. 换手率偏离 F1
+        ma_hs = s_hs_cd.rolling(M_cd).mean()
+        F1 = (s_hs_cd - ma_hs) / (ma_hs + 1e-9) * 100
+        
+        # 2. 价格乖离 F2
+        ma_close_n = s_close_cd.rolling(N_cd).mean()
+        F2 = (s_close_cd - ma_close_n) / (ma_close_n + 1e-9) * 100
+        
+        # 3. 相对强弱 F3
+        XB = s_close_cd / i_close_cd
+        ma_xb = XB.rolling(M_cd).mean()
+        F3 = (XB - ma_xb) / (ma_xb + 1e-9) * 100
+        
+        # 4. 成交占比 F4
+        # ZB:=CJ/QT; (个股成交额 / 指数成交额)
+        # F4:=(ZB-MA(ZB,M))/MA(ZB,M)*100;
+        ZB = s_amt_cd / (i_amt_cd + 1e-9) # 加 1e-9 防止分母为0
+        ma_zb = ZB.rolling(M_cd).mean()
+        F4 = (ZB - ma_zb) / (ma_zb + 1e-9) * 100
+        
+        # 综合拥挤度 YJD
+        YJD = F1 + F2 + F3 + F4
+        
+        # 计算指标展示值
+        today_yjd = YJD.iloc[-1]
+        ma5_yjd = YJD.rolling(5).mean().iloc[-1]
+        ma20_yjd = YJD.rolling(20).mean().iloc[-1]
+        min50_yjd = YJD.rolling(50).min().iloc[-1]
+        max50_yjd = YJD.rolling(50).max().iloc[-1]
+
+        crowding_res = {
+            'today': today_yjd,
+            'ma5': ma5_yjd,
+            'ma20': ma20_yjd,
+            'min50': min50_yjd,
+            'max50': max50_yjd
+        }
+        
+    except Exception as e:
+        print(f"  [错误] 拥挤度计算异常: {e}")
+        import traceback
+        traceback.print_exc() # 打印完整的错误堆栈，方便排查
+        crowding_res = None
+
+    # ============================================================
+    # 模块一：WorldQuant Alpha 101 经典因子
+    # ============================================================
+    print("正在计算 WorldQuant Alpha 101 因子...")
+    vwap = MONEY / (VOLUME.replace(0, np.nan))
+    returns = CLOSE.pct_change()
+    
+    # 为防止除0，增加 epsilon
+    def safe_divide(a, b):
+        return a / (b + 1e-9)
+
+    alpha21_raw = cs_rank(CLOSE.rolling(5).mean() / CLOSE.rolling(20).mean()) - cs_rank(returns.rolling(20).std())
+    alpha35_raw = cs_rank(CLOSE.pct_change(5).rolling(10).corr(VOLUME.pct_change(5).rolling(10)))
+    alpha39_raw = cs_rank(safe_divide(CLOSE.pct_change(10), MONEY.rolling(10).mean()))
+    
+    lowest_5 = LOW.rolling(5).min()
+    alpha47_raw = -1 * cs_rank(safe_divide((CLOSE - lowest_5), (HIGH.rolling(5).max() - lowest_5)))
+    
+    alpha57_raw = cs_rank(safe_divide((CLOSE - vwap), vwap))
+    alpha84_raw = cs_rank(safe_divide(CLOSE.pct_change(20), returns.rolling(20).std()))
+    alpha101_raw = cs_rank(safe_divide((CLOSE - OPEN), (HIGH - LOW)))
+
+    wq_alpha = {
+        'Alpha21_趋势持续性':   alpha21_raw.loc[latest_trade_date, STOCK],
+        'Alpha35_量价确认':     alpha35_raw.loc[latest_trade_date, STOCK],
+        'Alpha39_资金推动':     alpha39_raw.loc[latest_trade_date, STOCK],
+        'Alpha47_超买超卖':     alpha47_raw.loc[latest_trade_date, STOCK],
+        'Alpha57_VWAP偏离':     alpha57_raw.loc[latest_trade_date, STOCK],
+        'Alpha84_波动中强弱':   alpha84_raw.loc[latest_trade_date, STOCK],
+        'Alpha101_日内动量':    alpha101_raw.loc[latest_trade_date, STOCK],
+    }
+
+    # ============================================================
+    # 模块二：高级复合因子 (残差动量与中性化)
+    # ============================================================
+    print("正在计算 残差与中性化 因子...")
+    hs300 = get_price('000300.SH', start_date=start_60, end_date=today, fre_step='1d', fields=['close'])['close']
+    idx_ret = hs300.pct_change().dropna()
+    stock_ret = CLOSE[STOCK].pct_change().dropna()
+    
+    aligned = pd.concat([stock_ret, idx_ret], axis=1, join='inner').dropna()
+    aligned.columns = ['stock', 'index']
+    
+    if len(aligned) >= 30:
+        slope, intercept, r_value, p_value, std_err = linregress(aligned['index'], aligned['stock'])
+        beta = slope
+    else:
+        beta = 1.0
+        
+    residual_ret = aligned['stock'] - beta * aligned['index']
+    
+    pool_ret = CLOSE.pct_change().mean(axis=1).dropna()
+    aligned_ind = pd.concat([stock_ret, pool_ret], axis=1, join='inner').dropna()
+    aligned_ind.columns = ['stock', 'pool']
+    
+    advanced_factors = {
+        'Residual_Momentum_20d': residual_ret.tail(20).sum(),
+        'Residual_Volatility_20d': residual_ret.tail(20).std(),
+        'Beta_Neutral_Alpha': aligned['stock'].iloc[-1] - beta * aligned['index'].iloc[-1],
+        'Industry_Neutral_Alpha': (aligned_ind['stock'] - aligned_ind['pool']).tail(20).sum(),
+        '个股Beta(60d)': beta
+    }
+
+    # ============================================================
+    # 模块三：高级波动率因子
+    # ============================================================
+    print("正在计算 高级波动率 因子...")
+    s_high, s_low, s_close, s_open = s_df['high'], s_df['low'], s_df['close'], s_df['open']
+    
+    tr1 = s_high - s_low
+    tr2 = (s_high - s_close.shift(1)).abs()
+    tr3 = (s_low - s_close.shift(1)).abs()
+    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+    atr20 = tr.rolling(20).mean().iloc[-1]
+    
+    parkinson = ((np.log(s_high / s_low))**2) / (4 * np.log(2))
+    parkinson_vol = np.sqrt(parkinson.rolling(20).mean()).iloc[-1]
+    
+    realized_vol = s_close.pct_change().rolling(20).std().iloc[-1]
+    
+    gk = 0.5 * (np.log(s_high / s_low))**2 - (2*np.log(2) - 1) * (np.log(s_close / s_open))**2
+    gk_vol = np.sqrt(gk.rolling(20).mean()).iloc[-1]
+    
+    overnight_ret = np.log(s_open / s_close.shift(1))
+    day_ret = np.log(s_close / s_open)
+    yz_vol = np.sqrt(overnight_ret.rolling(20).var() + day_ret.rolling(20).var()).iloc[-1]
+
+    vol_factors = {
+        'ATR20_平均真实波幅': atr20,
+        'Parkinson_Vol': parkinson_vol,
+        'Realized_Vol_20d': realized_vol,
+        'GarmanKlass_Vol': gk_vol,
+        'YangZhang_Vol': yz_vol
+    }
+
+    # ============================================================
+    # 模块四：盈利预期因子
+    # ============================================================
+    print("正在获取 盈利预期 因子...")
+    expectation_factors = {}
+    try:
+        exp_dict = get_expectation([STOCK], end_date=latest_trade_date_str, count=90, is_panel=0)
+        if STOCK in exp_dict and not exp_dict[STOCK].empty:
+            df_exp = exp_dict[STOCK]
+            if 'eps_avg' in df_exp.columns:
+                eps_now = df_exp['eps_avg'].iloc[0]
+                eps_90d_ago = df_exp['eps_avg'].iloc[-1]
+                if pd.notnull(eps_now) and pd.notnull(eps_90d_ago) and eps_90d_ago != 0:
+                    expectation_factors['EPS_预期修正率(90d)'] = (eps_now - eps_90d_ago) / abs(eps_90d_ago)
+                    if eps_now > eps_90d_ago:
+                        expectation_factors['一致预期方向'] = "+1.1 (强烈看多)"
+                    elif eps_now < eps_90d_ago:
+                        expectation_factors['一致预期方向'] = "-1.2 (强烈看空)"
+                    else:
+                        expectation_factors['一致预期方向'] = "0 (持平)"
+    except Exception as e:
+        expectation_factors['预期数据状态'] = "SuperMind环境暂不支持/获取失败"
+
+    # ============================================================
+    # 模块五：筹码结构因子 (使用 query_iwencai)
+    # ============================================================
+    print("正在获取 筹码结构 因子...")
+    chip_factors = {}
+    chip_comment = "数据缺失"
+    
+    try:
+        query_text = (
+            f"{STOCK},"
+            "收盘获利,平均成本,"
+            "90%成本上限,90%成本下限,"
+            "70%成本上限,70%成本下限,"
+            "集中度90,集中度70"
+        )
+        
+        df_chip = query_iwencai(query_text, timeout=10)
+        
+        if df_chip is not None and not df_chip.empty:
+            row = df_chip.iloc[0]
+            profit_ratio = row.get('收盘获利', np.nan)
+            
+            chip_factors['平均持仓成本'] = row.get('平均成本', np.nan)
+            chip_factors['获利盘比例(%)'] = profit_ratio
+            chip_factors['套牢盘比例(%)'] = 100 - profit_ratio if pd.notnull(profit_ratio) else np.nan
+            chip_factors['90%成本区_下沿'] = row.get('90%成本下限', np.nan)
+            chip_factors['90%成本区_上沿'] = row.get('90%成本上限', np.nan)
+            chip_factors['70%成本区_下沿'] = row.get('70%成本下限', np.nan)
+            chip_factors['70%成本区_上沿'] = row.get('70%成本上限', np.nan)
+            chip_factors['集中度90(%)'] = row.get('集中度90', np.nan)
+            chip_factors['集中度70(%)'] = row.get('集中度70', np.nan)
+            
+            if pd.notnull(profit_ratio):
+                if profit_ratio < 15:
+                    chip_comment = "低位/超跌，筹码锁定良好，反弹潜力大"
+                elif profit_ratio >= 90:
+                    chip_comment = "高位/获利盘巨大，主力有派发风险"
+                else:
+                    chip_comment = "筹码分布正常，暂无明显异动"
+            else:
+                chip_comment = "数据异常"
+                
+    except Exception as e:
+        chip_factors['数据状态'] = f"获取失败: {str(e)}"
+
+    # ============================================================
+    # 原有模块：Alpha截面、个股时序、财务与宏观
+    # ============================================================
+    vol_rsi = calc_rsi(VOLUME, 14)
+    high_pct, high_delay1_pct = HIGH.pct_change(), HIGH.shift(1).pct_change()
+    vol_ratio = VOLUME.div(VOLUME.rolling(20).mean())
+    
+    alpha83_raw = (cs_rank(high_delay1_pct) - cs_rank(high_pct)) / (cs_rank(vol_ratio) + 1e-9)
+    close_pct, close_delay1_pct = CLOSE.pct_change(), CLOSE.shift(1).pct_change()
+    alpha99_raw = (cs_rank(close_delay1_pct) - cs_rank(close_pct)) / (cs_rank(vol_ratio) + 1e-9)
+    price_pos20  = (CLOSE - LOW.rolling(20).min()) / (HIGH.rolling(20).max() - LOW.rolling(20).min() + 1e-9)
+    alpha176_raw = cs_rank(price_pos20) * cs_rank(vol_ratio)
+    alpha176_latest_cs = cs_rank(alpha176_raw.rolling(5).mean()).loc[latest_trade_date, STOCK]
+
+    s_high_pct, s_vol_ratio = s_df['high'].pct_change(), s_df['volume'].div(s_df['volume'].rolling(20).mean())
+    s_high_delay1_pct = s_df['high'].shift(1).pct_change()
+    s_alpha83 = (s_high_delay1_pct - s_high_pct) / (s_vol_ratio + 1e-9)
+    ts_rank_83 = ts_rank_pct(s_alpha83, 252).iloc[-1]
+    s_close_pct = s_df['close'].pct_change()
+    s_close_delay1_pct = s_df['close'].shift(1).pct_change()
+    s_alpha99 = (s_close_delay1_pct - s_close_pct) / (s_vol_ratio + 1e-9)
+    ts_rank_99 = ts_rank_pct(s_alpha99, 252).iloc[-1]
+
+    section_alpha = {
+        'Alpha102_量能RSI14':       vol_rsi.loc[latest_trade_date, STOCK],
+        'Alpha83_高价量背离_cs':      alpha83_raw.loc[latest_trade_date, STOCK],
+        'Alpha83_高价量背离_ts分位':  ts_rank_83,
+        'Alpha99_收盘量背离_cs':      alpha99_raw.loc[latest_trade_date, STOCK],
+        'Alpha99_收盘量背离_ts分位':  ts_rank_99,
+        'Alpha176_量价共振_cs百分位': alpha176_latest_cs,
+    }
+
+    close, volume, money, ret = CLOSE[STOCK], VOLUME[STOCK], MONEY[STOCK], CLOSE[STOCK].pct_change()
+    ts_factors = {
+        'ret_20d': close.iloc[-1] / close.iloc[-21] - 1 if len(close) >= 21 else np.nan,
+        'ret_60d': close.iloc[-1] / close.iloc[-61] - 1 if len(close) >= 61 else np.nan,
+        'ret20_pct_60d': (close.pct_change(20).dropna().iloc[-60:] < close.pct_change(20).iloc[-1]).mean(),
+        'RSI14_价格': calc_rsi(close.to_frame(), 14).iloc[-1, 0],
+        'Alpha70_资金躁动': (money.rolling(20).std() / money.rolling(20).mean()).iloc[-1],
+        'Amihud_非流动性_20d': (ret.abs() / money).replace([np.inf, -np.inf], np.nan).rolling(20).mean().iloc[-1] * 1e8
+    }
+
+    ma200_latest = s_df['close'].rolling(200).mean().iloc[-1]
+    ts_factors['偏离MA200_pct'] = (s_df['close'].iloc[-1] - ma200_latest) / ma200_latest
+
+    print("\n正在执行财务数据获取...")
+    val_factors = {}
+    market_cap_now = 0.0
+    valuation_ok = False
+    try:
+        _ = valuation.symbol
+        valuation_ok = True
+    except:
+        pass
+
+    if valuation_ok:
+        try:
+            q_val = query(valuation.symbol, valuation.market_cap, valuation.pe_ttm, valuation.pb, valuation.ps_ttm).filter(valuation.symbol == STOCK)
+            df_val_now = get_fundamentals(q_val, date=latest_trade_date_str)
+            if df_val_now is not None and not df_val_now.empty:
+                if 'market_cap' in df_val_now.columns: market_cap_now = float(df_val_now['market_cap'].iloc[0] or 0)
+                if 'pe_ttm' in df_val_now.columns: val_factors['PE_TTM'] = float(df_val_now['pe_ttm'].iloc[0] or 0)
+                if 'pb' in df_val_now.columns: val_factors['PB'] = float(df_val_now['pb'].iloc[0] or 0)
+        except: pass
+
+    if market_cap_now > 0:
+        val_factors['总市值(亿)'] = market_cap_now / 1e8
+    else:
+        val_factors['总市值(亿)'] = "获取失败"
+
+    if market_cap_now > 0 and close.iloc[-1] > 0:
+        total_shares = market_cap_now / close.iloc[-1]
+        ts_factors['换手量比_今日'] = volume.iloc[-1] / total_shares if total_shares > 0 else np.nan
+        ts_factors['换手率分位_60d'] = (volume.iloc[-60:] < volume.iloc[-1]).mean()
+
+    try:
+        mf_dict = get_money_flow([STOCK], end_date=latest_trade_date_str, fields=['dde_l', 'net_flow_rate'], count=10, is_panel=0)
+        if STOCK in mf_dict and not mf_dict[STOCK].empty:
+            df_mf = mf_dict[STOCK]
+            dde_1d = df_mf['dde_l'].iloc[0] / 1e4
+            dde_3d = df_mf['dde_l'].iloc[0:3].sum() / 1e4
+            dde_5d = df_mf['dde_l'].iloc[0:5].sum() / 1e4
+            dde_10d = df_mf['dde_l'].iloc[0:10].sum() / 1e4
+            
+            amt_1d = money.iloc[-1] / 1e8
+            amt_3d = money.iloc[-3:].sum() / 1e8
+            amt_5d = money.iloc[-5:].sum() / 1e8
+            amt_10d = money.iloc[-10:].sum() / 1e8
+            
+            ts_factors['DDE大单净额(万)'] = "1日:{:.2f}/{:.2f}亿 | 3日:{:.2f}/{:.2f}亿 | 5日:{:.2f}/{:.2f}亿 | 10日:{:.2f}/{:.2f}亿".format(
+                dde_1d, amt_1d, dde_3d, amt_3d, dde_5d, amt_5d, dde_10d, amt_10d
+            )
+            ts_factors['资金净流入率(%)'] = float(df_mf['net_flow_rate'].iloc[0])
+    except: pass
+
+    try:
+        ema12 = close.ewm(span=12, adjust=False).mean()
+        ema26 = close.ewm(span=26, adjust=False).mean()
+        dif_series = ema12 - ema26
+        dea_series = dif_series.ewm(span=9, adjust=False).mean()
+        ts_factors['MACD_DIF(快线)'] = float(dif_series.iloc[-1])
+        ts_factors['MACD_DEA(慢线)'] = float(dea_series.iloc[-1])
+        ts_factors['MACD柱(BAR)'] = float(2 * (dif_series.iloc[-1] - dea_series.iloc[-1]))
+    except: pass
+
+    try:
+        rs_dict = get_resistance_support(symbol_list=STOCK, end_date=latest_trade_date_str, fre_step='1d', fields=['resistance_line', 'support_line'], is_panel=0)
+        if STOCK in rs_dict and not rs_dict[STOCK].empty:
+            val_factors['压力位(元)'] = float(rs_dict[STOCK]['resistance_line'].iloc[0])
+            val_factors['支撑位(元)'] = float(rs_dict[STOCK]['support_line'].iloc[0])
+    except: pass
+
+    index_map = {'沪深300': '000300.SH', '中证500': '000905.SH', '中证1000': '000852.SH'}
+    idx_res = {}
+    for name, code in index_map.items():
+        s = get_price(code, start_date=start_252, end_date=today, fre_step='1d', fields=['close'], fq=None)['close']
+        ma200 = s.rolling(200).mean().iloc[-1]
+        idx_res[name] = {'偏离MA200': (s.iloc[-1] - ma200) / ma200, 'RSI14': calc_rsi(s.to_frame(), 14).iloc[-1, 0], '60日涨跌': s.iloc[-1] / s.iloc[-61] - 1}
+
+    auto_market_state = "震荡市"
+    if idx_res['沪深300']['偏离MA200'] > 0.02 and idx_res['沪深300']['60日涨跌'] > 0.05: auto_market_state = "牛市上升期"
+    elif idx_res['沪深300']['偏离MA200'] < -0.02 and idx_res['沪深300']['60日涨跌'] < -0.05: auto_market_state = "熊市下跌期"
+
+    # ============================================================
+    # 新增模块：个股归属池与相对强弱分析 (前置输出)
+    # ============================================================
+    print("正在分析 个股归属池与相对强弱 ...")
+    broad_based_map = {
+        '000016.SH': '上证50', 
+        '000300.SH': '沪深300', 
+        '000905.SH': '中证500',
+        '000852.SH': '中证1000', 
+        '000688.SH': '科创50', 
+        '000682.SH': '科创100',
+        '399006.SZ': '创业板指', 
+        '399100.SZ': '深证100',
+        '899050.BJ': '北证50'
+    }
+    
+    belonged_pools = []
+    primary_idx_code = '000300.SH' 
+    primary_idx_name = '沪深300'
+    
+    for idx_code, idx_name in broad_based_map.items():
+        try:
+            idx_stocks = get_index_stocks(idx_code, today)
+            if STOCK in idx_stocks:
+                belonged_pools.append(idx_name)
+                if idx_code == '000300.SH':
+                    primary_idx_code, primary_idx_name = idx_code, idx_name
+                elif primary_idx_code == '000300.SH' and idx_code in ['000905.SH', '000852.SH', '000688.SH', '399006.SZ', '899050.BJ']:
+                    primary_idx_code, primary_idx_name = idx_code, idx_name
+        except:
+            pass
+            
+    if not belonged_pools:
+        belonged_pools.append("宽基外(微盘/概念股)")
+        
+    try:
+        idx_df = get_price(primary_idx_code, start_date=start_252, end_date=today, fre_step='1d', fields=['close'], fq='post')
+        idx_close = idx_df['close']
+    except:
+        idx_close = pd.Series(dtype=float)
+        
+    stock_close = s_df['close']
+    
+    periods = [1, 5, 14, 30, 60]
+    rel_strength_data = []
+    for p in periods:
+        if len(stock_close) > p and len(idx_close) > p:
+            s_ret = stock_close.iloc[-1] / stock_close.iloc[-1-p] - 1
+            i_ret = idx_close.iloc[-1] / idx_close.iloc[-1-p] - 1
+            excess = s_ret - i_ret
+            rel_strength_data.append({
+                'period': p, 'stock_ret': s_ret, 'idx_ret': i_ret, 'excess': excess
+            })
+
+    # --- 前置打印 ---
+    print("\n" + "=" * 70)
+    print("【第一点五层：个股归属池与相对强弱分析】")
+    print(f"  📌 股票归属指数池: {', '.join(belonged_pools)}")
+    print(f"  🎯 对标基准指数  : {primary_idx_name} ({primary_idx_code})")
+    print("  " + "-" * 68)
+    print("  {:<6} {:>12} {:>12} {:>12} {:<15}".format("周期", "个股涨跌", "指数涨跌", "超额收益", "强弱评估"))
+    for item in rel_strength_data:
+        p = item['period']
+        s_r = item['stock_ret']
+        i_r = item['idx_ret']
+        exc = item['excess']
+        
+        if exc > 0.05:
+            eval_str = "🚀 强势大幅跑赢"
+        elif exc > 0.01:
+            eval_str = "✅ 跑赢大盘"
+        elif exc > -0.01:
+            eval_str = "➡️ 基本同步"
+        elif exc > -0.05:
+            eval_str = "⚠️ 稍微跑输"
+        else:
+            eval_str = "❌ 弱势大幅跑输"
+            
+        print("  {:<6} {:>11.2%} {:>11.2%} {:>11.2%}  {}".format(f"{p}日", s_r, i_r, exc, eval_str))
+    print("  " + "-" * 68)
+
+    # ============================================================
+    # 最终输出 (带智能注释版)
+    # ============================================================
+    SEP = "=" * 70
+    
+    stock_name = "未知名称"
+    try:
+        stock_info = get_security_info(STOCK)
+        if stock_info is not None:
+            stock_name = stock_info.display_name
+    except:
+        pass
+
+    print("\n" + SEP)
+    print("  量化因子报告 (SuperMind 终极机构增强版)")
+    print("  目标: {} ({})    基准截止日期: {}".format(STOCK, stock_name, latest_trade_date_str))
+    print(SEP)
+
+    print("\n【贝叶斯大脑专用：先验决策层】")
+    print(" 建议贝叶斯选择的市场状态: 【{}】".format(auto_market_state))
+
+    print("\n【第一层：大盘宏观状态数据】")
+    for name, vals in idx_res.items():
+        print("  {}: 偏离MA200={:.2%}  RSI14={:.1f}  60日={:.2%}".format(name, vals['偏离MA200'], vals['RSI14'], vals['60日涨跌']))
+
+    # -- 智能注释函数 --
+    def get_annotation(category, key, value):
+        if category == 'advanced':
+            if key == 'Residual_Momentum_20d':
+                if value > 0.05: return "  >>> [偏多] 剔除大盘后独立上涨趋势强"
+                elif value < -0.05: return "  >>> [偏空] 剔除大盘后独立下跌，个股特质动量疲软"
+                return "  >>> [中性] 独立走势不明朗"
+            if key == 'Residual_Volatility_20d':
+                if value > 0.04: return "  >>> [偏空] 特质波动较大，资金分歧明显"
+                return "  >>> [中性/偏多] 特质波动收敛，主力控盘稳定"
+            if key == 'Beta_Neutral_Alpha':
+                if value > 0: return "  >>> [偏多] 今日存在正向纯Alpha收益"
+                return "  >>> [偏空] 今日存在负向纯Alpha收益"
+            if key == 'Industry_Neutral_Alpha':
+                if value > 0.05: return "  >>> [强烈偏多] 显著跑赢同行业，具备行业超额收益，注：历史参考价值不高"
+                elif value < -0.05: return "  >>> [强烈偏空] 显著跑输同行业，行业垫底"
+                return "  >>> [中性] 与行业平均水平持平"
+            if key == '个股Beta(60d)':
+                if value > 1.2: return "  >>> [进攻型] 波动大于大盘，牛市弹性高，注：历史参考价值不高"
+                elif value < 0.8: return "  >>> [防守型] 波动小于大盘，抗跌性强"
+                return "  >>> [中性] 与大盘同步"
+        
+        elif category == 'volatility':
+            if key == 'ATR20_平均真实波幅':
+                return "  >>> [风控提示] 日均绝对波动幅度参考值"
+            if value > 0.05: return "  >>> [偏空] 波动率过高，情绪亢进或有抛压"
+            elif value < 0.025: return "  >>> [偏多] 波动率极低，处于变盘临界点"
+            return "  >>> [中性] 波动率处于正常区间"
+            
+        elif category == 'wq_alpha':
+            if key == 'Alpha47_超买超卖':
+                if value > 0.7: return "  >>> [看多] 短期超卖严重，存在反弹动能"
+                elif value < 0.3: return "  >>> [看空] 短期超买严重，存在回落风险"
+                return "  >>> [中性] 价格处于中位区间"
+            if key == 'Alpha57_VWAP偏离':
+                if value > 0.7: return "  >>> [偏多] 收盘强势站上均价线，多头控盘"
+                elif value < 0.3: return "  >>> [偏空] 收盘价低于均价线，空头压制"
+                return "  >>> [中性] 围绕均价线震荡"
+            if value > 0.6: return "  >>> [偏多] 截面排名靠前，动能强劲"
+            elif value < 0.4: return "  >>> [偏空] 截面排名靠后，动能疲软"
+            return "  >>> [中性] 截面排名中游"
+        return ""
+
+    print("\n【第二层：个股基本面与预期】")
+    print("\n  E4 估值与基本面")
+    for k, v in val_factors.items():
+        print("    {:25s}: {:.4f}".format(k, v) if isinstance(v, float) else "    {:25s}: {}".format(k, v))
+
+    print("\n  E4 盈利预期因子")
+    if not expectation_factors: print("    未能获取有效预期数据")
+    for k, v in expectation_factors.items():
+        print("    {:25s}: {:.4f}".format(k, v) if isinstance(v, float) else "    {:25s}: {}".format(k, v))
+
+    print("\n【第三层：高级复合因子 (残差与中性化)】 *机构核心")
+    for k, v in advanced_factors.items():
+        base_str = "    {:30s}: {:.4f}".format(k, v) if isinstance(v, float) else "    {:30s}: {}".format(k, v)
+        print(base_str + get_annotation('advanced', k, v))
+
+    print("\n【第四层：高级波动率因子】")
+    for k, v in vol_factors.items():
+        base_str = "    {:30s}: {:.4f}".format(k, v)
+        print(base_str + get_annotation('volatility', k, v))
+
+    print("\n【第五层：WorldQuant Alpha 101 经典因子】")
+    for k, v in wq_alpha.items():
+        if not np.isnan(v) and 0 <= v <= 1:
+            bar = '|' * int(v * 20)
+        else:
+            bar = ''
+        base_str = "    {:30s}: {:.4f}  {}".format(k, v, bar)
+        print(base_str + get_annotation('wq_alpha', k, v))
+
+    print("\n【第六层：技术量价、资金流与原Alpha因子】")
+    for k, v in ts_factors.items():
+        if isinstance(v, float) and not np.isnan(v):
+            print("    {:30s}: {:.4f}".format(k, v))
+        elif isinstance(v, float):
+            print("    {:30s}: NaN".format(k, v))
+        else:
+            print("    {:30s}: {}".format(k, v))
+
+    print("\n  E6 截面Alpha原因子")
+    for k, v in section_alpha.items():
+        if not np.isnan(v) and 0 <= v <= 1:
+            bar = '|' * int(v * 20)
+        else:
+            bar = ''
+        print("    {:35s}: {:.4f}  {}".format(k, v, bar))
+
+    # ============================================================
+    # E5 筹码结构透视 (独立栏目)
+    # ============================================================
+    print("\n【E5 筹码结构透视】")
+
+    current_price_display = float('nan')
+    try:
+        raw_price_df = get_price(STOCK, start_date=latest_trade_date_str, end_date=latest_trade_date_str,
+                                 fre_step='1d', fields=['close'], fq=None)
+        if raw_price_df is not None and not raw_price_df.empty:
+            current_price_display = float(raw_price_df['close'].iloc[-1])
+    except Exception as e:
+        print(f"  [警告] 真实价格获取失败: {e}")
+
+    current_time_display = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    if not np.isnan(current_price_display):
+        print(f"  当前价格: {current_price_display:.2f} 元       当前时间: {current_time_display}")
+    else:
+        print(f"  当前价格: 获取失败      当前时间: {current_time_display}")
+    print("-" * 50)
+    
+    if not chip_factors or '数据状态' in chip_factors:
+        print("    ❌ 未能获取筹码数据")
+        if '数据状态' in chip_factors:
+            print(f"    原因: {chip_factors['数据状态']}")
+    else:
+        for k, v in chip_factors.items():
+            if isinstance(v, float):
+                print("    {:25s}: {:.2f}".format(k, v))
+            else:
+                print("    {:25s}: {}".format(k, v))
+        
+        print("-" * 50)
+        
+        profit_ratio = chip_factors.get('获利盘比例(%)', np.nan)
+        upper_70 = chip_factors.get('70%成本区_上沿', np.nan)
+        lower_70 = chip_factors.get('70%成本区_下沿', np.nan)
+
+        if not np.isnan(current_price_display) and pd.notnull(upper_70) and pd.notnull(lower_70):
+            if current_price_display > upper_70 * 1.1:
+                chip_comment = "⚠️ 股价显著突破70%成本区上沿，获利盘巨大，主力派发风险高"
+            elif current_price_display < lower_70 * 0.9:
+                chip_comment = "⚠️ 股价跌破70%成本区下沿，套牢盘沉重，反弹需放量"
+            elif pd.notnull(profit_ratio) and profit_ratio < 15:
+                chip_comment = "✅ 低位超跌，筹码锁定良好，反弹潜力大"
+            elif pd.notnull(profit_ratio) and profit_ratio >= 90:
+                chip_comment = "⚠️ 高位获利盘巨大，主力有派发风险"
+            else:
+                chip_comment = "➡️ 筹码分布正常，暂无明显异动"
+        
+        print(f"  🎯 筹码简评: {chip_comment}")
+
+    # ============================================================
+    # 新增模块：通用拥挤度指标输出
+    # ============================================================
+    print("\n" + SEP)
+    print("【第七层：通用拥挤度指标】")
+    print("  阈值警戒线: 弱势线(-80) | 中性线(120) | 过热线(300)")
+    print("-" * 60)
+    
+    if crowding_res and not np.isnan(crowding_res['today']):
+        today_val = crowding_res['today']
+        # 判断拥挤状态
+        if today_val > 300:
+            status = "🔥 极度过热 (风险极高)"
+        elif today_val > 120:
+            status = "⚠️ 偏热/拥挤"
+        elif today_val < -80:
+            status = "❄️ 极度弱势/冷门"
+        else:
+            status = "⚖️ 中性区间"
+            
+        print(f"  今日值    : {today_val:.2f}  ({status})")
+        print(f"  5日均线   : {crowding_res['ma5']:.2f}")
+        print(f"  20日均线  : {crowding_res['ma20']:.2f}")
+        print(f"  50日最低  : {crowding_res['min50']:.2f}")
+        print(f"  50日最高  : {crowding_res['max50']:.2f}")
+    else:
+        print("  计算失败或数据不足 (请查看上方错误日志)")
+        
+    print("\n" + SEP)
+
+
+if __name__ == '__main__':
+    STOCK    = '000725'
+    END_DATE = None   # 使用最新交易日
+    POOL_IDX = '000905'
+
+    STOCK    = normalize_stock_code(STOCK)
+    POOL_IDX = normalize_index_code(POOL_IDX)
+
+    run_full_analysis(STOCK, POOL_IDX, END_DATE)

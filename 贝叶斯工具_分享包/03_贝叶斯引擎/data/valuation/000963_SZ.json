@@ -1,0 +1,13 @@
+{
+  "PE_TTM": 15.47,
+  "PB": 2.11,
+  "PS_TTM": 1.23,
+  "BPS": 14.67,
+  "eps_ttm": 1.99,
+  "market_cap": 54172931234.72,
+  "float_market_cap": 54172931234.72,
+  "total_shares": 1753736848,
+  "float_shares": 1753736848,
+  "f_score": 7,
+  "source": "tdx key_statistics(总市值541.73亿/总股本17.54亿/BPS14.67/PB2.11/PE_TTM15.47/PS_TTM1.23) + 现价30.80 重算 eps_ttm=现价/PE_TTM≈1.99；f_score=7(缺2024年报，3项Δ信号按稳健假设备)"
+}

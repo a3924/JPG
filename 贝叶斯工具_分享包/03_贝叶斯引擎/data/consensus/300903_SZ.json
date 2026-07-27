@@ -1,0 +1,16 @@
+{
+  "code": "sz300903",
+  "name": "科翔股份",
+  "targetPrice": 0,
+  "rating": null,
+  "eps_now": null,
+  "eps_90d_ago": null,
+  "eps_2026E": 0.34,
+  "net_profit_yoy_2026E": 160.4,
+  "forecasts": [
+    {"year": 2026, "eps": 0.34, "netProfitYoy": 160.4, "revenueYoy": 25.5},
+    {"year": 2027, "eps": 0.86, "netProfitYoy": 153.95, "revenueYoy": 29.7},
+    {"year": 2028, "eps": 1.1, "netProfitYoy": 27.29, "revenueYoy": 22.59}
+  ],
+  "source": "腾讯自选股 data_consensus（sz300903，截至 2026-07-21）；无一致目标价、无评级"
+}

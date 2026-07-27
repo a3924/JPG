@@ -1,0 +1,272 @@
+# ============================================================
+# 🧊 单元格2：专业市场情绪与风格分层独立模块 (多日趋势稳定版)
+# ============================================================
+from mindgo_api import *
+import pandas as pd
+import numpy as np
+from datetime import date
+
+def run_market_sentiment_analysis(END_DATE=None):
+    today = END_DATE if END_DATE else str(date.today()).replace('-', '')
+    print(f"[参数检查] 实际使用的today: {today}")
+
+    days_55 = get_trade_days(start_date=None, end_date=today, count=55)
+    start_55 = str(days_55[0]).replace('-', '')
+
+    # 构建核心代理池
+    print("正在构建核心股票池...")
+    core_indices = ['000300.SH', '000905.SH', '000852.SH', '399006.SZ']
+    all_a_stocks = []
+    for idx in core_indices:
+        all_a_stocks.extend(get_index_stocks(idx, today))
+    all_a_stocks = list(set(all_a_stocks))
+    print("核心代理样本数: {} 只".format(len(all_a_stocks)))
+
+    # 拉取55日数据
+    print("正在拉取市场宽度数据(近55日)...")
+    df_w_dict = get_price(all_a_stocks, start_date=start_55, end_date=today, fre_step='1d',
+                         fields=['close', 'high', 'high_limit', 'low_limit', 'open', 'turnover'],
+                         skip_paused=True, fq=None, is_panel=0)
+
+    w_CLOSE, w_HIGH, w_OPEN, w_HL, w_LL, w_TURNOVER = {}, {}, {}, {}, {}, {}
+    for sym, df in df_w_dict.items():
+        if df is not None and not df.empty:
+            w_CLOSE[sym]    = df['close']
+            w_HIGH[sym]     = df['high']
+            w_OPEN[sym]     = df['open']
+            w_HL[sym]       = df['high_limit']
+            w_LL[sym]       = df['low_limit']
+            w_TURNOVER[sym] = df['turnover']
+
+    w_CLOSE = pd.DataFrame(w_CLOSE)
+    w_HIGH  = pd.DataFrame(w_HIGH)
+    w_OPEN  = pd.DataFrame(w_OPEN)
+    w_HL    = pd.DataFrame(w_HL)
+    w_LL    = pd.DataFrame(w_LL)
+    w_MONEY = pd.DataFrame(w_TURNOVER)
+
+    if w_CLOSE.empty:
+        print("数据拉取失败，请检查接口。")
+        return
+
+    n_days = len(w_CLOSE)
+    latest_trade_date = w_CLOSE.index[-1]
+    latest_trade_date_str = str(latest_trade_date).split(' ')[0].replace('-', '')
+
+    # ============================================================
+    # 计算逐日情绪指标 (近30日)
+    # ============================================================
+    print("正在计算近30日逐日情绪指标...")
+    lookback = min(30, n_days - 20)
+    daily_metrics = []
+
+    for i in range(n_days - lookback, n_days):
+        c  = w_CLOSE.iloc[i]
+        o  = w_OPEN.iloc[i]
+        h  = w_HIGH.iloc[i]
+        hl = w_HL.iloc[i]
+        ll = w_LL.iloc[i]
+        total = len(c.dropna())
+        if total == 0: continue
+
+        up = (c > o).sum()
+        zt = int((c >= hl - 1e-4).sum())
+        dt = int((c <= ll + 1e-4).sum())
+        zha = int(((h >= hl - 1e-4) & (c < hl - 1e-4)).sum())
+
+        start_ma = max(0, i - 19)
+        ma20 = w_CLOSE.iloc[start_ma:i+1].mean()
+        bull = (c > ma20.reindex(c.index)).sum()
+
+        close_window = w_CLOSE.iloc[start_ma:i+1]
+        nh = (c >= close_window.max()).sum()
+        nl = (c <= close_window.min()).sum()
+
+        zha_rate = 1 - (zt / (zt + zha)) if (zt + zha) > 0 else np.nan
+
+        daily_metrics.append({
+            'date': str(c.name).split(' ')[0].replace('-', ''),
+            'up_pct': up / total,
+            'zt': zt, 'dt': dt, 'zha': zha,
+            'zha_rate': zha_rate,
+            'bull_pct': bull / total,
+            'nh_pct': nh / total,
+            'nl_pct': nl / total,
+            'turnover_total': w_MONEY.iloc[i].sum(),
+        })
+
+    dm = pd.DataFrame(daily_metrics)
+
+    def calc_window(col, window):
+        vals = dm[col].dropna().tail(window)
+        return vals.mean() if len(vals) > 0 else np.nan
+
+    # ============================================================
+    # 成交额活跃度 (纯量价计算，不依赖 valuation 表)
+    # ============================================================
+    tr_30d_mean = dm['turnover_total'].tail(30).mean()
+    act_1d  = dm['turnover_total'].iloc[-1] / tr_30d_mean if tr_30d_mean > 0 else np.nan
+    act_5d  = dm['turnover_total'].tail(5).mean() / tr_30d_mean if tr_30d_mean > 0 else np.nan
+    act_10d = dm['turnover_total'].tail(10).mean() / tr_30d_mean if tr_30d_mean > 0 else np.nan
+    pct_rank = (dm['turnover_total'].iloc[-30:] < dm['turnover_total'].iloc[-1]).mean()
+
+    # ============================================================
+    # 分层情绪 (A50/A300/A500/A1000) — 多日均值
+    # ============================================================
+    style_idx_map = {
+        '上证50(大盘价值)':   '000016.SH',
+        '沪深300(核心资产)': '000300.SH',
+        '中证500(中盘成长)': '000905.SH',
+        '中证1000(小盘活跃)': '000852.SH'
+    }
+    style_sentiment = {}
+    print("正在计算风格分层情绪(多日均值)...")
+
+    for name, idx_code in style_idx_map.items():
+        pool_stocks = get_index_stocks(idx_code, today)
+        pool_valid = [s for s in pool_stocks if s in w_CLOSE.columns]
+        daily_style = []
+
+        for i in range(n_days - lookback, n_days):
+            c  = w_CLOSE.iloc[i][pool_valid].dropna()
+            o  = w_OPEN.iloc[i][pool_valid].reindex(c.index)
+            h  = w_HIGH.iloc[i][pool_valid].reindex(c.index)
+            hl = w_HL.iloc[i][pool_valid].reindex(c.index)
+            ll = w_LL.iloc[i][pool_valid].reindex(c.index)
+            p_total = len(c)
+            if p_total == 0: continue
+
+            p_up  = (c > o).sum()
+            p_zt  = int((c >= hl - 1e-4).sum())
+            p_dt  = int((c <= ll + 1e-4).sum())
+            p_zha = int(((h >= hl - 1e-4) & (c < hl - 1e-4)).sum())
+
+            start_ma = max(0, i - 19)
+            p_ma20 = w_CLOSE.iloc[start_ma:i+1][pool_valid].mean().reindex(c.index)
+            p_bull = (c > p_ma20).sum()
+
+            p_zha_rate = 1 - (p_zt / (p_zt + p_zha)) if (p_zt + p_zha) > 0 else np.nan
+
+            daily_style.append({
+                'up_pct': p_up / p_total,
+                'zt': p_zt, 'dt': p_dt,
+                'zha_rate': p_zha_rate,
+                'bull_pct': p_bull / p_total,
+            })
+
+        ds = pd.DataFrame(daily_style)
+        if len(ds) == 0: continue
+        latest = ds.iloc[-1]
+
+        def avg_col(col, w):
+            v = ds[col].dropna().tail(w)
+            return v.mean() if len(v) > 0 else np.nan
+
+        style_sentiment[name] = {
+            'up_pct':  {'1d': latest['up_pct'],  '5d': avg_col('up_pct',5),  '10d': avg_col('up_pct',10),  '30d': avg_col('up_pct',30)},
+            'bull_pct':{'1d': latest['bull_pct'],'5d': avg_col('bull_pct',5),'10d': avg_col('bull_pct',10),'30d': avg_col('bull_pct',30)},
+            'zha_rate':{'1d': latest['zha_rate'],'5d': avg_col('zha_rate',5),'10d': avg_col('zha_rate',10),'30d': avg_col('zha_rate',30)},
+            'zt_dt': "{}/{}".format(int(latest['zt']), int(latest['dt'])),
+        }
+
+    # ============================================================
+    # 输出函数
+    # ============================================================
+    def fmt_pct(v):
+        return "{:.1%}".format(v) if not pd.isna(v) else "  N/A"
+
+    def fmt_amt(v):
+        return "{:.0f}".format(v / 1e8) if not pd.isna(v) else "N/A"
+
+    def trend_arrow(short, long_val):
+        if pd.isna(short) or pd.isna(long_val): return "  →"
+        diff = short - long_val
+        if diff > 0.03:  return "  ↑改善"
+        elif diff < -0.03: return "  ↓恶化"
+        return "  →平稳"
+
+    def get_tag(key, value):
+        if pd.isna(value): return ""
+        if key == 'zha_rate':
+            if value > 0.4: return "[偏空]"
+            elif value < 0.15: return "[偏多]"
+            return "[中性]"
+        elif key == 'bull_pct':
+            if value > 0.6: return "[偏多]"
+            elif value < 0.3: return "[偏空]"
+            return "[中性]"
+        elif key == 'up_pct':
+            if value > 0.7: return "[普涨]"
+            elif value < 0.3: return "[普跌]"
+            return "[分化]"
+        elif key == 'activity':
+            if value > 1.3: return "[亢进]"
+            elif value < 0.7: return "[冰点]"
+            return "[正常]"
+        return ""
+
+    SEP = "=" * 80
+    print("\n" + SEP)
+    print("  市场情绪宽度与风格分层报告 (多日趋势版)")
+    print("  基准截止日期: {}    代理池: 沪深300+中证500+中证1000+创业板指 ({}只)".format(
+        latest_trade_date_str, len(all_a_stocks)))
+    print(SEP)
+
+    # ── 风格分层情绪 ──
+    print("\n【风格分层情绪监测】")
+    print("  {:14s} {:>8s} {:>8s} {:>8s} {:>8s}  {:>6s}  {:>4s}".format(
+        "指标", "1日", "5日均", "10日均", "30日均", "趋势", "信号"))
+    print("  " + "-" * 70)
+
+    for name, vals in style_sentiment.items():
+        print("  ● {}".format(name))
+        for label, key in [("上涨占比", 'up_pct'), ("多头占比", 'bull_pct'), ("炸板率", 'zha_rate')]:
+            v = vals[key]
+            trend = trend_arrow(v['5d'], v['30d'])
+            tag = get_tag(key, v['1d'])
+            print("    {:12s} {:>8s} {:>8s} {:>8s} {:>8s} {}  {}".format(
+                label, fmt_pct(v['1d']), fmt_pct(v['5d']), fmt_pct(v['10d']), fmt_pct(v['30d']), trend, tag))
+        print("    涨停/跌停: {}".format(vals['zt_dt']))
+        print()
+
+    # ── 全市场高级宽度指标 ──
+    print("【全市场高级宽度指标】")
+    print("  {:14s} {:>8s} {:>8s} {:>8s} {:>8s}  {:>6s}  {:>4s}".format(
+        "指标", "1日", "5日均", "10日均", "30日均", "趋势", "信号"))
+    print("  " + "-" * 70)
+
+    for label, key in [("上涨占比", 'up_pct'), ("多头占比", 'bull_pct'), ("炸板率", 'zha_rate'),
+                        ("20日新高占比", 'nh_pct'), ("20日新低占比", 'nl_pct')]:
+        v_1d  = dm[key].iloc[-1]
+        v_5d  = calc_window(key, 5)
+        v_10d = calc_window(key, 10)
+        v_30d = calc_window(key, 30)
+        trend = trend_arrow(v_5d, v_30d)
+        tag = get_tag(key, v_1d)
+        print("  {:14s} {:>8s} {:>8s} {:>8s} {:>8s} {}  {}".format(
+            label, fmt_pct(v_1d), fmt_pct(v_5d), fmt_pct(v_10d), fmt_pct(v_30d), trend, tag))
+
+    print("  涨停/跌停: {}/{}".format(int(dm['zt'].iloc[-1]), int(dm['dt'].iloc[-1])))
+
+    # ── 成交额活跃度 (纯量价，不依赖 valuation) ──
+    print("\n【成交额活跃度趋势 (纯量价计算)】")
+    print("  {:14s} {:>8s} {:>8s} {:>8s} {:>8s}  {:>6s}  {:>4s}".format(
+        "指标", "1日", "5日均", "10日均", "30日均", "趋势", "信号"))
+    print("  " + "-" * 70)
+    print("  {:14s} {:>7s}亿 {:>7s}亿 {:>7s}亿 {:>7s}亿".format(
+        "成交额",
+        fmt_amt(dm['turnover_total'].iloc[-1]),
+        fmt_amt(dm['turnover_total'].tail(5).mean()),
+        fmt_amt(dm['turnover_total'].tail(10).mean()),
+        fmt_amt(tr_30d_mean)))
+    trend = trend_arrow(act_5d, 1.0)
+    tag = get_tag('activity', act_1d)
+    print("  {:14s} {:>8s} {:>8s} {:>8s} {:>8s} {}  {}".format(
+        "活跃度倍数", "{:.2f}x".format(act_1d), "{:.2f}x".format(act_5d),
+        "{:.2f}x".format(act_10d), "1.00x", trend, tag))
+    print("  成交额30日分位: {:.1%}".format(pct_rank))
+
+    print("\n" + SEP)
+
+# 运行分析
+run_market_sentiment_analysis(END_DATE=None)

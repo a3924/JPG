@@ -1,0 +1,11 @@
+{
+  "gdp_yoy": 4.7,
+  "gdp_gap": -0.3,
+  "m2_yoy": 8.0,
+  "yield_curve_spread_bp": 45.88,
+  "pmi": 50.3,
+  "cpi_yoy": 1.0,
+  "ppi_yoy": 4.1,
+  "source": "腾讯自选股 data_macro（核心宏观指标+期限利差），GDP/M2/PMI截至2026-07-20，CPI/PPI截至2026-06-30",
+  "date": "2026-07-20"
+}

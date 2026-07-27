@@ -1,0 +1,13 @@
+{
+  "PE_TTM": 425.64,
+  "PB": 16.49,
+  "PS_TTM": 94.96,
+  "BPS": 19.25,
+  "eps_ttm": 0.746,
+  "market_cap": 58207000000.0,
+  "float_market_cap": 58207000000.0,
+  "total_shares": 183330125,
+  "float_shares": 183330125,
+  "f_score": 7,
+  "source": "westock data_quote（price=317.5, pe=425.64, pb=16.49, total_mcap=582.07亿, 全流通）；PS_TTM=总市值/TTM营收(6.13亿)=94.96；BPS=price/PB=19.25；eps_ttm=price/PE=0.746；f_score=7 为TTM近似（盈利/现金流/杠杆改善），完整F-Score需年报"
+}

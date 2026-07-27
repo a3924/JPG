@@ -1,0 +1,57 @@
+{
+  "code": "sh688146",
+  "name": "中船特气",
+  "date": "2026-07-27",
+  "business": "电子特种气体及三氟甲磺酸系列产品的研发、生产和销售",
+  "industry": "电子特气",
+  "sector": "电子",
+  "board": "科创板",
+  "listed_date": "2023-04-21",
+  "scores": {
+    "funm": 84.32,
+    "comp": 75.92,
+    "risk": 76.42,
+    "tec": 68.16,
+    "cap": 61
+  },
+  "market_cap": 149782488153,
+  "float_market_cap": 41040000000,
+  "total_shares": 529411765,
+  "float_shares": 145000000,
+  "target_price": null,
+  "finance_fy2025": {
+    "revenue": 3124383090.25,
+    "np_parent": 515580807.7,
+    "np_deduct": 484000000.0,
+    "gross_margin": 0.3016,
+    "net_margin": 0.165,
+    "roe": 0.0858,
+    "debt_ratio": 0.2142,
+    "goodwill": 0.0,
+    "ocf": 102931687.28,
+    "ocf_np_ratio": 0.2,
+    "fcff": -325593712.05,
+    "interest_bearing_debt": 603371265.98,
+    "inventory": 656963055.27,
+    "receivables": 949544529.64,
+    "note": "TTM(至2026-06-30)；比率由本脚本据三大报表派生"
+  },
+  "revenue_trend_ttm": [],
+  "moat": {},
+  "risk_flags": [
+    "PE_TTM 290 / PS_TTM 48 处历史极端高位",
+    "今日+15%涨停后获利盘78.95%超买",
+    "TTM经营现金流仅1.03亿(OCF/净利0.20，H1经营现金流转负)",
+    "一致目标价缺失/陈旧(公开值91.95已严重滞后)"
+  ],
+  "positive_flags": [
+    "六氟化钨产能满负荷(2000吨)，2027再扩1000吨",
+    "日本中央硝子永久停产六氟化钨→供给收缩直接利好",
+    "2026H1 净利同比+95% 超预期",
+    "长鑫科技上市催化半导体材料国产替代",
+    "北向资金季度大幅增持(+9.26亿)"
+  ],
+  "corp_quality": 1.0,
+  "corp_quality_note": "由 FunmScore(84.32) 映射：>=80→+1",
+  "source": "腾讯自选股 data_finance(三大表) + data_score；TTM口径"
+}

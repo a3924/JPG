@@ -1,0 +1,208 @@
+{
+  "_readme": "中船特气(688146.SH) raw_input —— 全部数值来自 2026-07-27 真实 MCP/tdx 拉取；市值/PE/PB/PS 按现价 282.86 × 总股本 5.294亿 自算(tdx 旧口径基于 7-24 价 245.67，已弃用)",
+  "std": "688146_SH",
+  "code": "sh688146",
+  "code_ex": "sh688146",
+  "name": "中船特气",
+  "date": "2026-07-27",
+  "close_price": 282.86,
+
+  "valuation": {
+    "PE_TTM": 290.4,
+    "PB": 24.93,
+    "PS_TTM": 47.95,
+    "BPS": 11.35,
+    "eps_ttm": 0.974,
+    "market_cap": 149782488153,
+    "float_market_cap": 41040000000,
+    "total_shares": 529411765,
+    "float_shares": 145000000,
+    "f_score": 8,
+    "source": "tdx 关键指标(现价282.86自算市值/PE/PB/PS) + westock；tdx旧口径(总市值1300亿/PE252)基于7-24价245.67已弃用"
+  },
+
+  "corp": {
+    "business": "电子特种气体及三氟甲磺酸系列产品的研发、生产和销售",
+    "industry": "电子特气",
+    "sector": "电子",
+    "board": "科创板",
+    "listed_date": "2023-04-21",
+    "scores": {"funm": 84.32, "comp": 75.92, "risk": 76.42, "tec": 68.16, "cap": 61},
+    "market_cap": 149782488153,
+    "float_market_cap": 41040000000,
+    "total_shares": 529411765,
+    "float_shares": 145000000,
+    "target_price": null,
+    "corp_quality": 1.0,
+    "corp_quality_note": "由 FunmScore(84.32) 映射：>=80→+1",
+    "positive_flags": ["六氟化钨产能满负荷(2000吨)，2027再扩1000吨", "日本中央硝子永久停产六氟化钨→供给收缩直接利好", "2026H1 净利同比+95% 超预期", "长鑫科技上市催化半导体材料国产替代", "北向资金季度大幅增持(+9.26亿)"],
+    "risk_flags": ["PE_TTM 290 / PS_TTM 48 处历史极端高位", "今日+15%涨停后获利盘78.95%超买", "TTM经营现金流仅1.03亿(OCF/净利0.20，H1经营现金流转负)", "一致目标价缺失/陈旧(公开值91.95已严重滞后)"],
+    "fy2025": {
+      "revenue": 3124383090.25,
+      "np_parent": 515580807.70,
+      "np_deduct": 484000000.0,
+      "gross_profit": 942332672.62,
+      "equity": 6008056457.60,
+      "total_assets": 7645658807.77,
+      "total_liab": 1637602350.17,
+      "ocf": 102931687.28,
+      "fcff": -325593712.05,
+      "goodwill": 0.0,
+      "interest_bearing_debt": 603371265.98,
+      "inventory": 656963055.27,
+      "receivables": 949544529.64,
+      "note": "TTM(至2026-06-30)；比率由本脚本据三大报表派生"
+    },
+    "source": "腾讯自选股 data_finance(三大表) + data_score；TTM口径"
+  },
+
+  "industry": {
+    "industry_name": "电子特气",
+    "sw_l1": "电子",
+    "sw_l2": "半导体材料",
+    "industry_momentum_ytd": 0.30,
+    "cr4": 50,
+    "bci_percentile": 50,
+    "roe_vs_industry": 0,
+    "life_stage": "成长期",
+    "note": "电子特气为半导体制造关键材料，国产替代核心赛道；2026年供需错配+海外产能退出驱动景气上行"
+  },
+
+  "north": {
+    "code": "sh688146",
+    "name": "中船特气",
+    "date": "2026-07-27",
+    "cur": {
+      "holding_ratio_pct": 1.8914,
+      "holding_shares": 2742025,
+      "holding_cap": 959681329.75,
+      "cap_chg_q": 925528674.71,
+      "cap_chg_y": 925528674.71,
+      "shares_chg_q": 1939566,
+      "end_date": 20260630
+    },
+    "prev": {
+      "holding_ratio_pct": 0.5535,
+      "holding_shares": 802459,
+      "holding_cap": 34152655.04,
+      "end_date": 20260331
+    }
+  },
+
+  "margin": {
+    "finance_balance": 2340265927.00,
+    "security_balance": 9941815.00,
+    "finance_balance_dod": -0.32,
+    "finance_buy_today": 398074744.00,
+    "finance_refund_today": 405624823.00,
+    "close_price": 282.86,
+    "float_market_cap": 41040000000,
+    "note": "融资余额23.4亿；7/23、7/24连续两日融资净卖出(短期杠杆资金退潮)；融资占流通市值约5.7%"
+  },
+
+  "psi": {
+    "psi_score": 3,
+    "psi_policy_type": "structural",
+    "psi_months_since": 3,
+    "source": "AI 据近期政策/行业新闻判定",
+    "note": "电子特气国产替代(半导体自主可控核心材料) + 日本中央硝子永久停产六氟化钨(直接供给收缩) + 十五五规划窗口；多重结构性利好"
+  },
+
+  "news": {
+    "source": "腾讯自选股 data_news（sh688146，类型=新闻，limit=30，截至2026-07-27）",
+    "updated": "2026-07-27",
+    "items": [
+      {"date": "2026-07-27", "impact": "高", "title": "中船特气涨3.39% 技术性反弹与市场情绪修复", "source": "腾讯财经", "summary": "中船特气涨3.39% 技术性反弹与市场情绪修复"},
+      {"date": "2026-07-27", "impact": "中", "title": "中船特气7月24日被融资净卖出1.78亿元", "source": "腾讯财经", "summary": "中船特气7月24日被融资净卖出1.78亿元"},
+      {"date": "2026-07-27", "impact": "高", "title": "机构：看好制冷剂行业高景气持续", "source": "腾讯财经", "summary": "机构：看好制冷剂行业高景气持续"},
+      {"date": "2026-07-27", "impact": "中", "title": "【私募调研记录】盘京投资调研中船特气相关 ETF", "source": "腾讯财经", "summary": "盘京投资调研中船特气相关 ETF"},
+      {"date": "2026-07-26", "impact": "中", "title": "建筑行业周报：长鑫科技上市催化、持续看好洁净室及电子气体", "source": "腾讯财经", "summary": "长鑫科技上市催化、持续看好洁净室及电子气体"},
+      {"date": "2026-07-25", "impact": "高", "title": "中船特气：根据市场需求节奏有序推进产能建设，三季度起执行新定价机制", "source": "腾讯财经", "summary": "中船特气：根据市场需求节奏有序推进产能建设，三季度起执行新定价机制"},
+      {"date": "2026-07-25", "impact": "高", "title": "市场传闻的7N级六氟化钨产品及价格体系情况如何？中船特气回应", "source": "腾讯财经", "summary": "中船特气回应7N级六氟化钨产品及价格体系"},
+      {"date": "2026-07-24", "impact": "高", "title": "中船特气2000吨六氟化钨产线满负荷运转 2027年再扩1000吨", "source": "腾讯财经", "summary": "中船特气2000吨六氟化钨产线满负荷运转 2027年再扩1000吨"},
+      {"date": "2026-07-24", "impact": "高", "title": "中船特气：有知名机构盘京投资参与的多家机构于7月21日调研我司", "source": "腾讯财经", "summary": "多家机构于7月21日调研中船特气"},
+      {"date": "2026-07-24", "impact": "高", "title": "中船特气：全日大涨14.27%，半年报业绩超预期", "source": "腾讯财经", "summary": "中船特气全日大涨14.27%，半年报业绩超预期"},
+      {"date": "2026-07-24", "impact": "高", "title": "中船特气主力资金净流入1.9亿元 短期情绪提振叠加供需错配驱动上行", "source": "腾讯财经", "summary": "主力资金净流入1.9亿元，供需错配驱动上行"},
+      {"date": "2026-07-24", "impact": "高", "title": "中船特气涨超17%！六氟化钨成为核心增长引擎", "source": "腾讯财经", "summary": "六氟化钨成为核心增长引擎"},
+      {"date": "2026-07-24", "impact": "高", "title": "日本竞争对手永久停产，电子特气8倍牛股逆势大涨", "source": "腾讯财经", "summary": "日本竞争对手永久停产，电子特气逆势大涨"},
+      {"date": "2026-07-24", "impact": "高", "title": "涨价25%！芯片气体C4F8涨到断供", "source": "腾讯财经", "summary": "芯片气体C4F8涨价25%涨到断供"},
+      {"date": "2026-07-24", "impact": "中", "title": "长鑫上市在即，半导体设备、材料逆市上涨", "source": "腾讯财经", "summary": "长鑫上市在即，半导体设备材料逆市上涨"},
+      {"date": "2026-07-24", "impact": "中", "title": "中船特气7月23日被融资净卖出755万元", "source": "腾讯财经", "summary": "中船特气7月23日被融资净卖出755万元"},
+      {"date": "2026-07-23", "impact": "高", "title": "台积电：中央硝子停产高纯度六氟化钨，预期不会对营运产生影响", "source": "腾讯财经", "summary": "台积电称中央硝子停产高纯度六氟化钨预期不影响营运"},
+      {"date": "2026-07-23", "impact": "中", "title": "中船特气主力资金净流出1.4亿元 短期情绪退潮待基本面验证", "source": "腾讯财经", "summary": "主力资金净流出1.4亿元，短期情绪退潮"},
+      {"date": "2026-07-22", "impact": "中", "title": "中船特气盘中逼近涨停 半导体材料板块活跃", "source": "腾讯财经", "summary": "中船特气盘中逼近涨停，半导体材料板块活跃"},
+      {"date": "2026-07-21", "impact": "中", "title": "多家机构于7月21日调研中船特气", "source": "腾讯财经", "summary": "多家机构于7月21日调研中船特气"}
+    ]
+  },
+
+  "chip": {
+    "code": "sh688146",
+    "name": "中船特气",
+    "date": "2026-07-27",
+    "closePrice": 282.86,
+    "chipProfitRate": 78.95,
+    "chipAvgCost": 242.65,
+    "chipConcentration90": 31.46,
+    "chipConcentration70": 21.29
+  },
+
+  "consensus": {
+    "eps_now": 1.29,
+    "eps_90d_ago": null,
+    "eps_30d_ago": null,
+    "rating": "买入（2026E净利+98.16%/营收+72.13%，电子特气景气上行；一致目标价缺失/陈旧未采用）",
+    "target_price": null,
+    "net_profit_yoy_2026E": 98.16,
+    "revenue_yoy_2026E": 72.13,
+    "source": "腾讯自选股 data_consensus（2026/2027/2028E；2026E eps1.29/净利+98.16%/营收+72.13%；公开一致目标价91.95已严重滞后未采用）"
+  },
+
+  "shareholder": {
+    "code": "sh688146",
+    "name": "中船特气",
+    "date": "2026-06-30",
+    "shareholderNum": [],
+    "top10FloatShareholders": [
+      {"holdChange": 0, "holdPct": 2.36, "holdShares": 12504413, "name": "德州万海长红投资合伙企业(有限合伙)", "no": 1},
+      {"holdChange": 0, "holdPct": 1.52, "holdShares": 8054664, "name": "德州万海长风投资合伙企业(有限合伙)", "no": 2},
+      {"holdChange": -590512, "holdPct": 0.57, "holdShares": 3031285, "name": "广发-国泰中证半导体材料设备ETF", "no": 3},
+      {"holdChange": -220720, "holdPct": 0.56, "holdShares": 2949774, "name": "长江-华夏上证科创板半导体材料设备ETF", "no": 4},
+      {"holdChange": 0, "holdPct": 0.52, "holdShares": 2742025, "name": "香港中央结算有限公司", "no": 5},
+      {"holdChange": -1024713, "holdPct": 0.44, "holdShares": 2307431, "name": "中信-嘉实上证科创板芯片ETF", "no": 6},
+      {"holdChange": 0, "holdPct": 0.31, "holdShares": 1646663, "name": "杨锋", "no": 7},
+      {"holdChange": 0, "holdPct": 0.24, "holdShares": 1271361, "name": "J.P.Morgan Securities PLC-自有资金", "no": 8}
+    ],
+    "top10Shareholders": [
+      {"holdChange": 0, "holdPct": 69.17, "holdShares": 366215923, "name": "派瑞科技有限公司", "no": 1},
+      {"holdChange": 0, "holdPct": 3.44, "holdShares": 18225000, "name": "中船投资发展有限公司", "no": 2}
+    ],
+    "note": "派瑞科技(69.17%)+中船投资(3.44%)为锁定国有股；科创板中报前未披露全部股东户数"
+  },
+
+  "fund_flow": {
+    "code": "sh688146",
+    "data": [
+      {"ClosePrice": "370", "EndDate": "2026-06-29", "MainNetFlow": "-1182761599.12", "JumboNetFlow": "-1439382044.89", "MidNetFlow": "1198515509.05", "SmallNetFlow": "-15753909.93", "date": "2026-06-29"},
+      {"ClosePrice": "349.99", "EndDate": "2026-06-30", "MainNetFlow": "-604263321.70", "JumboNetFlow": "-694073930.62", "MidNetFlow": "616631277.84", "SmallNetFlow": "-12367956.14", "date": "2026-06-30"},
+      {"ClosePrice": "378.61", "EndDate": "2026-07-01", "MainNetFlow": "134744246.45", "JumboNetFlow": "-28253498.87", "MidNetFlow": "-116548365.04", "SmallNetFlow": "-18195881.41", "date": "2026-07-01"},
+      {"ClosePrice": "365", "EndDate": "2026-07-02", "MainNetFlow": "-67601104.25", "JumboNetFlow": "-195381498.99", "MidNetFlow": "84369342.69", "SmallNetFlow": "-16768238.44", "date": "2026-07-02"},
+      {"ClosePrice": "330.14", "EndDate": "2026-07-03", "MainNetFlow": "-440504893.93", "JumboNetFlow": "-495293830.14", "MidNetFlow": "455663453.84", "SmallNetFlow": "-15158559.91", "date": "2026-07-03"},
+      {"ClosePrice": "302.80", "EndDate": "2026-07-06", "MainNetFlow": "-388162563.00", "JumboNetFlow": "-433477317.96", "MidNetFlow": "398337233.78", "SmallNetFlow": "-10174670.78", "date": "2026-07-06"},
+      {"ClosePrice": "315.99", "EndDate": "2026-07-07", "MainNetFlow": "-276815407.82", "JumboNetFlow": "-265439742.35", "MidNetFlow": "288547165.78", "SmallNetFlow": "-11731757.96", "date": "2026-07-07"},
+      {"ClosePrice": "331", "EndDate": "2026-07-08", "MainNetFlow": "265452412.10", "JumboNetFlow": "106991379.42", "MidNetFlow": "-249451458.11", "SmallNetFlow": "-16000953.99", "date": "2026-07-08"},
+      {"ClosePrice": "363.60", "EndDate": "2026-07-09", "MainNetFlow": "45589069.37", "JumboNetFlow": "-129314702.14", "MidNetFlow": "-24219004.94", "SmallNetFlow": "-21370064.43", "date": "2026-07-09"},
+      {"ClosePrice": "293.99", "EndDate": "2026-07-10", "MainNetFlow": "-1262834113.95", "JumboNetFlow": "-1458221227.29", "MidNetFlow": "1281415002.84", "SmallNetFlow": "-18580888.89", "date": "2026-07-10"},
+      {"ClosePrice": "244.50", "EndDate": "2026-07-13", "MainNetFlow": "-804179029.20", "JumboNetFlow": "-906349540.28", "MidNetFlow": "817568336.13", "SmallNetFlow": "-13389306.93", "date": "2026-07-13"},
+      {"ClosePrice": "248.34", "EndDate": "2026-07-14", "MainNetFlow": "-274931862.15", "JumboNetFlow": "-209083974.00", "MidNetFlow": "285961467.90", "SmallNetFlow": "-11029605.75", "date": "2026-07-14"},
+      {"ClosePrice": "250.35", "EndDate": "2026-07-15", "MainNetFlow": "-113413362.46", "JumboNetFlow": "-160616218.91", "MidNetFlow": "126123890.53", "SmallNetFlow": "-12710528.07", "date": "2026-07-15"},
+      {"ClosePrice": "255", "EndDate": "2026-07-16", "MainNetFlow": "261083005.86", "JumboNetFlow": "225188827.50", "MidNetFlow": "-243934362.92", "SmallNetFlow": "-17148642.94", "date": "2026-07-16"},
+      {"ClosePrice": "251", "EndDate": "2026-07-17", "MainNetFlow": "-95982962.24", "JumboNetFlow": "-180562925.49", "MidNetFlow": "112531805.99", "SmallNetFlow": "-16548843.75", "date": "2026-07-17"},
+      {"ClosePrice": "200.80", "EndDate": "2026-07-20", "MainNetFlow": "-508497729.19", "JumboNetFlow": "-544817083.59", "MidNetFlow": "519369608.13", "SmallNetFlow": "-10871878.94", "date": "2026-07-20"},
+      {"ClosePrice": "212", "EndDate": "2026-07-21", "MainNetFlow": "-62752473.09", "JumboNetFlow": "16505425.43", "MidNetFlow": "-19053413.12", "SmallNetFlow": "81805886.21", "date": "2026-07-21"},
+      {"ClosePrice": "210", "EndDate": "2026-07-22", "MainNetFlow": "-163255621.18", "JumboNetFlow": "-247443559.63", "MidNetFlow": "72710005.95", "SmallNetFlow": "90545615.23", "date": "2026-07-22"},
+      {"ClosePrice": "215", "EndDate": "2026-07-23", "MainNetFlow": "-140956153.46", "JumboNetFlow": "-134425422.38", "MidNetFlow": "150992342.08", "SmallNetFlow": "-10036188.62", "date": "2026-07-23"},
+      {"ClosePrice": "245.67", "EndDate": "2026-07-24", "MainNetFlow": "187661749.85", "JumboNetFlow": "202843976.57", "MidNetFlow": "-163512839.89", "SmallNetFlow": "-24148909.96", "date": "2026-07-24"},
+      {"ClosePrice": "282.86", "EndDate": "2026-07-27", "MainNetFlow": "23641424.00", "JumboNetFlow": "-68535916.00", "MidNetFlow": "-12543815.00", "SmallNetFlow": "-11097609.00", "date": "2026-07-27"}
+    ]
+  }
+}

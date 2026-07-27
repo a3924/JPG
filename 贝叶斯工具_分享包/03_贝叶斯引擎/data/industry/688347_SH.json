@@ -1,0 +1,12 @@
+{
+  "industry_name": "半导体",
+  "sw_l1": "电子",
+  "sw_l2": "半导体",
+  "life_stage": "成长期",
+  "cr4": null,
+  "bci_percentile": null,
+  "industry_momentum_ytd": null,
+  "roe_vs_industry": -3.0,
+  "source": "腾讯自选股 data_profile（行业=电子）+ data_industry_chain（半导体/AI/存储/国产算力主题）；ROE相对行业=公司ROE0.6%-行业~3.6%≈-3pct(估算)",
+  "date": "2026-07-22"
+}

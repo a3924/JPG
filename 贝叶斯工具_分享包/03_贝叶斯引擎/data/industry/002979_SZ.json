@@ -1,0 +1,14 @@
+{
+  "industry_name": "自动化设备",
+  "sw_l1": "机械设备",
+  "sw_l2": "自动化设备",
+  "life_stage": "成长期",
+  "cr4": null,
+  "bci_percentile": null,
+  "roe_vs_industry": null,
+  "industry_momentum_60d": 30.0,
+  "industry_momentum_ytd": 28.0,
+  "industry_zdf_5": -10.0,
+  "source": "申万二级自动化设备(pt01801078)；data_sector对该申万二级仅返回清单、不返回涨跌幅，故行业涨跌用个股K线近似行业beta（雷赛智能属该行业，个股含机器人主题alpha，行业值略下调：60日个股+32.88%→行业+30%；YTD个股+31.27%→行业+28%；5日个股-10.51%→行业-10%）。CR4行业集中度 westock 无接口→默认50。",
+  "date": "2026-07-21"
+}

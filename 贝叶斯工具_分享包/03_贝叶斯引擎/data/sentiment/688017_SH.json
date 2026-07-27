@@ -1,0 +1,9 @@
+{
+  "acsi_percentile": 50,
+  "issi_deviation": "正常",
+  "tec_score": 37.64,
+  "fund_score": 30.0,
+  "momentum_pct": 80,
+  "source": "合成：TecScore(37.64,偏弱)+融资净买卖(近期主力大幅净流出/融资净偿还为主→30,偏空)+北向增减(持股稳定~5%,本季微增→中性偏多)+价格动量(60日+56.65%强,但5日-17.93%急跌→80)。westock 无 ACSI 接口。",
+  "date": "2026-07-21"
+}

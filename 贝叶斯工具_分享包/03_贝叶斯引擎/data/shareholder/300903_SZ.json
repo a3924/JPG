@@ -1,0 +1,32 @@
+{
+  "code": "sz300903",
+  "name": "科翔股份",
+  "date": "2026-03-31",
+  "shareholderNum": [],
+  "change_pct": null,
+  "top10FloatShareholders": [
+    {"holdChange": 0, "holdPct": 4.23, "holdShares": 18396614, "name": "深圳市科翔资本管理有限公司"},
+    {"holdChange": 0, "holdPct": 3.57, "holdShares": 15564308, "name": "郑晓蓉"},
+    {"holdChange": 0, "holdPct": 2.76, "holdShares": 12026188, "name": "谭东"},
+    {"holdChange": 0, "holdPct": 2.44, "holdShares": 10625700, "name": "伍伯宏"},
+    {"holdChange": 0, "holdPct": 2.07, "holdShares": 9000000, "name": "珠海横琴科翔富鸿电子合伙企业(有限合伙)"},
+    {"holdChange": 0, "holdPct": 1.65, "holdShares": 7174484, "name": "香港中央结算有限公司"},
+    {"holdChange": 0, "holdPct": 1.27, "holdShares": 5549299, "name": "陈焕先"},
+    {"holdChange": 0, "holdPct": 1.23, "holdShares": 5350000, "name": "潘宇红"},
+    {"holdChange": 0, "holdPct": 1.02, "holdShares": 4462562, "name": "张新华"},
+    {"holdChange": 0, "holdPct": 0.93, "holdShares": 4039000, "name": "卢华升"}
+  ],
+  "top10Shareholders": [
+    {"holdChange": 0, "holdPct": 14.3, "holdShares": 62257231, "name": "郑晓蓉"},
+    {"holdChange": 0, "holdPct": 11.05, "holdShares": 48104750, "name": "谭东"},
+    {"holdChange": 0, "holdPct": 4.23, "holdShares": 18396614, "name": "深圳市科翔资本管理有限公司"},
+    {"holdChange": 0, "holdPct": 2.44, "holdShares": 10625700, "name": "伍伯宏"},
+    {"holdChange": 0, "holdPct": 2.07, "holdShares": 9000000, "name": "珠海横琴科翔富鸿电子合伙企业(有限合伙)"},
+    {"holdChange": 0, "holdPct": 1.65, "holdShares": 7174484, "name": "香港中央结算有限公司"},
+    {"holdChange": 0, "holdPct": 1.27, "holdShares": 5549299, "name": "陈焕先"},
+    {"holdChange": 0, "holdPct": 1.23, "holdShares": 5350000, "name": "潘宇红"},
+    {"holdChange": 0, "holdPct": 1.02, "holdShares": 4462562, "name": "张新华"},
+    {"holdChange": 0, "holdPct": 0.93, "holdShares": 4039000, "name": "卢华升"}
+  ],
+  "source": "腾讯自选股 data_shareholder"
+}

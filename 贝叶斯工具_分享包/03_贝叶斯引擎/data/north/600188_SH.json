@@ -1,0 +1,19 @@
+{
+  "cur": {
+    "end_date": 20260630,
+    "holding_ratio_pct": 1.378,
+    "holding_shares": 82149997,
+    "shares_chg_q": 7360524,
+    "cap_chg_q": 156581406,
+    "cap_chg_y": -296686531.5
+  },
+  "prev": {
+    "end_date": 20260331,
+    "holding_ratio_pct": 1.2546,
+    "holding_shares": 74789473
+  },
+  "note": "北向季度环比增持736万股(+9.8%)至占比1.378%, 边际流入, 对流动性偏多。",
+  "code": "600188.SH",
+  "name": "兖矿能源",
+  "date": "2026-07-22"
+}

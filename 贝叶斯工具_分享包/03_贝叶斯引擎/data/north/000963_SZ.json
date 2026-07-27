@@ -1,0 +1,22 @@
+{
+  "code": "000963.SZ",
+  "name": "华东医药",
+  "date": "2026-07-22",
+  "cur": {
+    "end_date": 20260630,
+    "holding_cap": 1151354897.04,
+    "holding_ratio_pct": 2.3357,
+    "holding_shares": 40944342,
+    "shares_chg_q": 2021012,
+    "cap_chg_q": 62074720.69,
+    "shares_chg_y": 1105973,
+    "cap_chg_y": 79537762.81
+  },
+  "prev": {
+    "end_date": 20260331,
+    "holding_cap": 1374772015.6,
+    "holding_ratio_pct": 2.2204,
+    "holding_shares": 38923330
+  },
+  "note": "季度环比增持 202.1 万股、持股市值 +0.62 亿（北向回流）；年内(YTD)净增持 110.6 万股、市值 +0.80 亿，北向持续小幅加仓。"
+}

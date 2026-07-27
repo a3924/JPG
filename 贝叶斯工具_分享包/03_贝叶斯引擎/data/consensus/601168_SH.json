@@ -1,0 +1,43 @@
+{
+  "code": "sh601168",
+  "name": "西部矿业",
+  "targetPrice": 33.8273,
+  "forecasts": [
+    {
+      "year": 2026,
+      "eps": 2.34,
+      "revenue": 7340912.5,
+      "netProfit": 558114.29,
+      "pe": 14.45,
+      "pb": 3.37,
+      "ps": 1.1,
+      "revenueYoy": 19,
+      "netProfitYoy": 53.22,
+      "institutionCnt": 0
+    },
+    {
+      "year": 2027,
+      "eps": 2.85,
+      "revenue": 7671387.5,
+      "netProfit": 678187.58,
+      "pe": 11.9,
+      "pb": 2.63,
+      "ps": 1.05,
+      "revenueYoy": 4.5,
+      "netProfitYoy": 21.51,
+      "institutionCnt": 0
+    },
+    {
+      "year": 2028,
+      "eps": 3.25,
+      "revenue": 7904012.5,
+      "netProfit": 773850.8,
+      "pe": 10.43,
+      "pb": 2.1,
+      "ps": 1.02,
+      "revenueYoy": 3.03,
+      "netProfitYoy": 14.11,
+      "institutionCnt": 0
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "code": "000977.SZ",
+  "name": "浪潮信息",
+  "date": "2026-07-23",
+  "business": "计算机软、硬件及其他信息产品的开发、生产、销售以及系统集成等。",
+  "industry": "计算机",
+  "sector": "计算机设备",
+  "board": "主板",
+  "listed_date": "2000-06-08",
+  "scores": {
+    "comp": 75.33,
+    "funm": 77.6,
+    "risk": 81.09,
+    "cap": 47.87,
+    "tec": 86.94,
+    "note": "来源 westock data_score：Comp综合/Funm基本面/Risk风险/Cap资金/Tec技术（0~100，越高越好；Risk越高=风险越低）"
+  },
+  "market_cap": 129167000000,
+  "float_market_cap": 129023000000,
+  "total_shares": 1468476655,
+  "float_shares": 1466831804,
+  "beta_100w": 1.82,
+  "target_price": 87.56,
+  "finance_fy2025": {
+    "revenue": 164781997658.23,
+    "np_parent": 2412866308.76,
+    "np_deduct": 2080930800.0,
+    "gross_margin": 0.0488,
+    "net_margin": 0.0146,
+    "roe": 0.1092,
+    "debt_ratio": 0.7363,
+    "goodwill": 643015.39,
+    "ocf": 5453052054.22,
+    "ocf_np_ratio": 2.26,
+    "fcff": 3143760635.85,
+    "interest_bearing_debt": 9744851749.61,
+    "inventory": 46507849654.21,
+    "receivables": 13052858587.22,
+    "note": "FY2025 年报；margin/roe 由本引擎据三大报表计算"
+  },
+  "revenue_trend_ttm": [
+    {
+      "date": "2025-06-30",
+      "revenue_ttm": 152764449420.71,
+      "np_ttm": 2498238902.29
+    },
+    {
+      "date": "2025-09-30",
+      "revenue_ttm": 152128316290.5,
+      "np_ttm": 2488946904.17
+    },
+    {
+      "date": "2025-12-31",
+      "revenue_ttm": 164781997658.23,
+      "np_ttm": 2412866308.76
+    },
+    {
+      "date": "2026-03-31",
+      "revenue_ttm": 153393949979.36,
+      "np_ttm": 2555075648.05
+    }
+  ],
+  "moat": {
+    "type": "规模优势 + 产业链卡位 + 政企/运营商客户关系（央企背景）",
+    "strength": 4,
+    "note": "国内服务器份额领先；AI 算力国产化主线核心标的；基本面评分 FunmScore=77.6 支撑 4/5 护城河评级"
+  },
+  "risk_flags": [
+    "低毛利率（4.9%，硬件集成特征）",
+    "高存货（465亿）/应收票据（131亿）占款，营运资金占用大",
+    "资产负债率 73.6% 偏高，有息负债 97.5 亿",
+    "季度 OCF 波动大（年末回正、Q1 转负）",
+    "高 Beta（1.82）波动风险"
+  ],
+  "positive_flags": [
+    "商誉几乎为零（64万），资产负债表干净",
+    "RiskScore 81.09，低风险评分",
+    "FY2025 经营现金流 +54.5 亿（OCF/净利=2.26），现金转化优秀",
+    "FCFF +31.4 亿，自由现金流转正",
+    "AI 算力国产替代主线 + 央企背景，订单确定性较高"
+  ],
+  "corp_quality": 0.5,
+  "corp_quality_note": "由 FunmScore(77.98) 映射：>=80→+1, 60~80→+0.5, 40~60→0, 20~40→-0.5, <20→-1",
+  "source": "westock data_finance(income/balance/cashflow) + data_profile + data_score + tdx 股本/市值",
+  "note": "企业深度体检（巴菲特式）：主营业务/护城河/5年财务质量/资本配置/风险信号。完整5年年度序列需更多历史期，本期以 FY2025 + TTM 趋势替代。"
+}

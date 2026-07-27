@@ -1,0 +1,13 @@
+{
+  "PE_TTM": -108.41,
+  "PB": 15.74,
+  "PS_TTM": 7.56,
+  "BPS": 4.19,
+  "eps_ttm": -0.12,
+  "market_cap": 28735513158.0,
+  "float_market_cap": 28735513158.0,
+  "total_shares": 435386563,
+  "float_shares": 435386563,
+  "f_score": 4,
+  "source": "tdx key_statistics(总市值/股本/BPS/EPS/PB/PS) + 现价61.73；PE_TTM 为负（TTM 归母净利亏损）。f_score=4 为亏损公司粗略估算（缺 data_consensus F-Score）"
+}

@@ -1,0 +1,21 @@
+{
+  "cur": {
+    "date": "2026-07-22",
+    "holding_ratio_pct": 5.4738,
+    "holding_shares": 130439953,
+    "cap_chg_q": -961112986.34,
+    "cap_chg_y": 102991131.29,
+    "end_date": 20260630
+  },
+  "prev": {
+    "date": "2026-07-22",
+    "holding_ratio_pct": 6.8103,
+    "holding_shares": 162290164,
+    "cap_chg_q": -302039289.47,
+    "cap_chg_y": 883041281.95,
+    "end_date": 20260331
+  },
+  "code": "sh601168",
+  "name": "西部矿业",
+  "date": "2026-07-22"
+}

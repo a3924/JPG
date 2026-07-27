@@ -1,0 +1,150 @@
+{
+  "code": "sh601168",
+  "name": "西部矿业",
+  "shareholder_num": 121800,
+  "change_pct": -9.58,
+  "top10FloatShareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 23.48,
+      "holdShares": 559459971,
+      "name": "西部矿业集团有限公司",
+      "no": 1
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 7.46,
+      "holdShares": 177660077,
+      "name": "青海西矿资产管理有限公司",
+      "no": 2
+    },
+    {
+      "holdChange": -9695675,
+      "holdPct": 6.81,
+      "holdShares": 162290164,
+      "name": "香港中央结算有限公司",
+      "no": 3
+    },
+    {
+      "holdChange": 3135300,
+      "holdPct": 1.95,
+      "holdShares": 46586746,
+      "name": "林泗华",
+      "no": 4
+    },
+    {
+      "holdChange": -12067000,
+      "holdPct": 1.06,
+      "holdShares": 25267584,
+      "name": "瑞众人寿保险有限责任公司-自有资金",
+      "no": 5
+    },
+    {
+      "holdChange": -450000,
+      "holdPct": 1.01,
+      "holdShares": 23970000,
+      "name": "新疆同裕股权投资有限公司",
+      "no": 6
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.88,
+      "holdShares": 20895645,
+      "name": "中国工商银行-南方中证申万有色金属ETF",
+      "no": 7
+    },
+    {
+      "holdChange": -3000000,
+      "holdPct": 0.8,
+      "holdShares": 19000000,
+      "name": "新疆塔城国际资源有限公司",
+      "no": 8
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.58,
+      "holdShares": 13740134,
+      "name": "太保致远1号私募",
+      "no": 9
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.56,
+      "holdShares": 13370026,
+      "name": "招商银行-上证红利ETF",
+      "no": 10
+    }
+  ],
+  "top10Shareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 23.48,
+      "holdShares": 559459971,
+      "name": "西部矿业集团有限公司",
+      "no": 1
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 7.46,
+      "holdShares": 177660077,
+      "name": "青海西矿资产管理有限公司",
+      "no": 2
+    },
+    {
+      "holdChange": -9695675,
+      "holdPct": 6.81,
+      "holdShares": 162290164,
+      "name": "香港中央结算有限公司",
+      "no": 3
+    },
+    {
+      "holdChange": 3135300,
+      "holdPct": 1.95,
+      "holdShares": 46586746,
+      "name": "林泗华",
+      "no": 4
+    },
+    {
+      "holdChange": -12067000,
+      "holdPct": 1.06,
+      "holdShares": 25267584,
+      "name": "瑞众人寿保险有限责任公司-自有资金",
+      "no": 5
+    },
+    {
+      "holdChange": -450000,
+      "holdPct": 1.01,
+      "holdShares": 23970000,
+      "name": "新疆同裕股权投资有限公司",
+      "no": 6
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.88,
+      "holdShares": 20895645,
+      "name": "中国工商银行-南方中证申万有色金属ETF",
+      "no": 7
+    },
+    {
+      "holdChange": -3000000,
+      "holdPct": 0.8,
+      "holdShares": 19000000,
+      "name": "新疆塔城国际资源有限公司",
+      "no": 8
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.58,
+      "holdShares": 13740134,
+      "name": "太保致远1号私募",
+      "no": 9
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.56,
+      "holdShares": 13370026,
+      "name": "招商银行-上证红利ETF",
+      "no": 10
+    }
+  ]
+}

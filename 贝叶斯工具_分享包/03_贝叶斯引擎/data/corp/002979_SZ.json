@@ -1,0 +1,71 @@
+{
+  "code": "sz002979",
+  "name": "雷赛智能",
+  "date": "2026-07-21",
+  "business": "主要从事运动控制核心部件控制器、驱动器、电机的研发、生产和销售，以及相关行业应用系统的研究与开发，为客户提供完整的运动控制系列产品及解决方案。",
+  "industry": "机械设备",
+  "sector": "自动化设备",
+  "board": "深圳主板",
+  "listed_date": "2020-04-08",
+  "scores": {
+    "comp": 72.98,
+    "funm": 83.54,
+    "risk": 77.25,
+    "cap": 65.75,
+    "tec": 44.81,
+    "note": "来源 westock data_score：Comp综合/Funm基本面/Risk风险/Cap资金/Tec技术（0~100，越高越好；Risk越高=风险越低）"
+  },
+  "market_cap": 17350000000.0,
+  "float_market_cap": 12231000000.0,
+  "total_shares": 316038100,
+  "float_shares": 222784608,
+  "beta_100w": null,
+  "target_price": 66.2661,
+  "finance_fy2025": {
+    "revenue": 2008745009.22,
+    "np_parent": 241673119.42,
+    "np_deduct": 70154795.1,
+    "gross_margin": 0.3911,
+    "net_margin": 0.1203,
+    "roe": 0.1269,
+    "debt_ratio": 0.3999,
+    "goodwill": 7645717.49,
+    "ocf": 240717589.03,
+    "ocf_np_ratio": 9.95,
+    "fcff": -85412542.22,
+    "interest_bearing_debt": 387153836.74,
+    "inventory": 514307526.98,
+    "receivables": 1084761620.08,
+    "note": "数据截至2026Q1（TTM，data_finance仅返回最新一期，非FY2025年报）；roe=TTM净利/股东权益，ocf_np_ratio=ocf/np_parent(TTM)"
+  },
+  "revenue_trend_ttm": [
+    {
+      "date": "2026-03-31",
+      "revenue_ttm": 2008745009.22,
+      "np_ttm": 241673119.42
+    }
+  ],
+  "moat": {
+    "type": "运动控制核心技术（控制器/驱动器/电机）+ 机器人赛道卡位 + 客户认证壁垒",
+    "strength": 3,
+    "note": "国内运动控制龙头，步进/伺服技术积累深，受益机器人产业链；但国际巨头（欧姆龙/松下/安川）仍占高端，护城河中等偏上（3/5）。"
+  },
+  "risk_flags": [
+    "估值偏高（PE_TTM 71.8倍、PB 9.6倍，机器人主题高溢价）",
+    "定增11.44亿扩产，短期摊薄EPS（7/14提交募集说明书注册稿）",
+    "股价高位波动大（52周区间34.07~76.26，近期从高位回落）",
+    "应收账款较高（约10.85亿，占营收比大）",
+    "Q3大部分产品'不涨价'公告，毛利率承压预期"
+  ],
+  "positive_flags": [
+    "机器人赛道'隐形卖铲人'，定增获批加码高端零部件（7/17超11亿定增获批）",
+    "北向资金本季大幅净增持（0.69%→6.02%，+1190万股）",
+    "业绩预增/超预期（2026E净利+57.12%，一致预期）",
+    "盈利能力稳健（TTM毛利率39.1%，净利率12.0%）",
+    "自动化设备/机器人行业景气上行"
+  ],
+  "corp_quality": 1.0,
+  "corp_quality_note": "由 FunmScore(83.54) 映射：>=80→+1（基本面评分高，盈利稳健，机器人赛道成长）",
+  "source": "westock data_finance(income/balance/cashflow) + data_profile + data_score + tdx 股本/市值",
+  "note": "企业深度体检（巴菲特式）。财务数据截至2026Q1 TTM（data_finance仅返回最新一期）。"
+}

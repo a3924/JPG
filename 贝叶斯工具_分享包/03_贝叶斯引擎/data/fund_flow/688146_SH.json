@@ -1,0 +1,194 @@
+{
+  "code": "sh688146",
+  "data": [
+    {
+      "ClosePrice": "370",
+      "EndDate": "2026-06-29",
+      "MainNetFlow": "-1182761599.12",
+      "JumboNetFlow": "-1439382044.89",
+      "MidNetFlow": "1198515509.05",
+      "SmallNetFlow": "-15753909.93",
+      "date": "2026-06-29"
+    },
+    {
+      "ClosePrice": "349.99",
+      "EndDate": "2026-06-30",
+      "MainNetFlow": "-604263321.70",
+      "JumboNetFlow": "-694073930.62",
+      "MidNetFlow": "616631277.84",
+      "SmallNetFlow": "-12367956.14",
+      "date": "2026-06-30"
+    },
+    {
+      "ClosePrice": "378.61",
+      "EndDate": "2026-07-01",
+      "MainNetFlow": "134744246.45",
+      "JumboNetFlow": "-28253498.87",
+      "MidNetFlow": "-116548365.04",
+      "SmallNetFlow": "-18195881.41",
+      "date": "2026-07-01"
+    },
+    {
+      "ClosePrice": "365",
+      "EndDate": "2026-07-02",
+      "MainNetFlow": "-67601104.25",
+      "JumboNetFlow": "-195381498.99",
+      "MidNetFlow": "84369342.69",
+      "SmallNetFlow": "-16768238.44",
+      "date": "2026-07-02"
+    },
+    {
+      "ClosePrice": "330.14",
+      "EndDate": "2026-07-03",
+      "MainNetFlow": "-440504893.93",
+      "JumboNetFlow": "-495293830.14",
+      "MidNetFlow": "455663453.84",
+      "SmallNetFlow": "-15158559.91",
+      "date": "2026-07-03"
+    },
+    {
+      "ClosePrice": "302.80",
+      "EndDate": "2026-07-06",
+      "MainNetFlow": "-388162563.00",
+      "JumboNetFlow": "-433477317.96",
+      "MidNetFlow": "398337233.78",
+      "SmallNetFlow": "-10174670.78",
+      "date": "2026-07-06"
+    },
+    {
+      "ClosePrice": "315.99",
+      "EndDate": "2026-07-07",
+      "MainNetFlow": "-276815407.82",
+      "JumboNetFlow": "-265439742.35",
+      "MidNetFlow": "288547165.78",
+      "SmallNetFlow": "-11731757.96",
+      "date": "2026-07-07"
+    },
+    {
+      "ClosePrice": "331",
+      "EndDate": "2026-07-08",
+      "MainNetFlow": "265452412.10",
+      "JumboNetFlow": "106991379.42",
+      "MidNetFlow": "-249451458.11",
+      "SmallNetFlow": "-16000953.99",
+      "date": "2026-07-08"
+    },
+    {
+      "ClosePrice": "363.60",
+      "EndDate": "2026-07-09",
+      "MainNetFlow": "45589069.37",
+      "JumboNetFlow": "-129314702.14",
+      "MidNetFlow": "-24219004.94",
+      "SmallNetFlow": "-21370064.43",
+      "date": "2026-07-09"
+    },
+    {
+      "ClosePrice": "293.99",
+      "EndDate": "2026-07-10",
+      "MainNetFlow": "-1262834113.95",
+      "JumboNetFlow": "-1458221227.29",
+      "MidNetFlow": "1281415002.84",
+      "SmallNetFlow": "-18580888.89",
+      "date": "2026-07-10"
+    },
+    {
+      "ClosePrice": "244.50",
+      "EndDate": "2026-07-13",
+      "MainNetFlow": "-804179029.20",
+      "JumboNetFlow": "-906349540.28",
+      "MidNetFlow": "817568336.13",
+      "SmallNetFlow": "-13389306.93",
+      "date": "2026-07-13"
+    },
+    {
+      "ClosePrice": "248.34",
+      "EndDate": "2026-07-14",
+      "MainNetFlow": "-274931862.15",
+      "JumboNetFlow": "-209083974.00",
+      "MidNetFlow": "285961467.90",
+      "SmallNetFlow": "-11029605.75",
+      "date": "2026-07-14"
+    },
+    {
+      "ClosePrice": "250.35",
+      "EndDate": "2026-07-15",
+      "MainNetFlow": "-113413362.46",
+      "JumboNetFlow": "-160616218.91",
+      "MidNetFlow": "126123890.53",
+      "SmallNetFlow": "-12710528.07",
+      "date": "2026-07-15"
+    },
+    {
+      "ClosePrice": "255",
+      "EndDate": "2026-07-16",
+      "MainNetFlow": "261083005.86",
+      "JumboNetFlow": "225188827.50",
+      "MidNetFlow": "-243934362.92",
+      "SmallNetFlow": "-17148642.94",
+      "date": "2026-07-16"
+    },
+    {
+      "ClosePrice": "251",
+      "EndDate": "2026-07-17",
+      "MainNetFlow": "-95982962.24",
+      "JumboNetFlow": "-180562925.49",
+      "MidNetFlow": "112531805.99",
+      "SmallNetFlow": "-16548843.75",
+      "date": "2026-07-17"
+    },
+    {
+      "ClosePrice": "200.80",
+      "EndDate": "2026-07-20",
+      "MainNetFlow": "-508497729.19",
+      "JumboNetFlow": "-544817083.59",
+      "MidNetFlow": "519369608.13",
+      "SmallNetFlow": "-10871878.94",
+      "date": "2026-07-20"
+    },
+    {
+      "ClosePrice": "212",
+      "EndDate": "2026-07-21",
+      "MainNetFlow": "-62752473.09",
+      "JumboNetFlow": "16505425.43",
+      "MidNetFlow": "-19053413.12",
+      "SmallNetFlow": "81805886.21",
+      "date": "2026-07-21"
+    },
+    {
+      "ClosePrice": "210",
+      "EndDate": "2026-07-22",
+      "MainNetFlow": "-163255621.18",
+      "JumboNetFlow": "-247443559.63",
+      "MidNetFlow": "72710005.95",
+      "SmallNetFlow": "90545615.23",
+      "date": "2026-07-22"
+    },
+    {
+      "ClosePrice": "215",
+      "EndDate": "2026-07-23",
+      "MainNetFlow": "-140956153.46",
+      "JumboNetFlow": "-134425422.38",
+      "MidNetFlow": "150992342.08",
+      "SmallNetFlow": "-10036188.62",
+      "date": "2026-07-23"
+    },
+    {
+      "ClosePrice": "245.67",
+      "EndDate": "2026-07-24",
+      "MainNetFlow": "187661749.85",
+      "JumboNetFlow": "202843976.57",
+      "MidNetFlow": "-163512839.89",
+      "SmallNetFlow": "-24148909.96",
+      "date": "2026-07-24"
+    },
+    {
+      "ClosePrice": "282.86",
+      "EndDate": "2026-07-27",
+      "MainNetFlow": "23641424.00",
+      "JumboNetFlow": "-68535916.00",
+      "MidNetFlow": "-12543815.00",
+      "SmallNetFlow": "-11097609.00",
+      "date": "2026-07-27"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "PE_TTM": 18.74,
+  "PB": 4.48,
+  "PS_TTM": 7.82,
+  "BPS": 28.23,
+  "eps_ttm": 6.7466,
+  "market_cap": 377296092249.75,
+  "float_market_cap": 377296092249.75,
+  "total_shares": 2983757155,
+  "float_shares": 2983757155,
+  "f_score": 8,
+  "source": "tdx key_statistics(总市值3772.96亿/总股本29.84亿/BPS28.23/PB4.48/PE_TTM18.74/PS_TTM7.82/一致目标价155.64) + 现价125.90 重算 eps_ttm≈6.75；f_score=8(估算)"
+}

@@ -1,0 +1,17 @@
+{
+  "code": "sh688017",
+  "name": "绿的谐波",
+  "date": "2026-07-21",
+  "finance_balance": 2594717388.0,
+  "security_balance": 19453998.16,
+  "total_balance": 2614171386.16,
+  "float_market_cap": 58207000000.0,
+  "finance_balance_ratio": 0.0446,
+  "finance_balance_dod": -10.24,
+  "finance_buy_today": 333642007.0,
+  "finance_refund_today": 629594648.0,
+  "finance_net_buy_today": -295952641.0,
+  "close_price": 315.83,
+  "source": "westock data_fund_margin + tdx 流通市值",
+  "note": "融资余额占流通市值比 = 25.95亿 / 582.07亿 ≈ 4.46%（低于8%强平风险线）；融资余额日变动-10.24%（净偿还，杠杆资金撤退）；当日融资净偿还2.96亿。"
+}

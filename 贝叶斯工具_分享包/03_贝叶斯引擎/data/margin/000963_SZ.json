@@ -1,0 +1,18 @@
+{
+  "code": "000963.SZ",
+  "name": "华东医药",
+  "date": "2026-07-22",
+  "finance_balance": 1075965072.0,
+  "security_balance": 4170243.0,
+  "total_balance": 1080135315.0,
+  "finance_balance_dod": 1.18,
+  "security_balance_dod": -16.58,
+  "finance_buy_today": 107112790.0,
+  "finance_refund_today": 94598686.0,
+  "finance_net_buy_today": 12514104.0,
+  "close_price": 30.8,
+  "float_market_cap": 54172931234.72,
+  "finance_balance_ratio": 0.0199,
+  "source": "westock data_fund_margin + tdx 流通市值",
+  "note": "融资余额占流通市值比 = finance_balance / float_market_cap ≈ 1.99%"
+}

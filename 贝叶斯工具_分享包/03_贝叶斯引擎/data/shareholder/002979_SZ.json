@@ -1,0 +1,132 @@
+{
+  "code": "sz002979",
+  "name": "雷赛智能",
+  "date": "2026-03-31",
+  "shareholderNum": [],
+  "change_pct": null,
+  "top10FloatShareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 6.9,
+      "holdShares": 21750000,
+      "name": "深圳市雷赛实业发展有限公司"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 6.83,
+      "holdShares": 21532500,
+      "name": "李卫平"
+    },
+    {
+      "holdChange": 327507,
+      "holdPct": 2.06,
+      "holdShares": 6489407,
+      "name": "中国建设银行-易方达国证机器人产业ETF"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 1.93,
+      "holdShares": 6090000,
+      "name": "施慧敏"
+    },
+    {
+      "holdChange": -724100,
+      "holdPct": 1.64,
+      "holdShares": 5175600,
+      "name": "兴业银行-华夏中证机器人ETF"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.81,
+      "holdShares": 2552500,
+      "name": "李卫星"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.75,
+      "holdShares": 2367000,
+      "name": "雷赛智能-2025年员工持股计划"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.73,
+      "holdShares": 2286389,
+      "name": "夏可云"
+    },
+    {
+      "holdChange": -460790,
+      "holdPct": 0.64,
+      "holdShares": 2007845,
+      "name": "国泰海通-天弘中证机器人ETF"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.57,
+      "holdShares": 1798000,
+      "name": "施慧鹏"
+    }
+  ],
+  "top10Shareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 27.33,
+      "holdShares": 86130000,
+      "name": "李卫平"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 7.73,
+      "holdShares": 24360000,
+      "name": "施慧敏"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 6.9,
+      "holdShares": 21750000,
+      "name": "深圳市雷赛实业发展有限公司"
+    },
+    {
+      "holdChange": 327507,
+      "holdPct": 2.06,
+      "holdShares": 6489407,
+      "name": "中国建设银行-易方达国证机器人产业ETF"
+    },
+    {
+      "holdChange": -724100,
+      "holdPct": 1.64,
+      "holdShares": 5175600,
+      "name": "兴业银行-华夏中证机器人ETF"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.96,
+      "holdShares": 3010590,
+      "name": "杨立望"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.81,
+      "holdShares": 2552500,
+      "name": "李卫星"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.75,
+      "holdShares": 2367000,
+      "name": "雷赛智能-2025年员工持股计划"
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.73,
+      "holdShares": 2286389,
+      "name": "夏可云"
+    },
+    {
+      "holdChange": -460790,
+      "holdPct": 0.64,
+      "holdShares": 2007845,
+      "name": "国泰海通-天弘中证机器人ETF"
+    }
+  ],
+  "source": "腾讯自选股 data_shareholder"
+}

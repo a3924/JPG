@@ -1,0 +1,9 @@
+{
+  "acsi_percentile": 65,
+  "issi_deviation": "正常",
+  "tec_score": 88.82,
+  "fund_score": 40.0,
+  "momentum_pct": 59,
+  "source": "合成：TecScore+融资净买方向+北向增减+价格动量（westock 无 ACSI 接口）",
+  "date": "2026-07-22"
+}

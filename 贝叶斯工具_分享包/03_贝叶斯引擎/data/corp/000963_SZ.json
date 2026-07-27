@@ -1,0 +1,85 @@
+{
+  "code": "000963.SZ",
+  "name": "华东医药",
+  "date": "2026-07-22",
+  "business": "生产销售百令胶囊、新赛斯平、泮立苏、卡博平等产品、医药批发。",
+  "industry": "医药生物",
+  "sector": "化学制药",
+  "board": "主板",
+  "listed_date": "2000-01-27",
+  "scores": {
+    "comp": 77.29,
+    "funm": 85.28,
+    "risk": 85.88,
+    "cap": 56.97,
+    "tec": 67.29,
+    "note": "来源 westock data_score：Comp综合/Funm基本面/Risk风险/Cap资金/Tec技术（0~100，越高越好；Risk越高=风险越低）"
+  },
+  "market_cap": 54172931234.72,
+  "float_market_cap": 54172931234.72,
+  "total_shares": 1753736848,
+  "float_shares": 1753736848,
+  "target_price": 47.1503,
+  "finance_fy2025": {
+    "revenue": 43612009891.02,
+    "np_parent": 3414335326.41,
+    "np_deduct": 3311448470.6,
+    "gross_margin": 0.3236,
+    "net_margin": 0.0783,
+    "roe": 0.1356,
+    "debt_ratio": 0.3552,
+    "goodwill": 2860135566.37,
+    "ocf": 4245604371.17,
+    "ocf_np_ratio": 1.24,
+    "fcff": 2621703351.66,
+    "interest_bearing_debt": 2071623615.07,
+    "inventory": 5535765919.86,
+    "receivables": 16961703198.460001,
+    "note": "FY2025 年报；margin/roe/ocf_np 由本引擎据三大报表计算"
+  },
+  "revenue_trend_ttm": [
+    {
+      "date": "2025-06-30",
+      "revenue_ttm": 42615570745.45,
+      "np_ttm": 3630910949.72
+    },
+    {
+      "date": "2025-09-30",
+      "revenue_ttm": 43092195771.09,
+      "np_ttm": 3697694008.72
+    },
+    {
+      "date": "2025-12-31",
+      "revenue_ttm": 43612009891.02,
+      "np_ttm": 3414335326.41
+    },
+    {
+      "date": "2026-03-31",
+      "revenue_ttm": 44059672815.47,
+      "np_ttm": 3501816198.87
+    }
+  ],
+  "moat": {
+    "type": "工商业一体渠道网络 + 创新药/医美研发管线 + 品牌与国际化（Sinclair/华东宁波）",
+    "strength": 4,
+    "note": "工商业一体医药龙头，医药商业渠道纵深；创新药（DR10624 长效三靶点 GLP-1 等）+ 医美（肉毒素/重组蛋白）双轮驱动；FunmScore=85.28 支撑 4/5 护城河评级"
+  },
+  "risk_flags": [
+    "商誉 28.6 亿（占净资产约 11.4%），并购整合风险",
+    "应收票据及账款约 169.6 亿，占款高、营运资金占用大",
+    "存货 55.4 亿，存在跌价与周转压力",
+    "年研发投入约 17.5 亿（转型期费用刚性），短期利润承压",
+    "医疗反腐常态化 + 仿制药集采，压制部分品种盈利与销售费用空间"
+  ],
+  "positive_flags": [
+    "资产负债率 35.5% 稳健，财务结构安全",
+    "经营现金流 42.5 亿（OCF/净利=1.24），现金转化优秀",
+    "FCFF +26.2 亿，自由现金流转正",
+    "FunmScore 85.28 高（基本面优秀），RiskScore 85.88 低风险",
+    "中期分红每10股派3.5元（约6.14亿），股东回报明确",
+    "创新药管线（DR10624 三靶点 GLP-1）+ 医美/宠物 GLP-1 高景气赛道"
+  ],
+  "corp_quality": 1.0,
+  "corp_quality_note": "由 FunmScore(85.28) 映射：>=80→+1",
+  "source": "westock data_finance(income/balance/cashflow) + data_profile + data_score + tdx 市值/股本"
+}

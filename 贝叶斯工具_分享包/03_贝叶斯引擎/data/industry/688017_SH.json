@@ -1,0 +1,14 @@
+{
+  "industry_name": "通用设备",
+  "sw_l1": "机械设备",
+  "sw_l2": "通用设备",
+  "life_stage": "成长期",
+  "cr4": null,
+  "bci_percentile": null,
+  "roe_vs_industry": null,
+  "industry_momentum_60d": 42.0,
+  "industry_momentum_ytd": 48.0,
+  "industry_zdf_5": -17.0,
+  "source": "申万二级通用设备(pt01801072)；data_sector对该申万二级仅返回清单、不返回涨跌幅，故行业涨跌用个股K线近似行业beta（绿的谐波属该行业，个股含机器人主题alpha，行业值略下调：60日个股+56.65%→行业+42%；YTD个股+66.18%→行业+48%；5日个股-17.93%→行业-17%）。CR4行业集中度 westock 无接口→默认50。",
+  "date": "2026-07-21"
+}

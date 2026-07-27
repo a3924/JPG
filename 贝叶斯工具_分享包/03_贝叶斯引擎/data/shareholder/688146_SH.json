@@ -1,0 +1,81 @@
+{
+  "code": "sh688146",
+  "name": "中船特气",
+  "date": "2026-06-30",
+  "shareholderNum": [],
+  "top10FloatShareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 2.36,
+      "holdShares": 12504413,
+      "name": "德州万海长红投资合伙企业(有限合伙)",
+      "no": 1
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 1.52,
+      "holdShares": 8054664,
+      "name": "德州万海长风投资合伙企业(有限合伙)",
+      "no": 2
+    },
+    {
+      "holdChange": -590512,
+      "holdPct": 0.57,
+      "holdShares": 3031285,
+      "name": "广发-国泰中证半导体材料设备ETF",
+      "no": 3
+    },
+    {
+      "holdChange": -220720,
+      "holdPct": 0.56,
+      "holdShares": 2949774,
+      "name": "长江-华夏上证科创板半导体材料设备ETF",
+      "no": 4
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.52,
+      "holdShares": 2742025,
+      "name": "香港中央结算有限公司",
+      "no": 5
+    },
+    {
+      "holdChange": -1024713,
+      "holdPct": 0.44,
+      "holdShares": 2307431,
+      "name": "中信-嘉实上证科创板芯片ETF",
+      "no": 6
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.31,
+      "holdShares": 1646663,
+      "name": "杨锋",
+      "no": 7
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 0.24,
+      "holdShares": 1271361,
+      "name": "J.P.Morgan Securities PLC-自有资金",
+      "no": 8
+    }
+  ],
+  "top10Shareholders": [
+    {
+      "holdChange": 0,
+      "holdPct": 69.17,
+      "holdShares": 366215923,
+      "name": "派瑞科技有限公司",
+      "no": 1
+    },
+    {
+      "holdChange": 0,
+      "holdPct": 3.44,
+      "holdShares": 18225000,
+      "name": "中船投资发展有限公司",
+      "no": 2
+    }
+  ],
+  "note": "派瑞科技(69.17%)+中船投资(3.44%)为锁定国有股；科创板中报前未披露全部股东户数"
+}

@@ -1,0 +1,14 @@
+{
+  "PE_TTM": 50.55,
+  "PB": 5.81,
+  "PS_TTM": 0.842,
+  "BPS": 15.14,
+  "eps_ttm": 1.74,
+  "market_cap": 129167000000,
+  "float_market_cap": 129023000000,
+  "total_shares": 1468476655,
+  "float_shares": 1466831804,
+  "f_score": 7,
+  "date": "2026-07-23",
+  "source": "tdx key_statistics + 现价87.96 重算 TTM 口径（PE_TTM=50.55 / PB=5.81 来自 data_quote 2026-07-23）"
+}

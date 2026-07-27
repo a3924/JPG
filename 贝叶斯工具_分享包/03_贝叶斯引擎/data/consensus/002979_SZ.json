@@ -1,0 +1,36 @@
+{
+  "code": "sz002979",
+  "name": "雷赛智能",
+  "targetPrice": 66.2661,
+  "rating": null,
+  "eps_now": null,
+  "eps_2026E": 1.12,
+  "net_profit_yoy_2026E": 57.12,
+  "forecasts": [
+    {
+      "year": 2026,
+      "eps": 1.12,
+      "revenue": 255989.66,
+      "netProfit": 35410.21,
+      "netProfitYoy": 57.12,
+      "revenueYoy": 36.61
+    },
+    {
+      "year": 2027,
+      "eps": 1.47,
+      "revenue": 326262.07,
+      "netProfit": 46535.41,
+      "netProfitYoy": 31.42,
+      "revenueYoy": 27.45
+    },
+    {
+      "year": 2028,
+      "eps": 1.9,
+      "revenue": 414356.0,
+      "netProfit": 60072.0,
+      "netProfitYoy": 29.09,
+      "revenueYoy": 22.59
+    }
+  ],
+  "source": "腾讯自选股 data_consensus（sz002979，截至 2026-07-21）；无一致目标价评级、无当前eps，2026E净利+57.12%"
+}

@@ -1,0 +1,14 @@
+{
+  "industry_name": "印制电路板",
+  "sw_l1": "电子",
+  "sw_l2": "元件",
+  "life_stage": "成熟期",
+  "cr4": null,
+  "bci_percentile": null,
+  "roe_vs_industry": null,
+  "industry_momentum_60d": 10.19,
+  "industry_momentum_ytd": 52.13,
+  "industry_zdf_5": -18.26,
+  "source": "腾讯自选股 data_profile（行业=电子/印制电路板）+ data_sector(申万二级元件 pt01801083 涨跌: 60日+10.19%/YTD+52.13%/5日-18.26%) + AI 据 PCB 行业景气判定生命周期；CR4 行业集中度 westock 无接口→默认50",
+  "date": "2026-07-21"
+}

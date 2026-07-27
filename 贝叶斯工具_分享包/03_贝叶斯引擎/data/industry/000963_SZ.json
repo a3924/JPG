@@ -1,0 +1,12 @@
+{
+  "industry_name": "医药生物",
+  "sw_l1": "医药生物",
+  "sw_l2": "化学制药",
+  "life_stage": "成熟期",
+  "cr4": null,
+  "bci_percentile": null,
+  "industry_momentum_ytd": null,
+  "roe_vs_industry": 3.0,
+  "source": "腾讯自选股 data_profile（行业）+ data_industry_chain（创新药/医美/银发经济等主题）；ROE相对行业=公司ROE13.6%-行业~10.5%≈+3pct",
+  "date": "2026-07-22"
+}

@@ -1,0 +1,12 @@
+{
+  "industry_name": "煤炭(煤炭开采)",
+  "sw_l1": "煤炭",
+  "sw_l2": "煤炭开采",
+  "life_stage": "成熟期",
+  "cr4": null,
+  "bci_percentile": null,
+  "industry_momentum_ytd": 0.2,
+  "roe_vs_industry": -3.0,
+  "source": "data_profile + data_industry_chain; roe_vs_industry 为估算(扩产期ROE偏低)",
+  "date": "2026-07-22"
+}

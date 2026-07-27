@@ -1,0 +1,36 @@
+{
+  "code": "sh688017",
+  "name": "绿的谐波",
+  "targetPrice": 275.9543,
+  "rating": null,
+  "eps_now": null,
+  "eps_2026E": 1.07,
+  "net_profit_yoy_2026E": 57.57,
+  "forecasts": [
+    {
+      "year": 2026,
+      "eps": 1.07,
+      "revenue": 85741.44,
+      "netProfit": 19596.53,
+      "netProfitYoy": 57.57,
+      "revenueYoy": 50.24
+    },
+    {
+      "year": 2027,
+      "eps": 1.56,
+      "revenue": 122256.2,
+      "netProfit": 28488.1,
+      "netProfitYoy": 45.37,
+      "revenueYoy": 42.59
+    },
+    {
+      "year": 2028,
+      "eps": 2.19,
+      "revenue": 168484.0,
+      "netProfit": 40089.97,
+      "netProfitYoy": 40.73,
+      "revenueYoy": 37.81
+    }
+  ],
+  "source": "腾讯自选股 data_consensus（sh688017，截至 2026-07-21）；一致目标价275.95元(低于现价317.5，隐含约13%下行空间)；2026E净利+57.57%"
+}

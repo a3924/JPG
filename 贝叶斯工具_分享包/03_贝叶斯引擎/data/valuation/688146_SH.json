@@ -1,0 +1,13 @@
+{
+  "PE_TTM": 290.4,
+  "PB": 24.93,
+  "PS_TTM": 47.95,
+  "BPS": 11.35,
+  "eps_ttm": 0.974,
+  "market_cap": 149782488153,
+  "float_market_cap": 41040000000,
+  "total_shares": 529411765,
+  "float_shares": 145000000,
+  "f_score": 8,
+  "source": "tdx 关键指标(现价282.86自算市值/PE/PB/PS) + westock；tdx旧口径(总市值1300亿/PE252)基于7-24价245.67已弃用"
+}
