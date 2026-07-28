@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.1",
+  "entity": {
+    "name": "示例公司",
+    "ticker": "SZ000000",
+    "market": "SZSE",
+    "security_type": "listed_stock",
+    "listing_status": "已上市",
+    "currency": "CNY"
+  },
+  "research": {
+    "profile": "lite",
+    "report_as_of": "2026-07-17T15:00:00+08:00",
+    "collected_at": "2026-07-17T15:10:00+08:00",
+    "latest_expected_financial_period": "2026Q1",
+    "market_status": "closed"
+  },
+  "dimensions": {
+    "identity": {
+      "status": "complete",
+      "applicable": true,
+      "required": true,
+      "summary": "标的身份已经交易所信息核对。",
+      "data_points": [
+        {
+          "metric": "company_name",
+          "value": "示例公司",
+          "unit": "",
+          "period": "current",
+          "as_of": "2026-07-17",
+          "collected_at": "2026-07-17T15:10:00+08:00",
+          "source_name": "深圳证券交易所",
+          "source_url": "https://www.szse.cn/",
+          "source_tier": "A",
+          "estimate_type": "official",
+          "freshness_class": "static",
+          "materiality": "key",
+          "status": "available",
+          "used_fallback": false,
+          "fallback_trace": [
+            {"source": "深圳证券交易所", "status": "success", "attempted_at": "2026-07-17T15:05:00+08:00", "reason": "官方证券信息可用"}
+          ]
+        }
+      ],
+      "gaps": []
+    },
+    "filings": {
+      "status": "complete",
+      "applicable": true,
+      "required": true,
+      "summary": "已取得最新一季报和上一年度年报。",
+      "data_points": [
+        {
+          "metric": "latest_financial_report",
+          "value": "2026年第一季度报告",
+          "unit": "",
+          "period": "2026Q1",
+          "as_of": "2026-03-31",
+          "collected_at": "2026-07-17T15:10:00+08:00",
+          "source_name": "巨潮资讯",
+          "source_url": "https://www.cninfo.com.cn/",
+          "source_tier": "A",
+          "estimate_type": "official",
+          "freshness_class": "quarterly",
+          "materiality": "key",
+          "status": "available",
+          "used_fallback": false,
+          "fallback_trace": [
+            {"source": "巨潮资讯", "status": "success", "attempted_at": "2026-07-17T15:05:00+08:00", "reason": "定期报告原文可用"}
+          ]
+        }
+      ],
+      "gaps": []
+    },
+    "business": {
+      "status": "complete",
+      "applicable": true,
+      "required": true,
+      "summary": "主营业务和收入来源已由年报核对。",
+      "data_points": [
+        {
+          "metric": "main_business",
+          "value": "示例主营业务",
+          "unit": "",
+          "period": "2025FY",
+          "as_of": "2025-12-31",
+          "collected_at": "2026-07-17T15:10:00+08:00",
+          "source_name": "公司2025年年报",
+          "source_url": "https://www.cninfo.com.cn/",
+          "source_tier": "A",
+          "estimate_type": "official",
+          "freshness_class": "quarterly",
+          "materiality": "key",
+          "status": "available",
+          "used_fallback": false,
+          "fallback_trace": [
+            {"source": "公司2025年年报", "status": "success", "attempted_at": "2026-07-17T15:06:00+08:00", "reason": "主营构成表可用"}
+          ]
+        }
+      ],
+      "gaps": []
+    },
+    "financials": {
+      "status": "complete",
+      "applicable": true,
+      "required": true,
+      "summary": "最新财务期和关键口径已核对。",
+      "data_points": [
+        {
+          "metric": "revenue",
+          "value": 1000000000,
+          "unit": "CNY",
+          "period": "2026Q1",
+          "as_of": "2026-03-31",
+          "collected_at": "2026-07-17T15:10:00+08:00",
+          "source_name": "公司2026年第一季度报告",
+          "source_url": "https://www.cninfo.com.cn/",
+          "source_tier": "A",
+          "estimate_type": "official",
+          "freshness_class": "quarterly",
+          "materiality": "key",
+          "status": "available",
+          "used_fallback": false,
+          "fallback_trace": [
+            {"source": "公司2026年第一季度报告", "status": "success", "attempted_at": "2026-07-17T15:06:00+08:00", "reason": "利润表原文可用"}
+          ]
+        }
+      ],
+      "gaps": []
+    },
+    "valuation": {
+      "status": "complete",
+      "applicable": true,
+      "required": true,
+      "summary": "基础估值指标已由脚本复算。",
+      "data_points": [
+        {
+          "metric": "market_cap",
+          "value": 20000000000,
+          "unit": "CNY",
+          "period": "2026-07-17 close",
+          "as_of": "2026-07-17T15:00:00+08:00",
+          "collected_at": "2026-07-17T15:10:00+08:00",
+          "source_name": "腾讯自选股结构化行情",
+          "source_url": "",
+          "source_tier": "B",
+          "estimate_type": "official",
+          "freshness_class": "realtime",
+          "materiality": "key",
+          "status": "available",
+          "used_fallback": false,
+          "fallback_trace": [
+            {"source": "腾讯自选股结构化行情", "status": "success", "attempted_at": "2026-07-17T15:08:00+08:00", "reason": "收盘行情可用"}
+          ]
+        }
+      ],
+      "gaps": []
+    },
+    "risks": {
+      "status": "complete",
+      "applicable": true,
+      "required": true,
+      "summary": "重大风险来自年报重大风险提示并结合反向证据整理。",
+      "data_points": [
+        {
+          "metric": "primary_risk",
+          "value": "示例风险",
+          "unit": "",
+          "period": "2025FY",
+          "as_of": "2025-12-31",
+          "collected_at": "2026-07-17T15:10:00+08:00",
+          "source_name": "公司2025年年报",
+          "source_url": "https://www.cninfo.com.cn/",
+          "source_tier": "A",
+          "estimate_type": "official",
+          "freshness_class": "quarterly",
+          "materiality": "key",
+          "status": "available",
+          "used_fallback": false,
+          "fallback_trace": [
+            {"source": "公司2025年年报", "status": "success", "attempted_at": "2026-07-17T15:07:00+08:00", "reason": "重大风险章节可用"}
+          ]
+        }
+      ],
+      "gaps": []
+    }
+  },
+  "coverage": {
+    "required_total": 6,
+    "complete": 6,
+    "partial": 0,
+    "missing": 0,
+    "ratio": 1.0,
+    "critical_gaps": []
+  },
+  "validation": {
+    "metrics_status": "pass",
+    "dcf_status": "not_applicable",
+    "self_review_status": "not_run",
+    "issues": []
+  },
+  "catalysts": [],
+  "recovery_tasks": [],
+  "conclusion": {
+    "thesis": "买这家公司本质上是在买可验证的主营业务现金流。",
+    "verdict": "观察名单",
+    "confidence": "medium",
+    "thesis_breaker": "主营业务经营现金流持续低于净利润且无法由营运资本解释。",
+    "missing_facts": ["维护性资本开支拆分"]
+  }
+}

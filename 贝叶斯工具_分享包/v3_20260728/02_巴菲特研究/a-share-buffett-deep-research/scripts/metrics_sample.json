@@ -1,0 +1,23 @@
+{
+  "price": 17.59,
+  "shares": 1127000000,
+  "net_profit": 149000000,
+  "net_profit_ttm": 112500000,
+  "forecast_net_profit": 112000000,
+  "book_equity": 2573600000,
+  "revenue_ttm": 1610000000,
+  "dividend_per_share": 0.0125,
+  "target_prices": [
+    {"name": "机构目标价", "price": 19.77},
+    {"name": "中性估值", "price": 14.0}
+  ],
+  "declared": {
+    "market_cap": 19817000000,
+    "pe_static": 132.69,
+    "pe_ttm": 176.09,
+    "pe_forward": 15.0,
+    "pb": 7.7,
+    "ps": 12.31,
+    "dividend_yield": 0.0007
+  }
+}

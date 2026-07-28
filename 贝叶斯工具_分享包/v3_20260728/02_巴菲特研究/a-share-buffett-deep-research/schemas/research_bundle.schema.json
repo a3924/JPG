@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workbuddy.local/schemas/a-share-buffett-research-bundle.schema.json",
+  "title": "A股巴菲特式深度研究底稿",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "entity",
+    "research",
+    "dimensions",
+    "coverage",
+    "validation",
+    "conclusion"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.1"
+    },
+    "entity": {
+      "type": "object",
+      "required": ["name", "ticker", "market", "security_type", "listing_status"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "ticker": {"type": "string", "minLength": 1},
+        "market": {"enum": ["SSE", "SZSE", "BSE"]},
+        "security_type": {
+          "enum": ["listed_stock", "ipo_prelisting", "etf", "convertible_bond", "other"]
+        },
+        "listing_status": {"type": "string", "minLength": 1},
+        "currency": {"type": "string", "default": "CNY"}
+      },
+      "additionalProperties": true
+    },
+    "research": {
+      "type": "object",
+      "required": ["profile", "report_as_of", "collected_at", "latest_expected_financial_period"],
+      "properties": {
+        "profile": {"enum": ["lite", "standard", "deep"]},
+        "report_as_of": {"type": "string", "format": "date-time"},
+        "collected_at": {"type": "string", "format": "date-time"},
+        "latest_expected_financial_period": {"type": "string", "minLength": 1},
+        "market_status": {"enum": ["pre_open", "trading", "midday_break", "closed", "holiday", "not_applicable"]}
+      },
+      "additionalProperties": true
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/dimension"}
+    },
+    "coverage": {
+      "type": "object",
+      "required": ["required_total", "complete", "partial", "missing", "ratio", "critical_gaps"],
+      "properties": {
+        "required_total": {"type": "integer", "minimum": 0},
+        "complete": {"type": "integer", "minimum": 0},
+        "partial": {"type": "integer", "minimum": 0},
+        "missing": {"type": "integer", "minimum": 0},
+        "ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "critical_gaps": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "validation": {
+      "type": "object",
+      "required": ["metrics_status", "dcf_status", "self_review_status"],
+      "properties": {
+        "metrics_status": {"enum": ["pass", "fail", "not_run", "not_applicable"]},
+        "dcf_status": {"enum": ["pass", "warning", "fail", "not_run", "not_applicable"]},
+        "self_review_status": {"enum": ["pass", "warning", "fail", "not_run"]},
+        "issues": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/issue"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "catalysts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/catalyst"}
+    },
+    "recovery_tasks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/recoveryTask"}
+    },
+    "conclusion": {
+      "type": "object",
+      "required": ["thesis", "verdict", "confidence", "thesis_breaker", "missing_facts"],
+      "properties": {
+        "thesis": {"type": "string"},
+        "verdict": {
+          "enum": ["强匹配", "观察名单", "弱匹配", "回避", "能力圈外", "证据不足"]
+        },
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "thesis_breaker": {"type": "string"},
+        "missing_facts": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "review_config": {
+      "type": "object",
+      "properties": {
+        "freshness_hours": {
+          "type": "object",
+          "additionalProperties": {"type": "number", "exclusiveMinimum": 0}
+        },
+        "dcf_warning_thresholds": {
+          "type": "object",
+          "additionalProperties": {"type": "number"}
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "required": ["status", "applicable", "required", "summary", "data_points", "gaps"],
+      "properties": {
+        "status": {"enum": ["complete", "partial", "missing", "not_applicable"]},
+        "applicable": {"type": "boolean"},
+        "required": {"type": "boolean"},
+        "summary": {"type": "string"},
+        "data_points": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/dataPoint"}
+        },
+        "gaps": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "dataPoint": {
+      "type": "object",
+      "required": [
+        "metric",
+        "status",
+        "source_tier",
+        "estimate_type",
+        "freshness_class",
+        "materiality",
+        "fallback_trace"
+      ],
+      "properties": {
+        "metric": {"type": "string", "minLength": 1},
+        "value": {},
+        "unit": {"type": "string"},
+        "period": {"type": "string"},
+        "as_of": {"type": "string"},
+        "collected_at": {"type": "string"},
+        "source_name": {"type": "string"},
+        "source_url": {"type": "string"},
+        "source_tier": {"enum": ["A", "B", "C", "D"]},
+        "estimate_type": {"enum": ["official", "institution_forecast", "model_estimate"]},
+        "freshness_class": {"enum": ["realtime", "intraday", "daily", "news", "quarterly", "static", "not_applicable"]},
+        "materiality": {"enum": ["key", "supporting", "context"]},
+        "status": {"enum": ["available", "not_applicable", "not_disclosed", "source_unavailable", "stale", "conflict", "insufficient_evidence"]},
+        "missing_reason": {"type": "string"},
+        "used_fallback": {"type": "boolean", "default": false},
+        "fallback_trace": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/fallbackAttempt"}
+        },
+        "conflict": {
+          "type": "object",
+          "properties": {
+            "resolved": {"type": "boolean"},
+            "explanation": {"type": "string"}
+          },
+          "additionalProperties": true
+        },
+        "scope_note": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "fallbackAttempt": {
+      "type": "object",
+      "required": ["source", "status", "attempted_at", "reason"],
+      "properties": {
+        "source": {"type": "string"},
+        "status": {"enum": ["success", "empty", "timeout", "error", "not_covered"]},
+        "attempted_at": {"type": "string"},
+        "reason": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "catalyst": {
+      "type": "object",
+      "required": ["window", "event_type", "status", "source_name", "impact_path", "verification_metric"],
+      "properties": {
+        "window": {"type": "string"},
+        "event_type": {"type": "string"},
+        "status": {"enum": ["occurred", "announced", "institution_forecast", "model_hypothesis"]},
+        "source_name": {"type": "string"},
+        "source_url": {"type": "string"},
+        "impact_path": {"type": "string"},
+        "verification_metric": {"type": "string"},
+        "invalidation_condition": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "recoveryTask": {
+      "type": "object",
+      "required": ["priority", "dimension", "reason", "preferred_source", "blocking"],
+      "properties": {
+        "priority": {"enum": ["critical", "high", "medium", "low"]},
+        "dimension": {"type": "string"},
+        "metric": {"type": "string"},
+        "reason": {"type": "string"},
+        "preferred_source": {"type": "string"},
+        "fallback_sources": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "suggested_query_or_action": {"type": "string"},
+        "blocking": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "issue": {
+      "type": "object",
+      "required": ["severity", "category", "message", "suggested_fix"],
+      "properties": {
+        "severity": {"enum": ["critical", "warning", "info"]},
+        "category": {"type": "string"},
+        "dimension": {"type": "string"},
+        "message": {"type": "string"},
+        "evidence": {"type": "string"},
+        "suggested_fix": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
