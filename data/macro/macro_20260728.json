@@ -1,0 +1,16 @@
+{
+  "gdp_gap": 0.8,
+  "m2_yoy": 8.0,
+  "yield_curve_spread_bp": 47,
+  "pmi": 50.3,
+  "cpi_yoy": 1.0,
+  "date": "2026-07-28",
+  "source": "westock data_macro(cpi_ppi+yield_curve+pmi, 2026-07-28 收盘合成)",
+  "detail": {
+    "pmi_composite_2026_06": 50.6,
+    "yield_10y_20260727": 1.7373,
+    "yield_2y_20260727": 1.2673,
+    "cpi_yoy_2026_06": 1.0,
+    "ppi_yoy_2026_06": 4.1
+  }
+}
